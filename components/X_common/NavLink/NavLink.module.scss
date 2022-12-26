@@ -1,0 +1,17 @@
+@import "../../../assets/scss/app";
+
+.navLink {
+  text-decoration: none;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 140%;
+  color: #2A2631;
+
+  &_active {
+    font-weight: 600;
+  }
+
+  &_white {
+    color: #F4F0EC;
+  }
+}

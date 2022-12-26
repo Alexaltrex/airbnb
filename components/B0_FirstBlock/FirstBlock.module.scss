@@ -1,0 +1,101 @@
+@import "../../assets/scss/app";
+
+.firstBlock {
+  @include container;
+  padding-top: 64px;
+
+  @include desktop {
+    padding-top: 80px;
+  }
+
+  .inner {
+    @include inner;
+    @include desktop {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .topBlock {
+      @include desktop {
+        width: 605px;
+      }
+
+      .title {
+        font-weight: 500;
+        font-size: 48px;
+        line-height: 120%;
+        text-align: center;
+        color: #2A2631;
+
+        @include desktop {
+          font-size: 58px;
+          text-align: left;
+        }
+      }
+
+      .manageBtn {
+        margin-top: 32px;
+
+        @include desktop {
+          width: 220px;
+        }
+      }
+
+    }
+
+    .bottomBlock {
+      margin-top: 64px;
+
+      @include desktop {
+        margin-top: 0;
+        width: 360px;
+      }
+
+      .text {
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 140%;
+        text-align: center;
+        color: rgba(42, 38, 49, 0.6);
+
+        @include desktop {
+          text-align: left;
+        }
+      }
+
+      .items {
+        margin-top: 24px;
+        padding-top: 24px;
+        border-top: 1px solid #C1B7B0;
+        display: flex;
+        justify-content: space-between;
+
+        .item {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+
+          p:first-child {
+            font-style: normal;
+            font-weight: 500;
+            font-size: 32px;
+            line-height: 120%;
+            text-align: center;
+            color: #2A2631;
+          }
+
+          p:last-child {
+            margin-top: 4px;
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 18px;
+            text-align: center;
+            color: rgba(42, 38, 49, 0.6);
+          }
+        }
+      }
+
+    }
+
+  }
+}

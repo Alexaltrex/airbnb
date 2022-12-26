@@ -1,0 +1,66 @@
+@import "../../../assets/scss/app";
+
+.textField {
+  position: relative;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(11px);
+  border-radius: 107px;
+  height: 60px;
+  box-sizing: border-box;
+  padding-left: 32px;
+  padding-right: 32px;
+  padding-top: 29px;
+  transition: 0.3s;
+
+  &_focus, &:hover {
+    background: rgba(255, 255, 255, 0.2);
+  }
+
+  &_error, &_error:hover {
+    background: rgba(216, 71, 71, 0.1);
+    border: 1px solid #D84747;
+  }
+
+  .input {
+    position: relative;
+    z-index: 2;
+    background: none;
+    //background: rgba(255,255,255,0.25);
+    border: none;
+    outline: none;
+    width: 100%;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 140%;
+    color: #F4F0EC;
+  }
+
+  .label {
+    position: absolute;
+    z-index: 1;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 140%;
+    color: #F4F0EC;
+    top: 19px;
+    transition: 0.3s;
+
+    &_focus {
+      top: 9px;
+      font-size: 16px;
+      color: rgba(244, 240, 236, 0.4);
+    }
+  }
+
+  .error {
+    position: absolute;
+    bottom: -4px;
+    left: 32px;
+    transform: translateY(100%);
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 140%;
+    color: #D84747;
+  }
+
+}

@@ -1,0 +1,35 @@
+@import "../../../assets/scss/app";
+
+.buttonOutlined {
+  @include button;
+  @include centerRow;
+  width: 100%;
+  height: 60px;
+  background: transparent;
+  box-sizing: border-box;
+  border: 1px solid #6F6B75;
+  border-radius: 1000px;
+  transition: 0.3s;
+
+  span {
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 140%;
+    transition: 0.3s;
+    color: #F4F0EC;
+  }
+
+  &:hover {
+    background: #6F6B75;
+  }
+
+  &_mouseDown, &_mouseDown:hover {
+    background: #F4F0EC;
+
+    span {
+      color: #2A2631;
+    }
+  }
+
+
+}

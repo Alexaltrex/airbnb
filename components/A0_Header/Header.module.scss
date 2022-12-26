@@ -1,0 +1,54 @@
+@import "../../assets/scss/app";
+
+.header {
+    @include container;
+    position: relative;
+    z-index: 999;
+
+    .inner {
+        @include inner;
+        height: 80px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        @include desktop {
+            height: 100px;
+        }
+
+        .logo {
+            img {
+                display: block;
+                width: 111px;
+                height: 37px;
+            }
+        }
+
+        .links {
+            @include onlyDesktop(flex);
+
+            .link {
+                &:not(:first-child) {
+                    margin-left: 28px;
+                }
+            }
+
+        }
+
+        .contacts {
+            @include onlyDesktop(flex);
+            align-items: center;
+
+            .socialLink {
+                margin-left: 8px;
+            }
+
+            .startBtn {
+                margin-left: 16px;
+                width: 160px;
+            }
+
+        }
+
+    }
+}

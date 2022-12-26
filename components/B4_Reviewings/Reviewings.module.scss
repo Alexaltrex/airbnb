@@ -1,0 +1,241 @@
+@import "../../assets/scss/app";
+
+.reviewings {
+  @include container;
+  padding-top: 32px;
+  padding-bottom: 40px;
+
+  @include desktop {
+    padding-top: 100px;
+    padding-bottom: 80px;
+  }
+
+  .inner {
+    @include inner;
+
+
+    .header {
+
+      @include desktop {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+      }
+
+      .tags {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        margin-top: 24px;
+
+
+        @include desktop {
+          justify-content: flex-end;
+          margin-top: 0;
+          width: 350px;
+        }
+
+        .tag {
+          margin: 4px;
+        }
+      }
+
+    }
+
+    .swiperWrapper {
+      background: #2A2631;
+      border-radius: 20px;
+      margin-top: 36px;
+
+      @include desktop {
+        margin-top: 80px;
+      }
+
+      .swiper {
+        .slide {
+          box-sizing: border-box;
+          padding: 16px 16px 24px;
+
+          @include desktop {
+            padding: 80px 100px;
+          }
+
+          .dateWrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            svg {
+              width: 20px;
+              height: 20px;
+
+              @include desktop {
+                width: 22px;
+                height: 22px;
+              }
+            }
+
+            .date {
+              font-weight: 500;
+              font-size: 16px;
+              line-height: 120%;
+              color: rgba(244, 240, 236, 0.4);
+              margin-left: 8px;
+
+              @include desktop {
+                font-size: 20px;
+              }
+            }
+          }
+
+          .text {
+            font-weight: 500;
+            font-size: 24px;
+            line-height: 140%;
+            text-align: center;
+            color: #F4F0EC;
+            margin-top: 16px;
+
+            @include desktop {
+              margin-top: 40px;
+              font-size: 38px;
+            }
+          }
+
+          .authorBlock {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 16px;
+
+            @include desktop {
+              margin-top: 40px;
+            }
+
+            .avatar {
+              width: 40px;
+              height: 40px;
+
+              @include desktop {
+                width: 60px;
+                height: 60px;
+              }
+            }
+
+            .texts {
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+              margin-left: 8px;
+
+              @include desktop {
+                margin-left: 12px;
+              }
+
+
+              .name {
+                font-weight: 500;
+                font-size: 14px;
+                line-height: 120%;
+                color: #F4F0EC;
+
+                @include desktop {
+                  font-size: 16px;
+                }
+              }
+
+              .country {
+                margin-top: 2px;
+                font-weight: 500;
+                font-size: 14px;
+                line-height: 120%;
+                color: rgba(244, 240, 236, 0.4);
+
+                @include desktop {
+                  margin-top: 4px;
+                  font-size: 14px;
+                }
+              }
+            }
+
+          }
+
+
+        }
+      }
+
+      .navigationBlock {
+        display: flex;
+        justify-content: space-between;
+        padding: 0 16px 16px;
+
+        @include desktop {
+          padding: 0 80px 80px;
+        }
+
+        .navigationBtns {
+          display: flex;
+
+          .rightBtn {
+            margin-left: 8px;
+          }
+        }
+
+        .statusBlock {
+          @include centerColumn;
+          position: relative;
+          width: 118px;
+          height: 50px;
+          border: 1px solid #3E3A44;
+          border-radius: 100px;
+
+          @include desktop {
+
+          }
+
+          .status {
+            width: 40px;
+            height: 2px;
+            background: #3E3A44;
+            position: relative;
+
+            .statusInner {
+              position: absolute;
+              top: 0;
+              left: 0;
+              bottom: 0;
+              background: #F4F0EC;
+              transition: 0.2s;
+            }
+          }
+
+          .index, .count {
+            position: absolute;
+            top: 50%;
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 140%;
+            color: #F4F0EC;
+
+            @include desktop {
+              font-size: 20px;
+            }
+          }
+
+          .index {
+            left: 20px;
+            transform: translate(-50%, -50%);
+          }
+
+          .count {
+            right: 20px;
+            transform: translate(50%, -50%);
+          }
+
+        }
+
+      }
+
+    }
+  }
+}

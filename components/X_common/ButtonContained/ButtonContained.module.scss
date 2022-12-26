@@ -1,0 +1,68 @@
+@import "../../../assets/scss/app";
+
+.buttonContained {
+  @include button;
+  @include centerRow;
+  width: 100%;
+  height: 60px;
+  border-radius: 1000px;
+  transition: 0.3s;
+
+  span {
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 140%;
+    transition: 0.3s;
+  }
+
+  &_black {
+    background: #2A2631;
+
+    span {
+      color: #F4F0EC;
+    }
+
+    &:hover {
+      background: #201C27;
+    }
+
+  }
+
+  &_grey {
+    background: #CFC0B6;
+
+    span {
+      color: #2A2631;
+    }
+
+    &:hover {
+      background: #C0B1A7;
+    }
+
+  }
+
+  &_white {
+    background: #F4F0EC;
+
+    span {
+      color: #2A2631;
+    }
+
+    &:hover {
+      background: #E0DCD8;
+    }
+
+  }
+
+  &_mouseDownBlack, &_mouseDownBlack:hover {
+    background: #16121D;
+  }
+
+  &_mouseDownGrey, &_mouseDownGrey:hover {
+    background: #B6A79D;
+  }
+
+  &_mouseDownWhite, &_mouseDownWhite:hover {
+    background: #B8B4B0;
+  }
+}

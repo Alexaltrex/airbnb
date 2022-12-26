@@ -1,0 +1,16 @@
+@import "../../../assets/scss/app";
+
+.tag {
+  padding: 9px 16px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 140%;
+  border-radius: 999px;
+  color: #F4F0EC;
+  border: 1px solid rgba(244, 240, 236, 0.2);
+
+  &_dark {
+    color: #2A2631;
+    border: 1px solid #CDC1BA;
+  }
+}

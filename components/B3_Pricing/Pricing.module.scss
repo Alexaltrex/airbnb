@@ -1,0 +1,38 @@
+@import "../../assets/scss/app";
+
+.pricing {
+  @include container;
+  background: #2A2631;
+  border-radius: 20px;
+  padding-top: 32px;
+  padding-bottom: 32px;
+
+  @include desktop {
+    padding-top: 100px;
+    padding-bottom: 100px;
+  }
+
+  .inner {
+    @include inner;
+
+    .topBlock {
+
+    }
+
+    .cards {
+      margin-top: 24px;
+
+      @include desktop {
+        margin-top: 168px;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-column-gap: 40px;
+      }
+    }
+
+
+  }
+
+
+
+}

@@ -1,0 +1,44 @@
+@import "../../../assets/scss/app";
+
+.buttonArrow {
+  @include button;
+  @include centerColumn;
+  width: 50px;
+  height: 50px;
+  border: 1px solid #3E3A44;
+  border-radius: 100px;
+  box-sizing: border-box;
+  transform: rotate(-90deg);
+  transition: background 0.3s;
+
+  &:hover {
+    background: #6F6B75;
+  }
+
+  &_right {
+    transform: rotate(90deg);
+  }
+
+  svg path {
+    transition: 0.3s;
+    fill: #DFD2C9;
+  }
+
+  &_mouseDown, &_mouseDown:hover {
+    background: #F4F0EC;
+
+    svg path {
+      fill: #2A2631;
+    }
+  }
+
+  &:disabled, &:disabled:hover {
+    cursor: auto;
+    background: transparent!important;
+    border: 1px solid #1c191d !important;
+
+    svg path {
+      fill: #605b57!important;
+    }
+  }
+}

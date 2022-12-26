@@ -1,0 +1,95 @@
+@import "../../../assets/scss/app";
+
+.buttonWithMenu {
+  @include button;
+  display: flex;
+  align-items: center;
+  margin-left: 28px;
+
+  .label {
+    width: 140px;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 140%;
+    color: #2A2631;
+    transition: 0.3s;
+
+    &_white {
+      color: #F4F0EC;
+    }
+
+    &_open {
+      font-weight: 600;
+    }
+  }
+
+  .arrowWrapper {
+    width: 22px;
+    height: 22px;
+
+    svg {
+      width: 22px;
+      height: 22px;
+      transition: 0.3s;
+      transform: rotate(180deg);
+    }
+
+    &_open {
+      svg {
+        transform: rotate(0deg);
+      }
+    }
+
+    &_white {
+      svg path {
+        fill:  #F4F0EC;
+      }
+    }
+  }
+
+
+
+}
+
+.menuItem {
+  width: 265px;
+  height: 60px;
+  background: #F4F0EC;
+  border-radius: 11px;
+  box-sizing: border-box;
+  padding: 3px!important;
+  display: flex;
+  align-items: center;
+  transition: 0.3s;
+
+  &:hover {
+    background: #DFD2C9!important;
+  }
+
+  &:not(:first-child) {
+    margin-top: 3px;
+  }
+
+  .iconWrapper {
+    @include centerRow;
+    width: 54px;
+    height: 54px;
+    background: #2A2631;
+    border-radius: 12px;
+
+    svg {
+      width: 22px;
+      height: 22px;
+    }
+  }
+
+  .label {
+    margin-left: 16px;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 140%;
+    color: #2A2631;
+  }
+
+
+}

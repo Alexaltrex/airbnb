@@ -1,0 +1,151 @@
+//========= FONTS ===========//
+@mixin h2 {
+  font-weight: 600;
+  font-size: 30px;
+  line-height: 110%;
+  text-align: center;
+
+  @include desktop {
+    font-size: 50px;
+  }
+}
+
+@mixin h3 {
+  font-weight: 700;
+  font-size: 26px;
+  line-height: 39px;
+  text-align: center;
+
+  @include desktop {
+    font-size: 32px;
+    line-height: 48px;
+    text-align: left;
+  }
+}
+
+//========= BREAK POINTS ===========//
+@mixin desktop {
+  @media all and (min-width: 1440px) {
+    @content;
+  }
+}
+
+@mixin onlyMobile($displayType: block) {
+  display: $displayType;
+  @content;
+
+  @include desktop() {
+    display: none;
+  }
+}
+
+@mixin onlyDesktop($displayType: block) {
+  display: none;
+
+  @include desktop {
+    display: $displayType;
+    @content;
+  }
+}
+
+//========= OTHER ===========//
+@mixin container {
+  box-sizing: border-box;
+  padding-left: 24px;
+  padding-right: 24px;
+
+  @include desktop {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+@mixin inner {
+  @include desktop {
+    width: 1160px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+@mixin centerColumn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin centerRow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin button() {
+  cursor: pointer;
+  background: none;
+  border: none;
+  outline: none;
+}
+
+@mixin absoluteCenter {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@mixin absoluteStart {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+@mixin modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+  background: rgba(0, 0, 0, 0.4);
+
+  &_show {
+    @include centerColumn;
+  }
+}
+
+@mixin tableRow {
+  cursor: pointer;
+  position: relative;
+
+  &:hover {
+    background: #1E2037;
+
+    @include desktop {
+      &:before {
+        content: "";
+        display: flex;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 4px;
+        height: 100%;
+        background: #644CC5;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        border-radius: 0px 2px 2px 0px;
+      }
+    }
+  }
+
+  &_selected {
+    background: linear-gradient(90deg, rgba(100, 76, 197, 0.83) -182.23%, rgba(100, 76, 197, 0.03) 98.84%);
+
+    &:hover {
+      background: linear-gradient(90deg, rgba(100, 76, 197, 0.83) -182.23%, rgba(100, 76, 197, 0.03) 98.84%);
+    }
+  }
+}

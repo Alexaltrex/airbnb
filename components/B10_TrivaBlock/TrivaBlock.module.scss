@@ -1,0 +1,203 @@
+@import "../../assets/scss/app";
+
+.trivaBlock {
+  @include container;
+  padding-top: 64px;
+
+  @include desktop {
+    padding-top: 80px;
+  }
+
+  .inner {
+    @include inner;
+
+    @include desktop {
+      display: flex;
+      justify-content: space-between;
+    }
+
+
+    .topBlock {
+      position: relative;
+
+      .item {
+        @include onlyDesktop(flex);
+        position: absolute;
+        width: 218px;
+        height: 66px;
+        background: #F4F0EC;
+        border-radius: 11px;
+        display: flex;
+        align-items: center;
+
+        .iconWrapper {
+          @include centerColumn;
+          margin-left: 3px;
+          width: 60px;
+          height: 60px;
+          background: #2A2631;
+          border-radius: 9px;
+
+          img {
+            width: auto;
+            height: 34px;
+          }
+        }
+
+        .texts {
+          margin-left: 16px;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+
+          p:nth-child(1) {
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 120%;
+            color: #2A2631;
+          }
+
+          p:nth-child(2) {
+            margin-top: 3px;
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 120%;
+            color: rgba(42, 38, 49, 0.6);
+          }
+        }
+      }
+
+      .item0 {
+        top: 40px;
+        right: -40px;
+      }
+
+      .item1 {
+        bottom: 40px;
+        left: -40px;
+      }
+
+
+      .box {
+        @include centerColumn;
+        height: 318px;
+        background: #2A2631;
+        border-radius: 20px;
+
+        @include desktop {
+          width: 560px;
+          height: 567px;
+        }
+
+        img {
+          display: block;
+          width: 184px;
+          height: auto;
+
+          @include desktop {
+            width: 290px;
+          }
+        }
+      }
+    }
+
+    .bottomBlock {
+      margin-top: 40px;
+
+      @include desktop {
+        margin-top: 0;
+        width: 460px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+
+      .topText {
+        font-weight: 500;
+        font-size: 32px;
+        line-height: 120%;
+        text-align: center;
+        color: #2A2631;
+
+        @include desktop {
+          font-size: 38px;
+          text-align: left;
+        }
+      }
+
+      .bottom {
+        margin-top: 24px;
+
+        @include desktop {
+          margin-top: 0;
+        }
+
+        .arrowBlock {
+          display: flex;
+          justify-content: center;
+          align-items: flex-end;
+
+          @include desktop {
+            justify-content: flex-start;
+          }
+
+          .iconWrapper {
+            @include centerColumn;
+            border: 1px solid #CDC1BA;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+
+            img {
+              display: block;
+              width: auto;
+              height: 34px;
+            }
+          }
+
+          .arrowWrapper {
+            margin-left: 12px;
+            margin-bottom: 35px;
+
+            @include desktop {
+
+            }
+
+            p {
+              font-weight: 500;
+              font-size: 14px;
+              line-height: 140%;
+              color: #2A2631;
+
+              @include desktop {
+                font-size: 16px;
+              }
+            }
+
+            svg {
+              margin-top: 12px;
+              width: 39.5px;
+              height: 37.5px;
+            }
+          }
+
+        }
+
+        .bottomText {
+          margin-top: 24px;
+          font-weight: 400;
+          font-size: 16px;
+          line-height: 140%;
+          text-align: center;
+          color: #2A2631;
+
+          @include desktop {
+            font-size: 18px;
+            text-align: left;
+          }
+        }
+      }
+    }
+
+  }
+}

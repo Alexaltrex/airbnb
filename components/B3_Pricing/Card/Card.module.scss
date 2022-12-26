@@ -1,0 +1,146 @@
+@import "../../../assets/scss/app";
+
+.card {
+  border-radius: 20px;
+  box-sizing: border-box;
+  padding: 8px 8px 24px;
+  background: #4D4855;
+
+  &:not(:first-child) {
+    margin-top: 16px;
+
+    @include desktop {
+      margin-top: 0;
+    }
+  }
+
+  .header {
+    @include centerColumn;
+    background: #6F6B75;
+    border-radius: 20px;
+    height: 104px;
+
+    @include desktop {
+      height: 158px;
+    }
+
+    .label {
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 16px;
+      text-align: center;
+      color: #F4F0EC;
+
+      @include desktop {
+        font-size: 20px;
+      }
+    }
+
+    .price {
+      margin-top: 7px;
+
+      @include desktop {
+        margin-top: 12px;
+      }
+
+      span:nth-child(1) {
+        font-weight: 500;
+        font-size: 48px;
+        line-height: 120%;
+        color: #F4F0EC;
+      }
+
+      span:nth-child(2) {
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 140%;
+        color: rgba(244, 240, 236, 0.6);
+      }
+    }
+  }
+
+  .items {
+    margin-top: 24px;
+    margin-left: 16px;
+
+    @include desktop {
+      margin-top: 32px;
+      margin-left: 22px;
+    }
+
+    .item {
+      display: flex;
+      align-items: center;
+
+      &:not(:first-child) {
+        margin-top: 8px;
+
+        @include desktop {
+          margin-top: 16px;
+        }
+      }
+
+      svg path {
+        stroke: #F4F0EC;
+      }
+
+      p {
+        margin-left: 8px;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 20px;
+        display: flex;
+        align-items: center;
+        color: #F4F0EC;
+
+        @include desktop {
+          font-size: 18px;
+        }
+      }
+    }
+  }
+
+  .activateBtn {
+    margin-top: 24px;
+
+    @include desktop {
+      margin-top: 32px;
+    }
+  }
+
+  &_white {
+    background: #F4F0EC;
+
+    .header {
+      background: rgba(42, 38, 49, 0.1);
+
+      .label {
+        color: #2A2631;
+      }
+
+      .price {
+        span:nth-child(1) {
+          color: #2A2631;
+        }
+
+        span:nth-child(2) {
+          color: rgba(42, 38, 49, 0.6);
+        }
+      }
+    }
+
+    .items .item {
+      svg path {
+        stroke: #2A2631;
+      }
+
+      p {
+        color: #2A2631;
+      }
+
+    }
+
+  }
+}
+
+

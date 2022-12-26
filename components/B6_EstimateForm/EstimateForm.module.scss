@@ -1,0 +1,168 @@
+@import "../../assets/scss/app";
+
+.estimateForm {
+  background: #2A2631;
+  border-radius: 20px 20px 0 0;
+
+  .header {
+    @include container;
+    padding-top: 32px;
+    padding-bottom: 24px;
+
+    @include desktop {
+      padding-top: 100px;
+      padding-bottom: 100px;
+    }
+
+    .inner {
+      @include inner;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      @include desktop {
+        flex-direction: row;
+        justify-content: space-between;
+      }
+
+      .logo {
+        display: block;
+        width: 111px;
+        height: 37px;
+      }
+
+      .contacts {
+        margin-top: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        @include desktop {
+          margin-top: 0;
+          flex-direction: row;
+        }
+      }
+
+      .contact {
+        display: flex;
+        align-items: center;
+
+        &:not(:first-child) {
+          margin-top: 8px;
+
+          @include desktop {
+            margin-top: 0;
+            margin-left: 40px;
+          }
+        }
+
+        .icon {
+          @include centerColumn;
+          width: 60px;
+          height: 60px;
+          border: 1px solid #3E3A44;
+          border-radius: 100px;
+
+          svg path {
+            stroke: #F4F0EC;
+          }
+        }
+
+        .label {
+          margin-left: 12px;
+          font-weight: 500;
+          font-size: 24px;
+          line-height: 120%;
+          color: #F4F0EC;
+
+          @include desktop {
+            margin-left: 24px;
+            font-size: 38px;
+          }
+        }
+
+
+      }
+    }
+  }
+
+  .formBlock {
+    @include container;
+    background: url('/png/B6_EstimateForm/back.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    border-radius: 20px;
+    padding-top: 24px;
+    padding-bottom: 24px;
+
+    @include desktop {
+      padding-top: 100px;
+      padding-bottom: 100px;
+    }
+
+    .inner {
+      @include inner;
+
+      @include desktop {
+        display: flex;
+      }
+
+      .form {
+        background: rgba(255, 255, 255, 0.1);
+        box-sizing: border-box;
+        border-radius: 20px;
+        padding: 16px;
+
+        @include desktop {
+          border-radius: 20px 0 0 20px;
+          padding: 32px;
+          width: 700px;
+        }
+
+        .formTitle {
+          font-weight: 500;
+          font-size: 24px;
+          line-height: 140%;
+          text-align: center;
+          color: #F4F0EC;
+
+          @include desktop {
+            text-align: left;
+          }
+        }
+
+        .blocks {
+          margin-top: 24px;
+          display: grid;
+          grid-template-rows: repeat(4, 1fr);
+          grid-row-gap: 8px;
+
+          @include desktop {
+            margin-top: 32px;
+            grid-template-rows: repeat(2, 1fr);
+            grid-template-columns: repeat(2, 1fr);
+            grid-column-gap: 8px;
+          }
+        }
+
+        .submitBtn {
+          margin-top: 24px;
+
+          @include desktop {
+            margin-top: 20px;
+          }
+        }
+      }
+
+      .window {
+        @include onlyDesktop;
+        flex-grow: 1;
+        border: 10px solid rgba(255, 255, 255, 0.1);
+        border-radius: 0 20px 20px 0;
+      }
+    }
+  }
+
+
+}
