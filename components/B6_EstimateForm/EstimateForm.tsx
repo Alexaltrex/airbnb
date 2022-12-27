@@ -64,7 +64,7 @@ export const EstimateForm = () => {
                     <div className={style.contacts}>
                         {
                             contacts.map(({icon, label}, key) => (
-                                <div className={style.contact}>
+                                <div className={style.contact} key={key}>
                                     <div className={style.icon}>
                                         {icon}
                                     </div>

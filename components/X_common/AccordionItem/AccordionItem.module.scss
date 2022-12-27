@@ -1,0 +1,66 @@
+@import "../../../assets/scss/app";
+
+.accordionItem {
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(10px);
+  border-radius: 30px;
+  padding: 0 32px;
+  box-sizing: border-box;
+  transition: 0.3s;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.35)
+  }
+
+  .questionBlock {
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .question {
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 140%;
+      color: #FFF;
+    }
+
+    svg {
+      transition: 0.3s;
+      transform: rotate(180deg);
+
+      path {
+        fill: #FFF;
+      }
+    }
+
+  }
+
+  .answer {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 140%;
+    color: #2A2631;
+    padding-bottom: 32px;
+  }
+
+  &_open, &_open:hover {
+    background: #F4F0EC;
+
+    .questionBlock {
+      .question {
+        color: #2A2631;
+      }
+
+      svg {
+        transform: rotate(0deg);
+
+        path {
+          fill: #2A2631;
+        }
+      }
+    }
+  }
+
+}

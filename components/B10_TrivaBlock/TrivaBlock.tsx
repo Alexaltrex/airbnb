@@ -54,7 +54,7 @@ export const TrivaBlock = () => {
 
                         <div className={style.arrowBlock}>
                             <div className={style.iconWrapper}>
-                                <img src="/png/icons/smile.png" alt=""/>
+                                <img src="/png/icons/cube.png" alt=""/>
                             </div>
                             <div className={style.arrowWrapper}>
                                <p>Some text</p>

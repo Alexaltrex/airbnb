@@ -56,6 +56,7 @@
       }
 
       .switch {
+        cursor: pointer;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -77,6 +78,7 @@
 
       .subMenu {
         p {
+          cursor: pointer;
           margin-top: 16px;
           font-weight: 500;
           font-size: 18px;

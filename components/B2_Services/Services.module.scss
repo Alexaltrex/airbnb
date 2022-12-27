@@ -1,5 +1,150 @@
 @import "../../assets/scss/app";
 
 .services {
+  @include container;
+  padding-top: 64px;
+  padding-bottom: 24px;
 
+  @include desktop {
+    padding-top: 124px;
+    padding-bottom: 100px;
+  }
+
+  .inner {
+    @include inner;
+
+    .item {
+      position: relative;
+      height: 100vh;
+      box-sizing: border-box;
+      border: 2px solid #DFD2C9;
+      border-radius: 20px;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      padding: 20px;
+      overflow: hidden;
+      display: flex;
+
+      @include desktop {
+        padding: 80px;
+        align-items: center;
+      }
+
+      .mask {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(42, 38, 49, 0.75);
+      }
+
+      .top {
+        width: 100%;
+        position: relative;
+        z-index: 2;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        @include desktop {
+          align-self: stretch;
+          align-items: flex-start;
+        }
+
+        .topUp {
+          .preTitle {
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 20px;
+            text-align: center;
+            color: #F4F0EC;
+
+            @include desktop {
+              text-align: left;
+            }
+          }
+
+          .title {
+            margin-top: 8px;
+            font-weight: 400;
+            font-size: 32px;
+            line-height: 120%;
+            text-align: center;
+            color: #F4F0EC;
+
+            @include desktop {
+              text-align: left;
+              font-size: 38px;
+              width: 380px;
+            }
+          }
+        }
+
+        .topDown {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+
+          @include desktop {
+            align-items: flex-start;
+          }
+
+
+          .description {
+            margin-top: 16px;
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 140%;
+            text-align: center;
+            color: #F4F0EC;
+
+            @include desktop {
+              margin-top: 12px;
+              text-align: left;
+              width: 280px;
+            }
+          }
+
+          .readMoreBtn {
+            margin-top: 24px;
+
+            @include desktop {
+              margin-top: 32px;
+              width: 220px;
+            }
+          }
+        }
+      }
+
+      .faq {
+        @include onlyDesktop();
+        flex-shrink: 0;
+        position: relative;
+        z-index: 2;
+        width: 380px;
+
+        .title {
+          font-weight: 500;
+          font-size: 24px;
+          line-height: 140%;
+          color: #F4F0EC;
+        }
+
+        .accordion {
+          margin-top: 24px;
+
+          .accordionItem {
+            &:not(:first-child) {
+              margin-top: 8px;
+            }
+          }
+        }
+      }
+
+
+    }
+
+  }
 }

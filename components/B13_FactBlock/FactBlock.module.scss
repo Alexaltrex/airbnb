@@ -1,0 +1,95 @@
+@import "../../assets/scss/app";
+
+.factBlock {
+  @include container;
+  padding-top: 64px;
+
+  @include desktop {
+    padding-top: 100px;
+  }
+
+  .inner {
+    @include inner;
+    background: #2A2631;
+    border-radius: 20px 20px 100px 100px;
+
+    @include desktop {
+      display: flex;
+      border-radius: 20px 100px 100px 20px;
+    }
+
+    .top {
+      padding: 16px 16px 32px;
+
+      @include desktop {
+        padding: 80px;
+      }
+
+      .preTitle {
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 140%;
+        text-align: center;
+        color: #F4F0EC;
+
+        @include desktop {
+          text-align: left;
+        }
+      }
+
+      .title {
+        margin-top: 8px;
+        font-style: italic;
+        font-weight: 400;
+        font-size: 32px;
+        line-height: 120%;
+        text-align: center;
+        color: #F4F0EC;
+
+        @include desktop {
+          font-size: 38px;
+          text-align: left;
+        }
+      }
+
+      .dot {
+        margin-top: 32px;
+
+        @include desktop {
+          margin-top: 176px;
+        }
+      }
+
+      .description {
+        margin-top: 16px;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 140%;
+        text-align: center;
+        color: #F4F0EC;
+
+        @include desktop {
+          margin-top: 12px;
+          text-align: left;
+        }
+      }
+    }
+
+    .bottom {
+      border: 2px solid #DFD2C9;
+      //outline: 2px solid #DFD2C9;
+      border-radius: 20px;
+      height: 410px;
+      background: url("/png/B13_FactBlock/back.png");
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+
+      @include desktop {
+        flex-shrink: 0;
+        height: 660px;
+        width: 720px;
+      }
+    }
+  }
+}

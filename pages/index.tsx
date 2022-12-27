@@ -5,6 +5,7 @@ import {Reviewings} from "../components/B4_Reviewings/Reviewings";
 import {EstimateForm} from "../components/B6_EstimateForm/EstimateForm";
 import {TextBlockMedium} from "../components/X_common/TextBlockMedium/TextBlockMedium";
 import {WeWorkWithUs} from "../components/B5_WeWorkWithUs/WeWorkWithUs";
+import {Services} from "../components/B2_Services/Services";
 
 const HomePage = () => {
 
@@ -12,6 +13,7 @@ const HomePage = () => {
       <MainLayout>
           <FirstBlock/>
           <TextBlockMedium/>
+          <Services/>
           <Pricing/>
           <Reviewings/>
           <WeWorkWithUs/>
