@@ -6,9 +6,10 @@ import {ButtonArrow} from "../X_common/ButtonArrow/ButtonArrow";
 import {Swiper, SwiperSlide} from "swiper/react";
 import "swiper/css";
 import SwiperClass from 'swiper/types/swiper-class';
-import {useState} from "react";
+import {MouseEvent, useRef, useState} from "react";
 import {slides} from "./slides";
 import {svgIcons} from "../../assets/svgIcons";
+import clsx from "clsx";
 
 const tags = [
     "Property",
@@ -21,6 +22,20 @@ const tags = [
 export const Reviewings = () => {
     const [swiper, setSwiper] = useState<SwiperClass | null>(null);
     const [index, setIndex] = useState(0);
+
+    const koef = 0.03;
+    const [deltaX, setDeltaX] = useState(0);
+    const [deltaY, setDeltaY] = useState(0);
+
+    const onMouseMoveHandler = (e: MouseEvent) => {
+        const rect = ref.current.getBoundingClientRect();
+        const centerX = rect.left + 0.5 * rect.width;
+        const centerY = rect.top + 0.5 * rect.height;
+        setDeltaX(koef * (e.clientX - centerX));
+        setDeltaY(koef * (e.clientY - centerY));
+    };
+
+    const ref = useRef<HTMLDivElement>(null!)
 
     return (
         <div className={style.reviewings}>
@@ -46,7 +61,10 @@ export const Reviewings = () => {
                     </div>
                 </div>
 
-                <div className={style.swiperWrapper}>
+                <div className={style.swiperWrapper}
+                     onMouseMove={onMouseMoveHandler}
+                     ref={ref}
+                >
 
                     <Swiper slidesPerView={1}
                             className={style.swiper}
@@ -57,9 +75,17 @@ export const Reviewings = () => {
                             onSlideChange={(swiper) => {
                                 setIndex(swiper.realIndex);
                             }}
+
                     >
                         {
-                            slides.map(({date, text, avatar, name, country}, key) => (
+                            slides.map(({
+                                            date,
+                                            text,
+                                            avatar,
+                                            name,
+                                            country,
+                                            reviews
+                                        }, key) => (
                                 <SwiperSlide key={key}
                                              className={style.slide}
 
@@ -77,6 +103,39 @@ export const Reviewings = () => {
                                             <p className={style.country}>{country}</p>
                                         </div>
                                     </div>
+
+                                    {
+                                        reviews.map(({review, image}, key) => (
+                                            <div key={key}
+                                                className={clsx(
+                                                style.reviewItem,
+                                                style[`reviewItem_${key}`]
+                                            )}
+                                                 style={{
+                                                     transform: `translate(${deltaX}px, ${deltaY}px)`
+                                                 }}
+                                            >
+                                                <div className={style.iconWrapper}>
+                                                    <img src={image} alt=""/>
+                                                </div>
+                                                <div className={style.stars}>
+                                                    {
+                                                        [1, 2, 3, 4, 5].map(n => (
+                                                            <div className={style.starWrapper} key={n}>
+                                                                {
+                                                                    n < review
+                                                                        ? svgIcons.star_full
+                                                                        : n > review && n - review < 1 ? svgIcons.star_half
+                                                                        : svgIcons.star_empty
+                                                                }
+                                                            </div>
+                                                        ))
+                                                    }
+                                                </div>
+                                            </div>
+                                        ))
+                                    }
+
 
                                 </SwiperSlide>
                             ))
@@ -100,7 +159,7 @@ export const Reviewings = () => {
                             <div className={style.status}>
                                 <div className={style.statusInner}
                                      style={{
-                                         width: `${100*(index + 1) / slides.length}%`
+                                         width: `${100 * (index + 1) / slides.length}%`
                                      }}
                                 />
                             </div>
@@ -109,6 +168,8 @@ export const Reviewings = () => {
 
                         </div>
                     </div>
+
+
                 </div>
 
             </div>

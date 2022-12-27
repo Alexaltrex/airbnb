@@ -4,6 +4,7 @@ import {Form, Formik, FormikErrors, FormikHelpers, FormikProps} from "formik";
 import * as React from "react";
 import {svgIcons} from "../../assets/svgIcons";
 import {ButtonContained, ColorEnum} from "../X_common/ButtonContained/ButtonContained";
+import {TextareaField} from "../X_common/TextareaField/TextareaField";
 
 const contacts = [
     {
@@ -21,6 +22,7 @@ interface IValues {
     name: string
     phone: string
     mail: string
+    message: string
 }
 
 export const EstimateForm = () => {
@@ -28,6 +30,7 @@ export const EstimateForm = () => {
         name: "",
         phone: "",
         mail: "",
+        message: "",
     }
     const validate = (values: IValues): FormikErrors<IValues> => { // функция синхронной валидации
         const errors: FormikErrors<IValues> = {};
@@ -93,6 +96,11 @@ export const EstimateForm = () => {
                                         <TextField name="mail" label="Mail"/>
                                         <TextField name="mail" label="Mail"/>
                                     </div>
+
+                                    <TextareaField name="message"
+                                                   className={style.textarea}
+                                                   placeholder="Enter your message"
+                                    />
 
                                     <ButtonContained type="submit"
                                                      label="Get started"

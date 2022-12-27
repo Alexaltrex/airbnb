@@ -6,12 +6,14 @@ import {EstimateForm} from "../components/B6_EstimateForm/EstimateForm";
 import {TextBlockMedium} from "../components/X_common/TextBlockMedium/TextBlockMedium";
 import {WeWorkWithUs} from "../components/B5_WeWorkWithUs/WeWorkWithUs";
 import {Services} from "../components/B2_Services/Services";
+import {CalculateBlock} from "../components/B1_CalculateBlock/CalculateBlock";
 
 const HomePage = () => {
 
     return (
       <MainLayout>
           <FirstBlock/>
+          <CalculateBlock/>
           <TextBlockMedium/>
           <Services/>
           <Pricing/>

@@ -53,6 +53,7 @@
 
       .swiper {
         .slide {
+          //position: relative;
           box-sizing: border-box;
           padding: 16px 16px 24px;
 
@@ -160,7 +161,55 @@
 
           }
 
+          .reviewItem {
+            @include onlyDesktop(flex);
+            align-items: center;
+            position: absolute;
+            width: 224px;
+            height: 61.72px;
+            background: #F4F0EC;
+            border-radius: 10.9511px;
+            //transition: 0.2s;
 
+            &_0 {
+              top: 38px;
+              right: 57px;
+            }
+
+            &_1 {
+              left: 208px;
+              bottom: 18px;
+            }
+
+            .iconWrapper {
+              @include centerColumn;
+              margin-left: 3px;
+              width: 55.75px;
+              height: 55.75px;
+              background: #2A2631;
+              border-radius: 12px;
+
+              img {
+                display: block;
+                width: 24px;
+              }
+            }
+
+            .stars {
+              margin-left: 16px;
+              display: flex;
+
+              .starWrapper {
+                width: 22px;
+                height: 22px;
+
+                &:not(:first-child) {
+                  margin-left: 6px;
+                }
+              }
+            }
+
+          }
         }
       }
 
@@ -235,6 +284,8 @@
         }
 
       }
+
+
 
     }
   }

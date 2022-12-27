@@ -1,5 +1,72 @@
 @import "../../assets/scss/app";
 
 .calculateBlock {
+    @include container;
+    padding-top: 64px;
 
+    @include desktop {
+        padding-top: 77px;
+    }
+
+    .inner {
+        @include inner;
+        overflow: hidden;
+        position: relative;
+        border-radius: 20px;
+        background-image: url('/jpeg/B14_Subcategories/1.jpg');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+
+        box-sizing: border-box;
+        padding: 20px;
+
+        @include desktop {
+            padding: 32px;
+        }
+
+        .mask {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 1;
+            background: rgba(42, 38, 49, 0.5);
+        }
+
+        .header {
+            position: relative;
+            z-index: 2;
+
+            @include desktop {
+                display: flex;
+                justify-content: space-between;
+            }
+
+            .tags {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+
+                @include desktop {
+                    justify-content: normal;
+                    width: 330px;
+                }
+
+                .tag {
+                    margin: 4px;
+                }
+            }
+
+
+        }
+
+        .formWrapper {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+            border-radius: 20px;
+        }
+
+    }
 }
