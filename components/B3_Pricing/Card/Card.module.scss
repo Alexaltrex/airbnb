@@ -1,6 +1,7 @@
 @import "../../../assets/scss/app";
 
 .card {
+  cursor: pointer;
   border-radius: 20px;
   box-sizing: border-box;
   padding: 8px 8px 24px;
@@ -142,5 +143,7 @@
 
   }
 }
+
+
 
 

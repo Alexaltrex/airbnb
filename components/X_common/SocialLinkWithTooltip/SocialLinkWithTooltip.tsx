@@ -1,9 +1,10 @@
 import style from "./SocialLinkWithTooltip.module.scss";
-import {FC, useState} from "react";
+import {FC, useRef, useState} from "react";
 import {svgIcons} from "../../../assets/svgIcons";
 import {observer} from "mobx-react-lite";
 import {useStore} from "../../../store/useStore";
 import clsx from "clsx";
+import {useOutsideButNotOnTargetClick} from "../../../hooks/useOutsideClick";
 
 interface ISocialLinkWithTooltip {
     className?: string
@@ -30,11 +31,19 @@ export const SocialLinkWithTooltip: FC<ISocialLinkWithTooltip> = observer(({
         }
     }
 
+    const onClickHandler = () => setEnter(true);
+
     const onCopyHandler = () => {
         navigator.clipboard.writeText(label)
         setEnter(false);
         setSocialLinkTooltip(false);
     }
+
+
+    const tooltipRef = useRef<HTMLDivElement>(null!);
+    const exceptRef = useRef<HTMLDivElement>(null!);
+
+    useOutsideButNotOnTargetClick(tooltipRef, exceptRef, () => setEnter(false))
 
     return (
         <div className={clsx(
@@ -44,8 +53,10 @@ export const SocialLinkWithTooltip: FC<ISocialLinkWithTooltip> = observer(({
             {
                 tooltip ? (
                     <div className={style.btn}
-                         onMouseEnter={onMouseEnterHandler}
+                        //onMouseEnter={onMouseEnterHandler}
                         //onMouseLeave={() => setEnter(false)}
+                         onClick={onClickHandler}
+                         ref={exceptRef}
                     >
                         {icon}
                     </div>
@@ -63,7 +74,9 @@ export const SocialLinkWithTooltip: FC<ISocialLinkWithTooltip> = observer(({
 
             {
                 enter && tooltip && (
-                    <div className={style.tooltip}>
+                    <div className={style.tooltip}
+                         ref={tooltipRef}
+                    >
                         <a className={style.link}
                            href={href}
                            target="_blank"
