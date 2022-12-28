@@ -9,10 +9,13 @@ import {BurgerButton} from "./BurgerButton/BurgerButton";
 import {SocialLinkWithTooltip} from "../X_common/SocialLinkWithTooltip/SocialLinkWithTooltip";
 import {svgIcons} from "../../assets/svgIcons";
 import {NavLink} from "../X_common/NavLink/NavLink";
+import {observer} from "mobx-react-lite";
+import {useStore} from "../../store/useStore";
 
 //========= HEADER =========//
-export const Header = () => {
+export const Header = observer(() => {
     //console.log(useRouter().pathname)
+    const {setPopupForm} = useStore();
 
     return (
         <header className={style.header}>
@@ -47,6 +50,7 @@ export const Header = () => {
                     <ButtonContained label="Get started"
                                      color={ColorEnum.grey}
                                      className={style.startBtn}
+                                     onClick={() => setPopupForm(true)}
                     />
                 </div>
 
@@ -55,4 +59,4 @@ export const Header = () => {
             </div>
         </header>
     )
-}
+})

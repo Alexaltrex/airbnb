@@ -1,0 +1,68 @@
+@import "../../assets/scss/app";
+
+.popupForm {
+  @include absoluteCenter;
+  width: calc(100vw - 24px);
+  background: #F4F0EC;
+  border-radius: 20px;
+
+  @include desktop {
+    width: 460px;
+  }
+
+  .headerBlock {
+    margin: 5px 5px 0;
+    padding: 27px;
+    background: #2A2631;
+    border-radius: 17px;
+
+    p:nth-child(1) {
+      font-weight: 500;
+      font-size: 24px;
+      line-height: 120%;
+      text-align: center;
+      color: #F4F0EC;
+    }
+
+    p:nth-child(2) {
+      margin: 8px auto 0;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 140%;
+      text-align: center;
+      color: rgba(244, 240, 236, 0.4);
+      width: 236px;
+    }
+  }
+
+  .formBlock {
+
+    .fieldWrapper {
+      margin: 3px 3px;
+      background: #2A2631;
+      border-radius: 17px;
+      padding: 12px;
+
+
+      .field {
+        margin-top: 12px;
+      }
+
+      .textarea {
+        margin-top: 12px;
+        height: 180px;
+      }
+    }
+
+    .submitBtn {
+      margin: 20px 15px 0;
+      width: calc(100% - 30px);
+    }
+
+    .cancelBtn {
+      margin: 8px 15px 32px;
+      width: calc(100% - 30px);
+    }
+  }
+
+}

@@ -1,72 +1,130 @@
 @import "../../assets/scss/app";
 
 .calculateBlock {
-    @include container;
-    padding-top: 64px;
+  @include container;
+  padding-top: 64px;
+
+  @include desktop {
+    padding-top: 77px;
+  }
+
+  .inner {
+    @include inner;
+    overflow: hidden;
+    position: relative;
+    border-radius: 20px;
+    background-image: url('/jpeg/B14_Subcategories/1.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    box-sizing: border-box;
+    padding: 20px;
 
     @include desktop {
-        padding-top: 77px;
+      padding: 32px;
     }
 
-    .inner {
-        @include inner;
-        overflow: hidden;
-        position: relative;
-        border-radius: 20px;
-        background-image: url('/jpeg/B14_Subcategories/1.jpg');
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: cover;
+    .mask {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 1;
+      background: rgba(42, 38, 49, 0.5);
+    }
 
-        box-sizing: border-box;
-        padding: 20px;
+    .header {
+      position: relative;
+      z-index: 2;
+
+      @include desktop {
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .tags {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
 
         @include desktop {
-            padding: 32px;
+          justify-content: normal;
+          width: 330px;
         }
 
-        .mask {
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            z-index: 1;
-            background: rgba(42, 38, 49, 0.5);
+        .tag {
+          margin: 4px;
         }
+      }
 
-        .header {
-            position: relative;
-            z-index: 2;
-
-            @include desktop {
-                display: flex;
-                justify-content: space-between;
-            }
-
-            .tags {
-                display: flex;
-                flex-wrap: wrap;
-                justify-content: center;
-
-                @include desktop {
-                    justify-content: normal;
-                    width: 330px;
-                }
-
-                .tag {
-                    margin: 4px;
-                }
-            }
-
-
-        }
-
-        .formWrapper {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(5px);
-            border-radius: 20px;
-        }
 
     }
+
+    .formWrapper {
+      position: relative;
+      z-index: 2;
+      margin-top: 20px;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(5px);
+      border-radius: 20px;
+      padding: 16px;
+
+      @include desktop {
+        margin-top: 80px;
+        padding: 32px;
+      }
+
+      .formTitle {
+        font-weight: 500;
+        font-size: 24px;
+        line-height: 120%;
+        text-align: center;
+        color: #F4F0EC;
+
+        @include desktop {
+          text-align: left;
+        }
+      }
+
+      .form {
+        margin-top: 24px;
+
+
+        @include desktop {
+          margin-top: 32px;
+          display: flex;
+        }
+
+        .selectField {
+          @include desktop {
+            width: 275px;
+          }
+
+          &:not(:first-child) {
+            margin-top: 8px;
+
+            @include desktop {
+              margin-top: 0;
+              margin-left: 8px;
+            }
+          }
+        }
+
+        .submitBtn {
+          margin-top: 24px;
+
+          @include desktop {
+            margin-top: 0;
+            margin-left: 32px;
+            width: 163px;
+          }
+        }
+
+      }
+
+    }
+
+  }
 }

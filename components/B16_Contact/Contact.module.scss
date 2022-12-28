@@ -1,0 +1,177 @@
+@import "../../assets/scss/app";
+
+.contact {
+  @include container;
+  position: relative;
+  border-radius: 20px;
+  background: #2A2631;
+
+
+  @include desktop {
+    display: flex;
+  }
+
+  .inner {
+    @include inner;
+    position: relative;
+    box-sizing: border-box;
+
+    @include desktop {
+      min-height: calc(100vh - 100px - 105px);
+
+    }
+
+    .leftPart {
+      padding: 32px 24px;
+
+      @include desktop {
+        height: 100%;
+        width: 636px;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      .socialContacts {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        @include desktop {
+          align-items: flex-start;
+        }
+
+        .socialContact {
+          display: flex;
+          align-items: center;
+
+          &:not(:first-child) {
+            margin-top: 8px;
+
+            @include desktop {
+              margin-top: 40px;
+            }
+          }
+
+          .icon {
+            @include centerColumn;
+            width: 60px;
+            height: 60px;
+            border: 1px solid #3E3A44;
+            border-radius: 100px;
+
+            svg path {
+              stroke: #F4F0EC;
+            }
+          }
+
+          .label {
+            margin-left: 12px;
+            font-weight: 500;
+            font-size: 24px;
+            line-height: 120%;
+            color: #F4F0EC;
+
+            @include desktop {
+              margin-left: 24px;
+              font-size: 38px;
+            }
+          }
+
+
+        }
+      }
+
+      .formTitle {
+        margin-top: 32px;
+        font-weight: 500;
+        font-size: 24px;
+        line-height: 140%;
+        text-align: center;
+        color: #F4F0EC;
+
+        @include desktop {
+          margin-top: 64px;
+          text-align: left;
+        }
+      }
+
+      .form {
+        margin-top: 24px;
+
+        @include desktop {
+          margin-top: 32px;
+        }
+
+        .blocks {
+          margin-top: 24px;
+          display: grid;
+          grid-template-rows: repeat(4, 1fr);
+          grid-row-gap: 13px;
+
+          @include desktop {
+            margin-top: 32px;
+            grid-template-rows: repeat(2, 1fr);
+            grid-template-columns: repeat(2, 1fr);
+            grid-column-gap: 8px;
+          }
+        }
+
+        .textarea {
+          height: 148px;
+          margin-top: 13px;
+
+          @include desktop {
+            height: 180px;
+            margin-top: 13px;
+          }
+        }
+
+        .submitBtn {
+          margin-top: 24px;
+
+          @include desktop {
+            margin-top: 20px;
+          }
+        }
+      }
+
+    }
+
+  }
+
+  .rightPart {
+    @include onlyDesktop();
+    box-sizing: border-box;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: calc(470px + 0.5 * (100vw - 1160px));
+    border-radius: 20px;
+    border: 10px solid #2A2631;
+
+    img {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      border-radius: 20px;
+    }
+
+    .mask {
+      position: absolute;
+      z-index: 2;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(42, 38, 49, 0.75);
+    }
+  }
+
+
+}

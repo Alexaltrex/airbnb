@@ -2,9 +2,11 @@ import {FC, ReactNode} from "react";
 import style from "./MainLayout.module.scss"
 import Head from "next/head";
 import {Header} from "../../components/A0_Header/Header";
-import { Footer } from "../../components/A2_Footer/Footer";
+import {Footer} from "../../components/A2_Footer/Footer";
 import {BurgerMenu} from "../../components/A1_BurgerMenu/BurgerMenu";
 import {TextField} from "../../components/X_common/TextField/TextField";
+import {useRouter} from "next/router";
+import {PopupForm} from "../../components/A3_PopupForm/PopupForm";
 
 interface IMainLayout {
     children: ReactNode
@@ -15,8 +17,9 @@ export const MainLayout: FC<IMainLayout> = ({
                                                 children,
                                                 headTitle = 'Air BNB',
                                             }) => {
+    const router = useRouter();
 
-   return (
+    return (
         <div className={style.mainLayout}>
             <Head>
                 {/*<meta name="keywords" content="next,js,nextjs,react"/>*/}
@@ -27,6 +30,8 @@ export const MainLayout: FC<IMainLayout> = ({
                 </title>
             </Head>
 
+            <PopupForm/>
+
             <Header/>
             <BurgerMenu/>
 
@@ -34,8 +39,8 @@ export const MainLayout: FC<IMainLayout> = ({
                 {children}
             </main>
 
-            <Footer/>
+            <Footer white={router.pathname === "/contact"}/>
         </div>
-   )
+    )
 
 }

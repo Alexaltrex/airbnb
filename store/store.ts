@@ -2,15 +2,15 @@ import {action, makeObservable, observable} from "mobx";
 
 export class Store {
     burgerMenu = false
-    socialLinkTooltip = false
+    popupForm = false
 
     constructor() {
         makeObservable(this, {
             burgerMenu: observable,
-            socialLinkTooltip: observable,
+            popupForm: observable,
 
             setBurgerMenu: action.bound,
-            setSocialLinkTooltip: action.bound,
+            setPopupForm: action.bound,
         })
     }
 
@@ -18,9 +18,11 @@ export class Store {
         this.burgerMenu = burgerMenu
     }
 
-    setSocialLinkTooltip(socialLinkTooltip: boolean) {
-        this.socialLinkTooltip = socialLinkTooltip
+
+    setPopupForm(popupForm: boolean) {
+        this.popupForm = popupForm
     }
+
 
 }
 export const store = new Store()

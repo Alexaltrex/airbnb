@@ -1,5 +1,7 @@
 import style from "./FirstBlock.module.scss"
 import {ButtonContained, ColorEnum} from "../X_common/ButtonContained/ButtonContained";
+import {observer} from "mobx-react-lite";
+import {useStore} from "../../store/useStore";
 
 const text = "A small description, which can be composed in two or three stoic, which describes the essence"
 
@@ -19,7 +21,8 @@ const items = [
 ]
 
 
-export const FirstBlock = () => {
+export const FirstBlock = observer(() => {
+    const {setPopupForm} = useStore();
     return (
         <div className={style.firstBlock}>
             <div className={style.inner}>
@@ -30,6 +33,7 @@ export const FirstBlock = () => {
                     <ButtonContained label="Manage my property"
                                      color={ColorEnum.black}
                                      className={style.manageBtn}
+                                     onClick={() => setPopupForm(true)}
                     />
                 </div>
 
@@ -51,4 +55,4 @@ export const FirstBlock = () => {
             </div>
         </div>
     )
-}
+})

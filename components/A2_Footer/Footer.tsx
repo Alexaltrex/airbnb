@@ -28,8 +28,6 @@ export const Footer: FC<IFooter> = ({white = false}) => {
                     <p>Triva © 2022</p>
                 </div>
             </div>
-
-
         </footer>
     )
 }

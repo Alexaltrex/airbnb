@@ -1,0 +1,15 @@
+@import "../assets/scss/app";
+
+.textBlockSmall {
+  padding-bottom: 32px;
+
+  @include desktop {
+    padding-bottom: 80px;
+  }
+}
+
+.wrapper {
+  background: #2A2631;
+  border-radius: 20px 20px 0 0;
+}
+

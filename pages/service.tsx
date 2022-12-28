@@ -5,6 +5,7 @@ import {Advantages} from "../components/B12_Advantages/Advantages";
 import {FactBlock} from "../components/B13_FactBlock/FactBlock";
 import {Subcategories} from "../components/B14_Subcategories/Subcategories";
 import {FaqBlock} from "../components/B15_FaqBlock/FaqBlock";
+import {EstimateForm} from "../components/B6_EstimateForm/EstimateForm";
 
 const ServicePage = () => {
     return (
@@ -14,6 +15,7 @@ const ServicePage = () => {
             <FactBlock/>
             <Subcategories/>
             <FaqBlock/>
+            <EstimateForm/>
         </MainLayout>
     )
 }

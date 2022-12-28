@@ -11,10 +11,6 @@
     padding-top: 40px;
   }
 
-  &_white {
-    background: #DFD2C9;
-  }
-
   .inner {
     @include inner;
     display: flex;
@@ -69,6 +65,14 @@
           }
         }
       }
+    }
+  }
+
+  &_white {
+    background: #DFD2C9;
+
+    .inner .bottom p {
+      color: #2A2631;
     }
   }
 

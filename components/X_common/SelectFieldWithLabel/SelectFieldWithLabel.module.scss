@@ -1,0 +1,42 @@
+.menuItem {
+  background: #E0DCD9;
+  border-radius: 15px;
+  height: 60px;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: 0.3s;
+
+  &:hover {
+    background: #b1acac;
+  }
+
+  p {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 140%;
+    color: #2A2631;
+  }
+
+  .check {
+    width: 22px;
+    height: 22px;
+    border: 1px solid rgba(42, 38, 49, 0.15);
+    border-radius: 50%;
+
+    &_selected {
+      background: #2A2631;
+    }
+  }
+}
+
+.selected {
+  font-weight: 400!important;
+  font-size: 16px!important;
+  line-height: 140%!important;
+  align-items: center!important;
+  color: #F4F0EC!important;
+}
