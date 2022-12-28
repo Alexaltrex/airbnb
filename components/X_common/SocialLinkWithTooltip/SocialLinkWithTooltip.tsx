@@ -1,8 +1,6 @@
 import style from "./SocialLinkWithTooltip.module.scss";
 import {FC, useRef, useState} from "react";
 import {svgIcons} from "../../../assets/svgIcons";
-import {observer} from "mobx-react-lite";
-import {useStore} from "../../../store/useStore";
 import clsx from "clsx";
 import {useOutsideButNotOnTargetClick} from "../../../hooks/useOutsideClick";
 
@@ -14,29 +12,22 @@ interface ISocialLinkWithTooltip {
     href: string
 }
 
-export const SocialLinkWithTooltip: FC<ISocialLinkWithTooltip> = observer(({
+export const SocialLinkWithTooltip: FC<ISocialLinkWithTooltip> = ({
                                                                                className,
                                                                                label,
                                                                                icon,
                                                                                tooltip,
                                                                                href
                                                                            }) => {
-    const {socialLinkTooltip, setSocialLinkTooltip} = useStore();
     const [enter, setEnter] = useState(false);
 
-    const onMouseEnterHandler = () => {
-        if (!socialLinkTooltip) {
-            setSocialLinkTooltip(true);
-            setEnter(true);
-        }
-    }
+
 
     const onClickHandler = () => setEnter(true);
 
     const onCopyHandler = () => {
         navigator.clipboard.writeText(label)
         setEnter(false);
-        setSocialLinkTooltip(false);
     }
 
 
@@ -94,4 +85,4 @@ export const SocialLinkWithTooltip: FC<ISocialLinkWithTooltip> = observer(({
 
         </div>
     )
-})
+}
