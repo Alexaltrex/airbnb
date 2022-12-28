@@ -36,7 +36,7 @@ export const WeWorkWithUs = () => {
 
                 >
                     <div data-aos="zoom-in"
-                        data-aos-delay="1000"
+                         data-aos-delay="1000"
                     >
                         {svgIcons.arrowBow}
                         <p className={style.text}>Some text</p>

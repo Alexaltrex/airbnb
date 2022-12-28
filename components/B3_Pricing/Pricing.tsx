@@ -11,6 +11,14 @@ export const Pricing = () => {
                     <H2 preTitle="Pricing"
                         title="Space for a large headline of two lines long"
                     />
+                    <div className={style.right}>
+                        <div className={style.iconWrapper}>
+                            <img src="/png/icons/smile.png" alt=""/>
+                        </div>
+                        <p className={style.description}>
+                            A small description, which can be composed in two or three stoic, which describes the essence
+                        </p>
+                    </div>
                 </div>
 
                 <div className={style.cards}>

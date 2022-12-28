@@ -7,6 +7,7 @@ import {TextareaField} from "../X_common/TextareaField/TextareaField";
 import {ButtonContained, ColorEnum} from "../X_common/ButtonContained/ButtonContained";
 import * as React from "react";
 import {SelectFieldWithLabel} from "../X_common/SelectFieldWithLabel/SelectFieldWithLabel";
+import {svgIcons} from "../../assets/svgIcons";
 
 const tags = [
     "Property",
@@ -79,7 +80,18 @@ export const CalculateBlock = () => {
                         }
                     </div>
                     <div className={style.weather}>
-
+                        <div className={style.row}>
+                            <p className={style.city}>Dubai</p>
+                            <p className={style.time}>GMT+04:00</p>
+                        </div>
+                        <div className={style.divider}/>
+                        <div className={style.row}>
+                           <div className={style.left}>
+                               {svgIcons.cloud}
+                               <p className={style.city}>26 °C</p>
+                           </div>
+                            <p className={style.time}>Cloudy</p>
+                        </div>
                     </div>
                 </div>
 

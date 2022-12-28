@@ -59,6 +59,55 @@
         }
       }
 
+      .weather {
+        margin-top: 32px;
+        background: rgba(244, 240, 236, 0.1);
+        backdrop-filter: blur(11px);
+        border-radius: 20px;
+        padding: 20px;
+
+        @include desktop {
+          margin-top: 0;
+          width: 198px;
+        }
+
+        .row {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+
+          .left {
+            display: flex;
+            align-items: center;
+
+            svg {
+              margin-right: 8px;
+            }
+          }
+
+          .city {
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 140%;
+            color: #F4F0EC;
+          }
+
+          .time {
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 140%;
+            color: rgba(244, 240, 236, 0.6);
+          }
+        }
+
+        .divider {
+          height: 1px;
+          background: rgba(244, 240, 236, 0.1);
+          margin: 12px 0;
+        }
+      }
+
+
 
     }
 

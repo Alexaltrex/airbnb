@@ -16,7 +16,56 @@
     @include inner;
 
     .topBlock {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
 
+      @include desktop {
+        flex-direction: row;
+        justify-content: space-between;
+      }
+
+      .right {
+        margin-top: 24px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        @include desktop {
+          margin-top: 0;
+          align-items: flex-start;
+          width: 320px;
+        }
+
+        .iconWrapper {
+          @include centerColumn;
+          width: 50px;
+          height: 50px;
+          border: 1px solid rgba(244, 240, 236, 0.1);
+          border-radius: 50%;
+
+          img {
+            display: block;
+            height: 30px;
+            width: auto;
+          }
+        }
+
+        .description {
+          margin-top: 8px;
+          font-weight: 400;
+          font-size: 16px;
+          line-height: 140%;
+          text-align: center;
+          color: #F4F0EC;
+
+          @include desktop {
+            margin-top: 12px;
+            text-align: left;
+          }
+        }
+
+      }
     }
 
     .cards {
