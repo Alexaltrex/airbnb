@@ -49,7 +49,7 @@ export const ButtonWithMenu:FC<IButtonWithMenu> = ({
                     [style.label_white]: white,
                     [style.label_open]: open,
                 })}>
-                    ButtonWithMenu
+                    Services
                 </p>
                 <div className={clsx({
                     [style.arrowWrapper]: true,
