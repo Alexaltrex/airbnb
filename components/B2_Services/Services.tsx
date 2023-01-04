@@ -79,9 +79,9 @@ export const Services = () => {
         const onScroll = () => {
             if (ref1 && ref1.current) {
                 const rect1 = ref1.current.getBoundingClientRect();
-                console.log(rect1.top)
-                console.log(window.innerHeight)
-                console.log("---")
+                // console.log(rect1.top)
+                // console.log(window.innerHeight)
+                // console.log("---")
                 if (rect1.top < window.innerHeight && rect1.top > 0) {
                     setDelta1(koef * (window.innerHeight - rect1.top))
                 }
@@ -126,7 +126,7 @@ export const Services = () => {
             >
                 {
                     items.map((card, key) => (
-                        <div ref={refs[key]}
+                        <div key={key} ref={refs[key]}
                              style={{
                                  marginTop: `-${deltas[key]}px`,
                                  position: "relative",

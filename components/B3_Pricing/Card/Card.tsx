@@ -34,7 +34,7 @@ export const Card: FC<ICard> = ({
     };
 
     const handleTooltipOpen = () => {
-        setOpen(true);
+        setTimeout(() => setOpen(true), 2000);
     };
 
     const cardRef = useRef<HTMLDivElement>(null);
@@ -46,34 +46,36 @@ export const Card: FC<ICard> = ({
             <LightTooltip PopperProps={{
                 disablePortal: true,
             }}
-                          onClose={handleTooltipClose}
-                          open={open}
-                          disableFocusListener
-                          disableHoverListener
-                          disableTouchListener
-                          title={tooltip}
-                          placement="top"
-                          TransitionComponent={Zoom}
-                          TransitionProps={{
-                              timeout: 500
-                          }}
-                          arrow
-                          sx={{
-                              //backgroundColor: "red",
-                              "& .MuiTooltip-tooltip": {
-                                  padding: "14px 34px 20px",
-                                  backgroundColor: "#F4F0EC",
-                                  color: "#2A2631",
-                                  fontWeight: 500,
-                                  fontSize: "16px",
-                                  borderRadius: "15px",
-                                  fontFamily: 'Urbanist'
-                              },
-                              "& .MuiTooltip-arrow": {
-                                  color: "#F4F0EC"
-                              }
-                          }}
-                          className={style.tooltip}
+                     onClose={handleTooltipClose}
+                     open={open}
+                     disableFocusListener
+                     disableHoverListener
+                     disableTouchListener
+                     // enterDelay={2000}
+                     // enterTouchDelay={2000}
+                     title={tooltip}
+                     placement="top"
+                     TransitionComponent={Zoom}
+                     TransitionProps={{
+                         timeout: 500
+                     }}
+                     arrow
+                     sx={{
+                         //backgroundColor: "red",
+                         "& .MuiTooltip-tooltip": {
+                             padding: "14px 34px 20px",
+                             backgroundColor: "#F4F0EC",
+                             color: "#2A2631",
+                             fontWeight: 500,
+                             fontSize: "16px",
+                             borderRadius: "15px",
+                             fontFamily: 'Urbanist'
+                         },
+                         "& .MuiTooltip-arrow": {
+                             color: "#F4F0EC"
+                         }
+                     }}
+                     className={style.tooltip}
             >
 
                 <div className={clsx({

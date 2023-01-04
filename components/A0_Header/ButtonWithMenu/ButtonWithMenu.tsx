@@ -23,9 +23,15 @@ export const ButtonWithMenu:FC<IButtonWithMenu> = ({
 }) => {
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
     const open = Boolean(anchorEl);
-    const onClickHandler = (event: React.MouseEvent<HTMLButtonElement>) => {
+
+    // const onClickHandler = (event: React.MouseEvent<HTMLButtonElement>) => {
+    //     setAnchorEl(event.currentTarget);
+    // };
+
+    const onMouseEnterHandler = (event: React.MouseEvent<HTMLButtonElement>) => {
         setAnchorEl(event.currentTarget);
     };
+
     const handleClose = () => {
         setAnchorEl(null);
     };
@@ -42,7 +48,8 @@ export const ButtonWithMenu:FC<IButtonWithMenu> = ({
                 style.buttonWithMenu,
                 Boolean(className) && className
             )}
-                    onClick={onClickHandler}
+                    //onClick={onClickHandler}
+                    onMouseEnter={onMouseEnterHandler}
             >
                 <p className={clsx({
                     [style.label]: true,

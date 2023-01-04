@@ -91,10 +91,11 @@
         img {
           display: block;
           width: 184px;
-          height: auto;
+          height: 184px;
 
           @include desktop {
             width: 290px;
+            height: 290px;
           }
         }
       }
