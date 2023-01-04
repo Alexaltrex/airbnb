@@ -2,7 +2,6 @@ import style from "./TrivaBlock.module.scss"
 import {svgIcons} from "../../assets/svgIcons";
 import clsx from "clsx";
 import {MouseEvent, useRef, useState} from "react";
-import src from "../../assets/logo.webm";
 
 const text0 = "A place for a company description, here should be a text description in several lines text place here";
 const text1 = "Frank is a globetrotter – having traveled and lived all over the world. He speaks 15 languages fluently – English, Arabic, Swedish, French, Russian, Spanish, Italian, Turkish, Urdu, German, Hindi, Filipino, Swahili, Afrikaans and Polish. He understands your needs, and your guests’ needs. And most importantly – Frank is here to make you money.";
