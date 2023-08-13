@@ -1,0 +1,109 @@
+@import "../../../assets/scss/app";
+
+.calculateModal {
+  @include centerColumn;
+  background: rgba(42, 38, 49, 0.70);
+
+  .card {
+    border-radius: 20px;
+    background: #F4F0EC;
+    box-sizing: border-box;
+    width: 320px;
+    padding: 24px;
+    max-height: 100vh;
+    overflow-y: auto;
+
+
+    @include desktop {
+      width: 460px;
+      padding: 32px;
+    }
+
+    .cardTitle {
+      color: #292630;
+      text-align: center;
+      font-size: 32px;
+      font-weight: 500;
+      line-height: 120%;
+    }
+
+    .fields {
+      margin-top: 32px;
+
+      .selectField {
+        &:not(:first-child) {
+          margin-top: 8px;
+        }
+      }
+    }
+
+    .submitBtn {
+      margin-top: 24px;
+    }
+
+    .resultBlock {
+      margin-top: 32px;
+      border-radius: 20px;
+      background: rgba(42, 38, 49, 0.10);
+      box-sizing: border-box;
+      padding: 32px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      .text {
+        color: #292630;
+        text-align: center;
+        font-size: 24px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 120%;
+      }
+
+      .priceBlock {
+        margin-top: 32px;
+        display: flex;
+        align-items: flex-end;
+
+        & > p:nth-child(1) {
+          color: #2A2631;
+          font-size: 58px;
+          font-style: normal;
+          font-weight: 500;
+          line-height: 120%;
+        }
+
+        & > p:nth-child(2) {
+          color: #2A2631;
+          font-size: 30px;
+          font-style: normal;
+          font-weight: 500;
+          line-height: 120%;
+          margin-bottom: 5px;
+        }
+
+        & > p:nth-child(3) {
+          color: rgba(42, 38, 49, 0.60);
+          font-size: 16px;
+          font-style: normal;
+          font-weight: 400;
+          line-height: 140%;
+          margin-bottom: 5px;
+        }
+      }
+
+      .info {
+        margin-top: 32px;
+        padding: 20px;
+        border-radius: 20px;
+        border: 1px solid rgba(42, 38, 49, 0.15);
+        color: #2A2631;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 140%;
+      }
+    }
+
+  }
+}

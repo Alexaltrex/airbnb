@@ -1,24 +1,33 @@
 import style from "./FactBlock.module.scss"
 import {Dot} from "../X_common/Dot/Dot";
+import {FC} from "react";
 
+interface IFactBlock {
+    title: string
+    text: string
+    image: string
+}
 
-export const FactBlock = () => {
+export const FactBlock: FC<IFactBlock> = ({ title, text, image }) => {
     return (
         <div className={style.factBlock}>
              <div className={style.inner}>
-
                 <div className={style.top}>
-                    <p className={style.preTitle}>Fact</p>
-                    <h2 className={style.title}>We are ranked first among our competitors</h2>
-                    <Dot className={style.dot}/>
-                    <p className={style.description}>
-                        A small description, which can be composed in two or three stoic, which describes the essence. A small description, which can be composed.
-                    </p>
+                    <div className={style.top_top}>
+                        <p className={style.preTitle}>Fact</p>
+                        <h2 className={style.title}>{title}</h2>
+                    </div>
+                    <div className={style.top_bottom}>
+                        <Dot className={style.dot}/>
+                        <p className={style.description}>{text}</p>
+                    </div>
+
                 </div>
-
-                 <div className={style.bottom}>
-
-                 </div>
+                 <div className={style.bottom}
+                      style={{
+                          backgroundImage: `url(${image})`
+                      }}
+                 />
              </div>
         </div>
     )

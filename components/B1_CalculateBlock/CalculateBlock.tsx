@@ -8,43 +8,48 @@ import {ButtonContained, ColorEnum} from "../X_common/ButtonContained/ButtonCont
 import * as React from "react";
 import {SelectFieldWithLabel} from "../X_common/SelectFieldWithLabel/SelectFieldWithLabel";
 import {svgIcons} from "../../assets/svgIcons";
+import {observer} from "mobx-react-lite";
+import {useStore} from "../../store/useStore";
+import {CalculateModal} from "./CalculateModal/CalculateModal";
 
 const tags = [
-    "Property",
-    "Dubai",
+    "UAE",
+    "Experts",
     "Standart",
     "Premium",
     "Airbnb",
 ];
 
-interface IValues {
+export interface IValues {
     area: string
     bedrooms: string
     furnishing: string
 }
 
-const menuItemsArea = [
+export const menuItemsArea = [
     {value: "Business Bay", label: "Business Bay"},
     {value: "Business Bay2", label: "Business Bay2"},
     {value: "Business Bay3", label: "Business Bay3"},
     {value: "Business Bay4", label: "Business Bay4"},
 ];
 
-const menuItemsBedrooms = [
+export const menuItemsBedrooms = [
     {value: "Studio", label: "Studio"},
     {value: "Studio2", label: "Studio2"},
     {value: "Studio3", label: "Studio3"},
     {value: "Studio4", label: "Studio4"},
 ];
 
-const menuItemsFurnishing = [
+export const menuItemsFurnishing = [
     {value: "Premium", label: "Premium"},
     {value: "Premium2", label: "Premium2"},
     {value: "Premium3", label: "Premium3"},
     {value: "Premium4", label: "Premium4"},
 ];
 
-export const CalculateBlock = () => {
+export const CalculateBlock = observer(() => {
+    const {setRental, setCalculateModal} = useStore()
+
     const initialValues = {
         area: "Business Bay",
         bedrooms: "Studio",
@@ -54,17 +59,25 @@ export const CalculateBlock = () => {
         values: IValues, // значения из формы
         formikHelpers: FormikHelpers<IValues> // методы FormikHelpers<Values>
     ) => {
-        try {
-            console.log(values)
-        } catch (e: any) {
-            console.log(e.message)
-        } finally {
-            formikHelpers.setSubmitting(false);
-        }
+        setRental(values);
+        setCalculateModal(true);
+        formikHelpers.setSubmitting(false);
+
+        // try {
+        //     console.log(values)
+        // } catch (e: any) {
+        //     console.log(e.message)
+        // } finally {
+        //     formikHelpers.setSubmitting(false);
+        // }
     }
+
 
     return (
         <div className={style.calculateBlock}>
+
+            <CalculateModal/>
+
             <div className={style.inner}>
                 <div className={style.mask}/>
 
@@ -144,4 +157,4 @@ export const CalculateBlock = () => {
             </div>
         </div>
     )
-}
+})

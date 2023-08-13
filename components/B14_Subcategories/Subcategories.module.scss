@@ -17,27 +17,42 @@
 
       @include desktop {
         display: flex;
-        align-items: flex-start;
         justify-content: space-between;
       }
 
-      .tags {
-        display: flex;
+      .tagsMobile {
+        @include onlyMobile(flex);
         justify-content: center;
         flex-wrap: wrap;
         margin-top: 24px;
-
-
-        @include desktop {
-          justify-content: flex-end;
-          margin-top: 0;
-          width: 350px;
-        }
 
         .tag {
           margin: 4px;
         }
       }
+
+      .tagsDesktop {
+        @include onlyDesktop(flex);
+        flex-direction: column;
+        align-items: flex-end;
+        justify-content: center;
+
+        .tagsRow {
+          display: flex;
+
+          &:nth-child(2) {
+            margin-top: 8px;
+          }
+        }
+
+        .tag {
+          &:not(:first-child) {
+            margin-left: 8px;
+          }
+        }
+
+      }
+
     }
 
     .items {
@@ -67,7 +82,7 @@
           }
         }
 
-        img {
+        .img {
           display: block;
           width: 312px;
           height: 320px;
@@ -84,7 +99,7 @@
           }
         }
 
-        .texts {
+        .textsBlock {
           margin-top: 20px;
 
           @include desktop {
@@ -93,6 +108,8 @@
             flex-direction: column;
             justify-content: space-between;
             width: 460px;
+            box-sizing: border-box;
+            padding: 40px 0;
           }
 
           .title {
@@ -109,6 +126,7 @@
           }
 
           .bottomText {
+            position: relative;
             margin-top: 20px;
             display: flex;
             flex-direction: column;
@@ -117,10 +135,12 @@
             @include desktop {
               align-items: flex-start;
               margin-top: 0;
+              width: 360px;
             }
 
             .iconWrapper {
               @include centerColumn;
+              position: relative;
               width: 50px;
               height: 50px;
               border: 1px solid #CDC1BA;
@@ -128,25 +148,57 @@
 
               img {
                 display: block;
-                height: 30px;
-                width: auto;
+                height: auto;
+                width: 24px;
               }
-            }
 
-            .text {
-              margin-top: 8px;
-              font-weight: 400;
-              font-size: 16px;
-              line-height: 140%;
-              text-align: center;
-              color: #2A2631;
+              svg {
+                @include onlyDesktop;
+                position: absolute;
+                left: 62px;
+                bottom: 30px;
+              }
+
+              p {
+                @include onlyDesktop;
+                position: absolute;
+                bottom: 82px;
+                left: 100px;
+                transform: translateX(-50%);
+              }
+
+
 
               @include desktop {
-                margin-top: 24px;
-                text-align: left;
-                font-size: 18px;
+                position: absolute;
+                top: 0;
+                right: 0;
+                transform: translate(100%, -100%);
               }
             }
+
+            .texts {
+              margin-top: 8px;
+
+              @include desktop {
+                margin-top: 0;
+              }
+
+              .text {
+                font-weight: 400;
+                font-size: 16px;
+                line-height: 140%;
+                text-align: center;
+                color: #2A2631;
+
+                @include desktop {
+                  text-align: left;
+                  font-size: 18px;
+                }
+              }
+            }
+
+
 
           }
         }

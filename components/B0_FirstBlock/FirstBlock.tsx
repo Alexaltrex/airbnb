@@ -3,20 +3,20 @@ import {ButtonContained, ColorEnum} from "../X_common/ButtonContained/ButtonCont
 import {observer} from "mobx-react-lite";
 import {useStore} from "../../store/useStore";
 
-const text = "A small description, which can be composed in two or three stoic, which describes the essence"
+const text = "Simplify the management of your properties and maximize your income effortlessly "
 
 const items = [
     {
-        value: "400+",
-        label: "Investors"
+        value: "230+",
+        label: "Partners"
     },
     {
-        value: "4500+",
+        value: "1500+",
         label: "Happy Customers"
     },
     {
-        value: "1220",
-        label: "Real estate"
+        value: "400+",
+        label: "Homes"
     },
 ]
 
@@ -28,7 +28,7 @@ export const FirstBlock = observer(() => {
             <div className={style.inner}>
                 <div className={style.topBlock}>
                     <h1 className={style.title}>
-                        Space for a large headline, three lines maximum
+                        Unlock the Full Potential of Your Rentals with Triva
                     </h1>
                     <ButtonContained label="Manage my property"
                                      color={ColorEnum.black}

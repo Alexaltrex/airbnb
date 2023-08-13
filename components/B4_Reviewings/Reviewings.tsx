@@ -12,11 +12,11 @@ import {svgIcons} from "../../assets/svgIcons";
 import clsx from "clsx";
 
 const tags = [
-    "Property",
-    "Dubai",
-    "Standart",
+    "ClientLove",
+    "ExceptionalService",
+    "UAE",
     "Premium",
-    "Airbnb",
+    "Hospitality",
 ];
 
 export const Reviewings = () => {
@@ -43,9 +43,10 @@ export const Reviewings = () => {
 
                 <div className={style.header}>
 
-                    <H2 preTitle="Reviewings"
-                        title="Our users only leave positive comments"
+                    <H2 preTitle="Reviews"
+                        title="Hear what our satisfied clients have to say about our services"
                         white={false}
+                        className={style.h2}
                     />
 
                     <div className={style.tags}>

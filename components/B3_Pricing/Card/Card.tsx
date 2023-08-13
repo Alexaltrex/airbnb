@@ -23,8 +23,10 @@ const LightTooltip = styled(({className, ...props}: TooltipProps) => (
 
 export const Card: FC<ICard> = ({
                                     tooltip,
+                                    label,
                                     items,
                                     price,
+                                    span,
                                     dark
                                 }) => {
     const [open, setOpen] = useState(false);
@@ -46,36 +48,36 @@ export const Card: FC<ICard> = ({
             <LightTooltip PopperProps={{
                 disablePortal: true,
             }}
-                     onClose={handleTooltipClose}
-                     open={open}
-                     disableFocusListener
-                     disableHoverListener
-                     disableTouchListener
-                     // enterDelay={2000}
-                     // enterTouchDelay={2000}
-                     title={tooltip}
-                     placement="top"
-                     TransitionComponent={Zoom}
-                     TransitionProps={{
-                         timeout: 500
-                     }}
-                     arrow
-                     sx={{
-                         //backgroundColor: "red",
-                         "& .MuiTooltip-tooltip": {
-                             padding: "14px 34px 20px",
-                             backgroundColor: "#F4F0EC",
-                             color: "#2A2631",
-                             fontWeight: 500,
-                             fontSize: "16px",
-                             borderRadius: "15px",
-                             fontFamily: 'Urbanist'
-                         },
-                         "& .MuiTooltip-arrow": {
-                             color: "#F4F0EC"
-                         }
-                     }}
-                     className={style.tooltip}
+                          onClose={handleTooltipClose}
+                          open={open}
+                          disableFocusListener
+                          disableHoverListener
+                          disableTouchListener
+                // enterDelay={2000}
+                // enterTouchDelay={2000}
+                          title={tooltip}
+                          placement="top"
+                          TransitionComponent={Zoom}
+                          TransitionProps={{
+                              timeout: 500
+                          }}
+                          arrow
+                          sx={{
+                              //backgroundColor: "red",
+                              "& .MuiTooltip-tooltip": {
+                                  padding: "14px 34px 20px",
+                                  backgroundColor: "#F4F0EC",
+                                  color: "#2A2631",
+                                  fontWeight: 500,
+                                  fontSize: "16px",
+                                  borderRadius: "15px",
+                                  fontFamily: 'Urbanist'
+                              },
+                              "& .MuiTooltip-arrow": {
+                                  color: "#F4F0EC"
+                              }
+                          }}
+                          className={style.tooltip}
             >
 
                 <div className={clsx({
@@ -87,9 +89,9 @@ export const Card: FC<ICard> = ({
                 >
                     <div>
                         <div className={style.header}>
-                            <p className={style.label}>Facilities</p>
+                            <p className={style.label}>{label}</p>
                             <p className={style.price}>
-                                <span>{`$${price}`}</span><span>/MO</span>
+                                <span>{`${price}`}</span>{span && <span>{span}</span>}
                             </p>
                         </div>
                         <div className={style.items}>
@@ -105,16 +107,16 @@ export const Card: FC<ICard> = ({
                         </div>
                     </div>
 
-                    {
-                        dark
-                            ? <ButtonOutlined label="Activate"
-                                              className={style.activateBtn}
-                            />
-                            : <ButtonContained label="Activate"
-                                               color={ColorEnum.black}
-                                               className={style.activateBtn}
-                            />
-                    }
+                    {/*{*/}
+                    {/*    dark*/}
+                    {/*        ? <ButtonOutlined label="Activate"*/}
+                    {/*                          className={style.activateBtn}*/}
+                    {/*        />*/}
+                    {/*        : <ButtonContained label="Activate"*/}
+                    {/*                           color={ColorEnum.black}*/}
+                    {/*                           className={style.activateBtn}*/}
+                    {/*        />*/}
+                    {/*}*/}
 
                 </div>
 

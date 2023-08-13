@@ -1,8 +1,5 @@
 import style from "./Header.module.scss"
 import Link from "next/link";
-import clsx from "clsx";
-import {FC} from "react";
-import {useRouter} from "next/router";
 import {ButtonWithMenu} from "./ButtonWithMenu/ButtonWithMenu";
 import {ButtonContained, ColorEnum} from "../X_common/ButtonContained/ButtonContained";
 import {BurgerButton} from "./BurgerButton/BurgerButton";
@@ -14,7 +11,6 @@ import {useStore} from "../../store/useStore";
 
 //========= HEADER =========//
 export const Header = observer(() => {
-    //console.log(useRouter().pathname)
     const {setPopupForm} = useStore();
 
     return (

@@ -17,26 +17,41 @@
 
       @include desktop {
         display: flex;
-        align-items: flex-start;
+        //align-items: flex-start;
         justify-content: space-between;
       }
 
-      .tags {
-        display: flex;
+      .tagsMobile {
+        @include onlyMobile(flex);
         justify-content: center;
         flex-wrap: wrap;
         margin-top: 24px;
 
-
-        @include desktop {
-          justify-content: flex-end;
-          margin-top: 0;
-          width: 350px;
-        }
-
         .tag {
           margin: 4px;
         }
+      }
+
+      .tagsDesktop {
+        @include onlyDesktop(flex);
+        flex-direction: column;
+        align-items: flex-end;
+        justify-content: center;
+
+        .tagsRow {
+          display: flex;
+
+          &:nth-child(2) {
+            margin-top: 8px;
+          }
+        }
+
+        .tag {
+          &:not(:first-child) {
+            margin-left: 8px;
+          }
+        }
+
       }
     }
 

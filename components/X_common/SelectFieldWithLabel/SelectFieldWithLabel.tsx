@@ -14,24 +14,25 @@ type FieldSelectType = {
     name: string
     menuItems: Array<IMenuItem>
     className?: string
+    backgroundGray?: boolean
 } & SelectProps;
 
 export const SelectFieldWithLabel: FC<FieldSelectType> = ({
                                                               name,
                                                               menuItems,
                                                               className,
+                                                              backgroundGray = false,
                                                               ...props
                                                           }) => {
     const [field, meta, helper] = useField(name);
     return (
-        <div>
             <FormControl fullWidth={true}
                          size='small'
                          error={meta.touched && Boolean(meta.error)}
                          className={clsx(Boolean(className) && className)}
                          sx={{
                              "& .MuiInputBase-root": {
-                                 color: "#F4F0EC",
+                                 color: backgroundGray ? '#000' : "#F4F0EC",
                                  fontFamily: 'Urbanist',
                                  fontWeight: 400,
                                  fontSize: '16px',
@@ -40,25 +41,18 @@ export const SelectFieldWithLabel: FC<FieldSelectType> = ({
                                  borderRadius: "30px",
                                  border: "none",
                                  boxSizing: "border-box",
-                                 background: 'rgba(255, 255, 255, 0.1)',
+                                 background: backgroundGray ? 'rgba(42, 38, 49, 0.05)' : 'rgba(255, 255, 255, 0.1)',
                                  transition: "0.3s",
                                  backdropFilter: 'blur(11px)',
                                  display: "flex",
                                  "alignItems": "flex-end",
                                  "&:hover": {
-                                     background: 'rgba(255, 255, 255, 0.35)'
+                                     background: backgroundGray ? 'rgba(42, 38, 49, 0.35)' : 'rgba(255, 255, 255, 0.35)'
                                  },
                                  "&.Mui-focused": {
-                                     background: 'rgba(255, 255, 255, 0.35)',
+                                     background: backgroundGray ? 'rgba(42, 38, 49, 0.35)' : 'rgba(255, 255, 255, 0.35)',
                                  },
                              },
-                             // "& .MuiFormLabel-root": {
-                             //     fontFamily: 'Urbanist',
-                             //     fontWeight: 400,
-                             //     fontSize: '14px',
-                             //     lineHeight: '140%',
-                             //     color: "#B5B1B8",
-                             // },
                              "& .MuiOutlinedInput-notchedOutline": {
                                  border: "none",
                              },
@@ -67,7 +61,7 @@ export const SelectFieldWithLabel: FC<FieldSelectType> = ({
                                  paddingBottom: "9px"
                              },
                              "& .MuiSvgIcon-root": {
-                                 fill: "#F4F0EC",
+                                 fill: backgroundGray ? "#000" : "#F4F0EC",
                                  right: "30px"
                              },
                          }}
@@ -79,7 +73,7 @@ export const SelectFieldWithLabel: FC<FieldSelectType> = ({
                                 fontWeight: 400,
                                 fontSize: '14px',
                                 lineHeight: '140%',
-                                color: "#B5B1B8!important",
+                                color: backgroundGray ? "rgba(0,0,0,0.5)" : "#B5B1B8!important",
                                 left: "16px"
                             }}
                 >
@@ -91,7 +85,14 @@ export const SelectFieldWithLabel: FC<FieldSelectType> = ({
                         onBlur={field.onBlur}
                         onChange={field.onChange}
                         error={meta.touched && Boolean(meta.error)}
-                        renderValue={selected => <p className={style.selected}>{selected}</p>}
+                        renderValue={selected => (
+                            <p className={clsx({
+                                [style.selected]: true,
+                                [style.selected_backgroundGray]: backgroundGray,
+                            })}>
+                                {selected}
+                            </p>
+                        )}
                         {...props}
                         MenuProps={{
                             sx: {
@@ -133,7 +134,6 @@ export const SelectFieldWithLabel: FC<FieldSelectType> = ({
                     }
                 </Select>
             </FormControl>
-        </div>
     )
 
 }

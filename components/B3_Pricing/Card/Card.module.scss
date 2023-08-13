@@ -46,9 +46,13 @@
 
       span:nth-child(1) {
         font-weight: 500;
-        font-size: 48px;
+        font-size: 36px;
         line-height: 120%;
         color: #F4F0EC;
+
+        @include desktop {
+          font-size: 40px;
+        }
       }
 
       span:nth-child(2) {

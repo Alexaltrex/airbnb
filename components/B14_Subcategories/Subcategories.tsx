@@ -1,14 +1,8 @@
 import style from "./Subcategories.module.scss"
 import {H2} from "../X_common/H2/H2";
 import {Tag} from "../X_common/Tag/Tag";
-
-const tags = [
-    "Property",
-    "Dubai",
-    "Standart",
-    "Premium",
-    "Airbnb",
-];
+import {FC} from "react";
+import {svgIcons} from "../../assets/svgIcons";
 
 const items = [
     {
@@ -38,17 +32,33 @@ const items = [
     },
 ];
 
-export const Subcategories = () => {
+interface ISubcategories {
+    title: string
+    tags: string[]
+    items: {
+        title: string
+        texts: string[]
+        image: string
+        icon_image: string
+        icon_label: string
+    }[]
+}
+
+export const Subcategories: FC<ISubcategories> = ({
+                                                      title,
+                                                      tags,
+                                                      items
+                                                  }) => {
     return (
         <div className={style.subcategories}>
             <div className={style.inner}>
 
                 <div className={style.header}>
                     <H2 preTitle="Subcategories"
-                        title="A headline that will talk about subcatagories"
+                        title={title}
                         white={false}
                     />
-                    <div className={style.tags}>
+                    <div className={style.tagsMobile}>
                         {
                             tags.map((tag, key) => (
                                 <Tag key={key}
@@ -59,22 +69,53 @@ export const Subcategories = () => {
                             ))
                         }
                     </div>
+                    <div className={style.tagsDesktop}>
+                        <div className={style.tagsRow}>
+                            {
+                                [tags[0], tags[1], tags[2]].map((tag, key) => (
+                                    <Tag key={key}
+                                         tag={tag}
+                                         white={false}
+                                         className={style.tag}
+                                    />
+                                ))
+                            }
+                        </div>
+                        <div className={style.tagsRow}>
+                            {
+                                [tags[3], tags[4]].map((tag, key) => (
+                                    <Tag key={key}
+                                         tag={tag}
+                                         white={false}
+                                         className={style.tag}
+                                    />
+                                ))
+                            }
+                        </div>
+                    </div>
                 </div>
 
                 <div className={style.items}>
                     {
-                        items.map(({title, text, src}, key) => (
+                        items.map(({title, texts, image, icon_image, icon_label}, key) => (
                             <div className={style.item} key={key}>
-                                <img src={src} alt=""/>
+                                <img src={image} alt="" className={style.img}/>
 
-                                <div className={style.texts}>
+                                <div className={style.textsBlock}>
                                     <p className={style.title}>{title}</p>
-                                    
+
                                     <div className={style.bottomText}>
                                         <div className={style.iconWrapper}>
-                                            <img src="/png/icons/cube.png" alt=""/>
-                                        </div> 
-                                        <p className={style.text}>{text}</p>
+                                            <img src={icon_image} alt=""/>
+                                            {svgIcons.arrowBow2}
+                                            <p>{icon_label}</p>
+                                        </div>
+                                        <div className={style.texts}>
+                                            <p className={style.text}>{texts[0]}</p>
+                                            <br/>
+                                            <p className={style.text}>{texts[1]}</p>
+                                        </div>
+
                                     </div>
                                 </div>
                             </div>

@@ -8,15 +8,15 @@ export const Pricing = () => {
         <div className={style.pricing}>
             <div className={style.inner}>
                 <div className={style.topBlock}>
-                    <H2 preTitle="Pricing"
-                        title="Space for a large headline of two lines long"
+                    <H2 preTitle=""
+                        title="Pricing"
                     />
                     <div className={style.right}>
                         <div className={style.iconWrapper}>
                             <img src="/png/icons/smile.png" alt=""/>
                         </div>
                         <p className={style.description}>
-                            A small description, which can be composed in two or three stoic, which describes the essence
+                            Transparent and competitive pricing tailored to your specific needs.
                         </p>
                     </div>
                 </div>

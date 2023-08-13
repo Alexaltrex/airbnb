@@ -22,6 +22,12 @@
         justify-content: space-between;
       }
 
+      .h2 {
+        @include desktop {
+          width: 584px;
+        }
+      }
+
       .tags {
         display: flex;
         justify-content: center;

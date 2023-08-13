@@ -1,0 +1,38 @@
+@import "../../../assets/scss/app";
+
+.textBlock {
+  @include container;
+  padding-top: 64px;
+
+  @include desktop {
+    padding-top: 80px;
+  }
+
+  .inner {
+    @include inner;
+
+    .text {
+      font-weight: 500;
+      font-size: 32px;
+      line-height: 120%;
+      color: #2A2631;
+      text-align: center;
+
+      @include desktop {
+        text-align: left;
+        font-size: 58px;
+      }
+
+      img {
+        height: 42px;
+        width: auto;
+        position: relative;
+        top: 9px;
+
+        @include desktop {
+          height: 60px;
+        }
+      }
+    }
+  }
+}

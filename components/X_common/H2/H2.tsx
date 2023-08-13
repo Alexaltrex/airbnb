@@ -21,7 +21,11 @@ export const H2: FC<IH2> = ({
             [style.h2]: true,
             [style.h2_dark]: !white
         }, Boolean(className) && className)}>
-            <p className={style.preTitle}>{preTitle}</p>
+            {
+                preTitle && (
+                    <p className={style.preTitle}>{preTitle}</p>
+                )
+            }
             <h2 className={style.title}>{title}</h2>
         </div>
     )

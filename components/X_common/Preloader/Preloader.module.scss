@@ -1,0 +1,21 @@
+@import "../../../assets/scss/app";
+
+.preloader {
+  @include centerRow;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #000;
+
+  & > video {
+    width: 200px;
+    height: 200px;
+
+    @include desktop {
+      width: 300px;
+      height: 300px;
+    }
+  }
+}

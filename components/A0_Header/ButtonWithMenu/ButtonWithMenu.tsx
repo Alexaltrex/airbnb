@@ -1,15 +1,14 @@
-import {FC, useState} from "react";
+import {FC, useEffect, useRef, useState} from "react";
 import style from "./ButtonWithMenu.module.scss"
 import {svgIcons} from "../../../assets/svgIcons";
 import clsx from "clsx";
-import {Menu} from "@mui/material";
-import MenuItem from "@mui/material/MenuItem";
-import { useRouter } from "next/router";
+import {useRouter} from "next/router";
+import {gsap} from "gsap";
 
 const menuItems = [
-    {label: "Full Managment", icon: svgIcons.clockRefresh},
-    {label: "Cleaning & Maintenance", icon: svgIcons.settings},
-    {label: "Interior design", icon: svgIcons.homeSmile},
+    {label: "Full Management", icon: svgIcons.clockRefresh, url: "/service/0"},
+    {label: "Cleaning & Maintenance", icon: svgIcons.settings, url: "/service/1"},
+    {label: "Interior design", icon: svgIcons.homeSmile, url: "/service/2"},
 ]
 
 interface IButtonWithMenu {
@@ -17,91 +16,71 @@ interface IButtonWithMenu {
     className?: string
 }
 
-export const ButtonWithMenu:FC<IButtonWithMenu> = ({
-                                                       white = false,
-                                                       className
-}) => {
-    const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
-    const open = Boolean(anchorEl);
-
-    // const onClickHandler = (event: React.MouseEvent<HTMLButtonElement>) => {
-    //     setAnchorEl(event.currentTarget);
-    // };
-
-    const onMouseEnterHandler = (event: React.MouseEvent<HTMLButtonElement>) => {
-        setAnchorEl(event.currentTarget);
-    };
-
-    const handleClose = () => {
-        setAnchorEl(null);
-    };
-
-    const router = useRouter();
-    const menuItemOnClick = () => {
-        router.push("/service")
-        handleClose();
+export const ButtonWithMenu: FC<IButtonWithMenu> = ({
+                                                        white = false,
+                                                        className
+                                                    }) => {
+    const ref = useRef<HTMLDivElement>(null!);
+    const [show, setShow] = useState(false)
+    const onMouseEnterHandler = () => {
+        setShow(true)
     }
+    const onMouseLeave = () => {
+        setShow(false)
+    }
+    const router = useRouter();
+
+    useEffect(() => {
+        gsap.to(ref.current, {
+            scale: show ? 1 : 0,
+            opacity: show ? 1 : 0,
+            transformOrigin: "left top",
+            duration: 0.2,
+        })
+    }, [show])
 
     return (
-        <>
+        <div className={style.buttonWithMenuWrapper}
+             onMouseEnter={onMouseEnterHandler}
+             onMouseLeave={onMouseLeave}
+        >
             <button className={clsx(
                 style.buttonWithMenu,
                 Boolean(className) && className
-            )}
-                    //onClick={onClickHandler}
-                    onMouseEnter={onMouseEnterHandler}
-            >
+            )}>
                 <p className={clsx({
                     [style.label]: true,
                     [style.label_white]: white,
-                    [style.label_open]: open,
                 })}>
                     Services
                 </p>
                 <div className={clsx({
                     [style.arrowWrapper]: true,
                     [style.arrowWrapper_white]: white,
-                    [style.arrowWrapper_open]: open,
+                    [style.arrowWrapper_open]: show,
                 })}>
                     {svgIcons.arrowUp}
                 </div>
-
             </button>
 
-            <Menu
-                anchorEl={anchorEl}
-                open={open}
-                onClose={handleClose}
-                MenuListProps={{
-                    'aria-labelledby': 'basic-button',
-                }}
-                sx={{
-                    "& .MuiPaper-root": {
-                        borderRadius: "15px",
-                        background: "#2A2631",
-                    },
-                    "& .MuiList-root": {
-                        background: "#2A2631",
-                        padding: "3px!important",
-                        borderRadius: "15px",
-                    }
-                }}
-            >
+            <div className={style.menu} ref={ref}>
                 {
-                    menuItems.map(({label, icon}, key) => (
-                        <MenuItem key={key}
-                                  onClick={menuItemOnClick}
-                                  className={style.menuItem}
-                        >
+                    menuItems.map(({label, icon, url}, key) => (
+                        <div key={key}
+                             onClick={async () => {
+                                 setShow(false);
+                                 await router.push(url);
+                             }}
+                             className={style.menuItem}>
                             <div className={style.iconWrapper}>
                                 {icon}
                             </div>
                             <p className={style.label}>{label}</p>
-
-                        </MenuItem>
+                        </div>
                     ))
                 }
-            </Menu>
-        </>
+            </div>
+
+        </div>
     )
 }

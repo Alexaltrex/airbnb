@@ -105,11 +105,13 @@
           flex-direction: column;
           align-items: center;
           padding: 24px;
-
+          box-sizing: border-box;
+          height: 396px;
 
           @include desktop {
             align-items: flex-start;
             padding: 32px;
+            height: 442px;
           }
 
           .preTitle {
@@ -124,7 +126,11 @@
           }
 
           .title {
-            margin-top: 24px;
+            position: absolute;
+            top: 130px;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: calc(100% - 48px);
             font-weight: 500;
             font-size: 24px;
             line-height: 120%;
@@ -132,9 +138,9 @@
             color: #2A2631;
 
             @include desktop {
-              margin-top: 20px;
               text-align: left;
-
+              top: 135px;
+              width: calc(100% - 64px);
             }
           }
 
@@ -144,21 +150,24 @@
             height: 50px;
             background: #2A2631;
             border-radius: 50%;
-            margin-top: 40px;
+            margin-top: 151px;
 
             @include desktop {
-              margin-top: 64px;
+              margin-top: 161px;
             }
 
             img {
               display: block;
-              height: 30px;
-              width: auto;
+              height: auto;
+              width: 24px;
             }
           }
 
           .description {
-            margin-top: 16px;
+            position: absolute;
+            left: 24px;
+            bottom: 24px;
+            right: 24px;
             font-weight: 400;
             font-size: 16px;
             line-height: 140%;
@@ -166,8 +175,10 @@
             color: #2A2631;
 
             @include desktop {
-              margin-top: 32px;
+              left: 32px;
+              bottom: 32px;
               text-align: left;
+              width: 218px;
             }
           }
 

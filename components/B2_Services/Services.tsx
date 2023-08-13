@@ -3,7 +3,18 @@ import {IServiceCard, items} from "./items";
 import {Dot} from "../X_common/Dot/Dot";
 import {ButtonContained, ColorEnum} from "../X_common/ButtonContained/ButtonContained";
 import {AccordionItem} from "../X_common/AccordionItem/AccordionItem";
-import {FC, useEffect, useRef, useState} from "react";
+import {FC, useEffect, useLayoutEffect, useRef, useState} from "react";
+// import gsap from "gsap";
+// import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+import gsap from "gsap/dist/gsap";
+import ScrollTrigger from "gsap/dist/ScrollTrigger";
+
+//gsap.registerPlugin(ScrollTrigger);
+if (typeof window !== "undefined") {
+    gsap.registerPlugin(ScrollTrigger);
+}
+
 
 const ServiceCard: FC<IServiceCard> = ({
                                            title,
@@ -119,19 +130,53 @@ export const Services = () => {
     const ref3 = useRef<HTMLDivElement>(null!);
     const refs = [ref1, ref2, ref3];
 
+    // const appRef = useRef<HTMLDivElement>(null!);
+    // useLayoutEffect(() => {
+    //     const ctx = gsap.context(() => {
+    //
+    //     const blocks = gsap.utils.toArray<gsap.DOMTarget>([".block0", ".block1", ".block2"]);
+    //
+    //         blocks.forEach(block => {
+    //             gsap.to(block, {
+    //                 //y: -200,
+    //                 marginTop: -500,
+    //                 ease: "none",
+    //                 //duration: 5,
+    //                 scrollTrigger: {
+    //                     trigger: block,
+    //                     markers: true,
+    //                     start: "top bottom",
+    //                     end: "top top",
+    //                     scrub: true,
+    //                 }
+    //             })
+    //         })
+    //
+    //
+    //
+    //
+    //     }, appRef);
+    //     return () => ctx.revert();
+    // }, [])
+
+
     return (
-        <div className={style.services}>
+        <div className={style.services}
+             //ref={appRef}
+        >
             <div className={style.inner}
 
             >
                 {
                     items.map((card, key) => (
-                        <div key={key} ref={refs[key]}
+                        <div key={key}
+                             ref={refs[key]}
                              style={{
                                  marginTop: `-${deltas[key]}px`,
                                  position: "relative",
                                  zIndex: 10 * key,
                              }}
+                             className={`block${key}`}
                         >
                             <ServiceCard key={key} {...card}/>
                         </div>
