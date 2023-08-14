@@ -6,27 +6,27 @@ import {Subcategories} from "../../components/B14_Subcategories/Subcategories";
 import {FaqBlock} from "../../components/B15_FaqBlock/FaqBlock";
 import {EstimateForm} from "../../components/B6_EstimateForm/EstimateForm";
 import {MainLayout} from "../../layouts/MainLayout/MainLayout";
-import {content} from "./content";
-import {TextBlock} from "./TextBlock/TextBlock";
+import {TextBlock} from "../../components/B17_TextBlock/TextBlock";
 import {items} from "../../components/B2_Services/items";
+import {service} from "../../constants/service";
 
 const ServiceItem = () => {
     const router = useRouter();
     const slug = Number(router.query.slug);
 
     return (
-        <MainLayout headTitle={`Air BNB | ${content[slug]?.title || ""}`}>
+        <MainLayout headTitle={`Air BNB | ${service[slug]?.title || ""}`}>
             {
                 router.query.slug && (
                     <>
-                        <TextBlock {...content[slug].textBlock}/>
-                        <Advantages {...content[slug].advantages}/>
-                        <FactBlock {...content[slug].fact}/>
-                        <Subcategories {...content[slug].subcategories}/>
+                        <TextBlock {...service[slug].textBlock}/>
+                        <Advantages {...service[slug].advantages}/>
+                        <FactBlock {...service[slug].fact}/>
+                        <Subcategories {...service[slug].subcategories}/>
                         <FaqBlock title={items[slug].title}
-                                  tags={content[slug].subcategories.tags}
+                                  tags={service[slug].subcategories.tags}
                                   faq={items[slug].faq}
-                                  card={content[slug].faq.card}
+                                  card={service[slug].faq.card}
                         />
                         <EstimateForm/>
                     </>
