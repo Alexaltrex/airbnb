@@ -14,11 +14,13 @@ const menuItems = [
 interface IButtonWithMenu {
     white?: boolean
     className?: string
+    bottom?: boolean
 }
 
 export const ButtonWithMenu: FC<IButtonWithMenu> = ({
                                                         white = false,
-                                                        className
+                                                        className,
+                                                        bottom = true
                                                     }) => {
     const ref = useRef<HTMLDivElement>(null!);
     const [show, setShow] = useState(false)
@@ -34,7 +36,7 @@ export const ButtonWithMenu: FC<IButtonWithMenu> = ({
         gsap.to(ref.current, {
             scale: show ? 1 : 0,
             opacity: show ? 1 : 0,
-            transformOrigin: "left top",
+            transformOrigin: bottom ? "left top" : "left bottom",
             duration: 0.2,
         })
     }, [show])
@@ -63,7 +65,12 @@ export const ButtonWithMenu: FC<IButtonWithMenu> = ({
                 </div>
             </button>
 
-            <div className={style.menu} ref={ref}>
+            <div className={clsx({
+                [style.menu]: true,
+                [style.menu_top]: !bottom,
+            })}
+                 ref={ref}
+            >
                 {
                     menuItems.map(({label, icon, url}, key) => (
                         <div key={key}

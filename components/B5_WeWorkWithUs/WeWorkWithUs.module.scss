@@ -15,6 +15,13 @@
 
     .inner {
       @include inner;
+
+      .h2 {
+        @include desktop {
+          width: 500px;
+        }
+
+      }
     }
   }
 
@@ -37,6 +44,10 @@
       @include desktop {
         width: 200px;
         height: 200px;
+      }
+
+      svg:nth-child(2) {
+        margin-top: 8px;
       }
     }
 

@@ -10,11 +10,11 @@ import {SelectField} from "../X_common/SelectField/SelectField";
 export const contacts = [
     {
         icon: svgIcons.phone,
-        label: "+1 (212) 621-5895"
+        label: "+971 58 543 6008"
     },
     {
         icon: svgIcons.mail,
-        label: "triva@gmail.com"
+        label: "contact@trivahomes.com"
     },
 ];
 
@@ -119,7 +119,7 @@ export const EstimateForm = () => {
                                     />
 
                                     <ButtonContained type="submit"
-                                                     label="Get started"
+                                                     label="Submit"
                                                      color={ColorEnum.white}
                                                      className={style.submitBtn}
                                     />
@@ -128,7 +128,8 @@ export const EstimateForm = () => {
                         }
                     </Formik>
 
-                    <div className={style.window}/>
+                    {/*<div className={style.window}/>*/}
+                    <img src="/jpeg/B6_EstimateForm/background.jpg" alt=""  className={style.window}/>
 
                 </div>
             </div>

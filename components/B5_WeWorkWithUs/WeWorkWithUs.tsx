@@ -4,16 +4,17 @@ import {Swiper, SwiperSlide} from "swiper/react";
 import "swiper/css";
 import {slides} from "./slides";
 import {svgIcons} from "../../assets/svgIcons";
-
+import { Fragment } from "react";
 
 export const WeWorkWithUs = () => {
     return (
         <div className={style.weWorkWithUs}>
             <div className={style.header}>
                 <div className={style.inner}>
-                    <H2 preTitle="We work with us"
-                        title="Space for a two line header"
+                    <H2 preTitle="Our Partners"
+                        title="Trusted partners who help us deliver exceptional service:"
                         white={false}
+                        className={style.h2}
                     />
                 </div>
             </div>
@@ -22,11 +23,18 @@ export const WeWorkWithUs = () => {
                 <Swiper slidesPerView="auto"
                 >
                     {
-                        slides.map((icon, key) => (
+                        slides.map((icons, key) => (
                             <SwiperSlide key={key}
                                          className={style.slide}
                             >
-                                {icon}
+                                {
+                                  icons.map((icon, index) => (
+                                      <Fragment key={index}>
+                                          {icon}
+                                      </Fragment>
+                                  ))
+                                }
+
                             </SwiperSlide>
                         ))
                     }

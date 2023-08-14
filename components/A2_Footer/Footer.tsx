@@ -18,14 +18,16 @@ export const Footer: FC<IFooter> = ({white = false}) => {
             <div className={style.inner}>
                 <div className={style.links}>
                     <NavLink href="/aboutUs" label="About us" white={!white}/>
-                    <ButtonWithMenu white={!white} className={style.link}/>
+                    <div className={style.link}>
+                        <ButtonWithMenu white={!white} bottom={false}/>
+                    </div>
                     <NavLink href="/pricing" label="Pricing" className={style.link} white={!white}/>
                     <NavLink href="/contact" label="Contact" className={style.link} white={!white}/>
                 </div>
 
                 <div className={style.bottom}>
+                    <p>Triva © 2023</p>
                     <p>All right reserved</p>
-                    <p>Triva © 2022</p>
                 </div>
             </div>
         </footer>
