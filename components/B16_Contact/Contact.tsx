@@ -6,6 +6,8 @@ import {TextField} from "../X_common/TextField/TextField";
 import {TextareaField} from "../X_common/TextareaField/TextareaField";
 import {ButtonContained, ColorEnum} from "../X_common/ButtonContained/ButtonContained";
 import {SelectField} from "../X_common/SelectField/SelectField";
+import {useState} from "react";
+import clsx from "clsx";
 
 interface IValues {
     name: string
@@ -31,6 +33,9 @@ export const Contact = () => {
         message: "",
         chapter: "Chapter 1"
     }
+    const [formMessage, setFormMessage] = useState('');
+    const [formError, setFormError] = useState(false);
+
     const validate = (values: IValues): FormikErrors<IValues> => { // функция синхронной валидации
         const errors: FormikErrors<IValues> = {};
         if (!values.name) {
@@ -49,9 +54,21 @@ export const Contact = () => {
         formikHelpers: FormikHelpers<IValues> // методы FormikHelpers<Values>
     ) => {
         try {
-            console.log(values)
+            setFormMessage('');
+            formikHelpers.setSubmitting(true);
+            const response = await fetch('/api/send-contact-form', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(values),
+            })
+            const result = await response.json()
+            setFormMessage(result.message);
+            setFormError(result.error);
         } catch (e: any) {
-            console.log(e.message)
+            setFormMessage(e.message);
+            console.log(e.message);
         } finally {
             formikHelpers.setSubmitting(false);
         }
@@ -101,7 +118,9 @@ export const Contact = () => {
                                                    className={style.textarea}
                                                    placeholder="Enter your message"
                                     />
-
+                                    <div className={clsx({ [style.formMessage]: true, [style.formMessage_error]: formError })}>
+                                        {formMessage}
+                                    </div>
                                     <ButtonContained type="submit"
                                                      label="Get started"
                                                      color={ColorEnum.white}
