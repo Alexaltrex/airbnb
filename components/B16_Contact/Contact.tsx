@@ -54,6 +54,7 @@ export const Contact = () => {
         formikHelpers: FormikHelpers<IValues> // методы FormikHelpers<Values>
     ) => {
         try {
+            console.log("test");
             setFormMessage('');
             formikHelpers.setSubmitting(true);
             const response = await fetch('/api/send-contact-form', {
