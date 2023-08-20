@@ -86,7 +86,7 @@ export const CalculateBlock = observer(() => {
             try {
                 const appid = "bdf8a05eed7ef982345b0d5ea8589b6e";
                 const coordinatesResponse = await axios.get<{ lat: number, lon: number }[]>(
-                    `http://api.openweathermap.org/geo/1.0/direct?q=Dubai,AE&limit=5&appid=${appid}`
+                    `https://api.openweathermap.org/geo/1.0/direct?q=Dubai,AE&limit=5&appid=${appid}`
                 );
                 //console.log(coordinatesResponse.data);
                 if (coordinatesResponse.data) {
