@@ -11,6 +11,8 @@ import {svgIcons} from "../../assets/svgIcons";
 import {observer} from "mobx-react-lite";
 import {useStore} from "../../store/useStore";
 import {CalculateModal} from "./CalculateModal/CalculateModal";
+import {useEffect, useState} from "react";
+import axios from "axios";
 
 const tags = [
     "UAE",
@@ -47,6 +49,16 @@ export const menuItemsFurnishing = [
     {value: "Premium4", label: "Premium4"},
 ];
 
+interface IWeatherResponse {
+    weather: {
+        description: string
+        icon: string
+    }[]
+    main: {
+        temp: number
+    }
+}
+
 export const CalculateBlock = observer(() => {
     const {setRental, setCalculateModal} = useStore()
 
@@ -55,22 +67,51 @@ export const CalculateBlock = observer(() => {
         bedrooms: "Studio",
         furnishing: "Premium",
     }
-    const onSubmitHandler = async (
+    const onSubmitHandler = (
         values: IValues, // значения из формы
         formikHelpers: FormikHelpers<IValues> // методы FormikHelpers<Values>
     ) => {
         setRental(values);
         setCalculateModal(true);
         formikHelpers.setSubmitting(false);
-
-        // try {
-        //     console.log(values)
-        // } catch (e: any) {
-        //     console.log(e.message)
-        // } finally {
-        //     formikHelpers.setSubmitting(false);
-        // }
     }
+
+    const [description, setDescription] = useState("");
+    const [temp, setTemp] = useState(25);
+    const [icon, setIcon] = useState("");
+
+
+    useEffect(() => {
+        const getWeather = async () => {
+            try {
+                const appid = "bdf8a05eed7ef982345b0d5ea8589b6e";
+                const coordinatesResponse = await axios.get<{ lat: number, lon: number }[]>(
+                    `http://api.openweathermap.org/geo/1.0/direct?q=Dubai,AE&limit=5&appid=${appid}`
+                );
+                //console.log(coordinatesResponse.data);
+                if (coordinatesResponse.data) {
+                    const {lat, lon} = coordinatesResponse.data[0];
+                    console.log(lat, lon);
+
+                    const weatherResponse = await axios.get<IWeatherResponse>(
+                        `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${appid}`
+                    )
+
+                    if (weatherResponse.data) {
+                        setDescription(weatherResponse.data.weather[0].description);
+                        setTemp(weatherResponse.data.main.temp - 273.15);
+                        setIcon(`https://openweathermap.org/img/wn/${weatherResponse.data.weather[0].icon}@2x.png`)
+                    }
+
+                }
+            } catch (e: any) {
+                console.log(e.message);
+            }
+        }
+
+
+        getWeather().then();
+    }, [])
 
 
     return (
@@ -99,11 +140,14 @@ export const CalculateBlock = observer(() => {
                         </div>
                         <div className={style.divider}/>
                         <div className={style.row}>
-                           <div className={style.left}>
-                               {svgIcons.cloud}
-                               <p className={style.city}>26 °C</p>
-                           </div>
-                            <p className={style.time}>Cloudy</p>
+                            <div className={style.left}>
+                                <div className={style.icon}>
+                                    <img src={icon} alt=""/>
+                                </div>
+
+                                <p className={style.city}>{Math.floor(temp)} °C</p>
+                            </div>
+                            <p className={style.time}>{description}</p>
                         </div>
                     </div>
                 </div>

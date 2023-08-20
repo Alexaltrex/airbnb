@@ -26,6 +26,14 @@
       background: #201C27;
     }
 
+    &:disabled {
+      opacity: 0.4;
+
+      &:hover {
+        background: #2A2631;
+      }
+    }
+
   }
 
   &_grey {
@@ -50,6 +58,14 @@
 
     &:hover {
       background: #E0DCD8;
+    }
+
+    &:disabled {
+      background: rgba(244, 240, 236, 0.40);
+
+      &:hover {
+        background: rgba(244, 240, 236, 0.40);
+      }
     }
 
   }

@@ -4,19 +4,19 @@ import clsx from "clsx";
 import {MouseEvent, useRef, useState} from "react";
 import * as React from "react";
 
-const text0 = "A place for a company description, here should be a text description in several lines text place here";
-const text1 = "Frank is a globetrotter – having traveled and lived all over the world. He speaks 15 languages fluently – English, Arabic, Swedish, French, Russian, Spanish, Italian, Turkish, Urdu, German, Hindi, Filipino, Swahili, Afrikaans and Polish. He understands your needs, and your guests’ needs. And most importantly – Frank is here to make you money.";
+const text0 = "Triva, a prominent home management company, originated in France and expanded to UAE, delivering outstanding property services.";
+const text1 = "At Triva, our journey began amidst the scenic charm of South France, where we swiftly gained recognition for top-notch hospitality and rental success. Today, with years of experience under our belt, we've extended our portfolio to the vibrant UAE, catering to diverse properties and clients. Our passionate team of professionals, proficient in multiple languages, ensures unparalleled guest experiences while maximizing your rental income. Let us take your property's potential to new heights.";
 
 const items = [
     {
-        title: "Title 1",
-        description: "Description text 1",
-        src: "/png/icons/smile_glass.png",
+        title: "Home Specialists",
+        description: "Property Perfection",
+        src: "/png/icons/trivaBlock_0.png",
     },
     {
-        title: "Title 2",
-        description: "Description text 2",
-        src: "/png/icons/smile_brain.png",
+        title: "Experts",
+        description: "Years of Knowledge",
+        src: "/png/icons/trivaBlock_1.png",
     }
 ]
 
@@ -80,10 +80,10 @@ export const TrivaBlock = () => {
 
                         <div className={style.arrowBlock}>
                             <div className={style.iconWrapper}>
-                                <img src="/png/icons/cube.png" alt=""/>
+                                <img src="/png/icons/earth.png" alt=""/>
                             </div>
                             <div className={style.arrowWrapper}>
-                                <p>Some text</p>
+                                <p>Global Reach</p>
                                 {svgIcons.arrowBow2}
                             </div>
                         </div>

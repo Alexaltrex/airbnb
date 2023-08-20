@@ -80,8 +80,18 @@
             display: flex;
             align-items: center;
 
-            svg {
+            .icon {
+              position: relative;
+              width: 22px;
+              height: 22px;
               margin-right: 8px;
+
+              img {
+                @include absoluteCenter;
+                display: block;
+                width: 44px;
+                height: 44px;
+              }
             }
           }
 
@@ -97,6 +107,14 @@
             font-size: 16px;
             line-height: 140%;
             color: rgba(244, 240, 236, 0.6);
+          }
+
+          &:last-child {
+            .time {
+              &:first-letter {
+                text-transform: uppercase;
+              }
+            }
           }
         }
 

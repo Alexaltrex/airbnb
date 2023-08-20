@@ -1,5 +1,12 @@
 import {action, makeObservable, observable} from "mobx";
 import {IValues} from "../components/B1_CalculateBlock/CalculateBlock";
+import {AlertColor} from "@mui/material";
+
+interface IAlert {
+    open: boolean
+    severity: AlertColor
+    text: string
+}
 
 export class Store {
     burgerMenu = false
@@ -11,6 +18,11 @@ export class Store {
         furnishing: "",
     } as IValues
     preloader = false
+    alert = {
+        open: false,
+        severity: "success",
+        text: ""
+    } as IAlert
 
     constructor() {
         makeObservable(this, {
@@ -19,12 +31,14 @@ export class Store {
             calculateModal: observable,
             rental: observable,
             preloader: observable,
+            alert: observable,
 
             setBurgerMenu: action.bound,
             setPopupForm: action.bound,
             setCalculateModal: action.bound,
             setRental: action.bound,
             setPreloader: action.bound,
+            setAlert: action.bound,
         })
     }
 
@@ -47,6 +61,10 @@ export class Store {
 
     setPreloader(preloader: boolean) {
         this.preloader = preloader
+    }
+
+    setAlert(alert: IAlert) {
+        this.alert = alert
     }
 
 

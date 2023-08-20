@@ -1,14 +1,33 @@
 import style from "./WeWorkWithUs.module.scss"
 import {H2} from "../X_common/H2/H2";
-import {Swiper, SwiperSlide} from "swiper/react";
 import "swiper/css";
 import {slides} from "./slides";
 import {svgIcons} from "../../assets/svgIcons";
-import { Fragment } from "react";
+import {Fragment, useLayoutEffect, useRef} from "react";
+import clsx from "clsx";
+import gsap from "gsap";
 
 export const WeWorkWithUs = () => {
+    const appRef = useRef<HTMLDivElement>(null!);
+    const duration = 20;
+
+    useLayoutEffect(() => {
+        const ctx = gsap.context(() => {
+            gsap.timeline({repeat: -1})
+                .to(".row_1", {xPercent: -100, duration, ease: "none"})
+                .set(".row_1", {xPercent: 100})
+                .to(".row_1", {xPercent: 0, duration, ease: "none"});
+
+            gsap.timeline({repeat: -1})
+                .set(".row_2", {xPercent: 100})
+                .to(".row_2", {xPercent: -100, duration: 2 * duration, ease: "none"})
+                .set(".row_2", {xPercent: 100});
+        }, appRef);
+        return () => ctx.revert();
+    }, [])
+
     return (
-        <div className={style.weWorkWithUs}>
+        <div className={style.weWorkWithUs} ref={appRef}>
             <div className={style.header}>
                 <div className={style.inner}>
                     <H2 preTitle="Our Partners"
@@ -19,26 +38,46 @@ export const WeWorkWithUs = () => {
                 </div>
             </div>
 
-            <div className={style.swiper}>
-                <Swiper slidesPerView="auto"
-                >
+
+            <div className={style.wrapper}>
+
+                <div className={clsx(style.row, "row_1")}>
                     {
                         slides.map((icons, key) => (
-                            <SwiperSlide key={key}
-                                         className={style.slide}
+                            <div key={key}
+                                 className={style.slide}
                             >
                                 {
-                                  icons.map((icon, index) => (
-                                      <Fragment key={index}>
-                                          {icon}
-                                      </Fragment>
-                                  ))
+                                    icons.map((icon, index) => (
+                                        <Fragment key={index}>
+                                            {icon}
+                                        </Fragment>
+                                    ))
                                 }
 
-                            </SwiperSlide>
+                            </div>
                         ))
                     }
-                </Swiper>
+                </div>
+
+                <div className={clsx(style.row, "row_2")}>
+                    {
+                        slides.map((icons, key) => (
+                            <div key={key}
+                                 className={style.slide}
+                            >
+                                {
+                                    icons.map((icon, index) => (
+                                        <Fragment key={index}>
+                                            {icon}
+                                        </Fragment>
+                                    ))
+                                }
+
+                            </div>
+                        ))
+                    }
+                </div>
 
                 <div className={style.arrowBlock}
 

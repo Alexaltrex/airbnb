@@ -6,6 +6,8 @@ import {svgIcons} from "../../assets/svgIcons";
 import {ButtonContained, ColorEnum} from "../X_common/ButtonContained/ButtonContained";
 import {TextareaField} from "../X_common/TextareaField/TextareaField";
 import {SelectField} from "../X_common/SelectField/SelectField";
+import {ISendMailValues, menuItems, useMail} from "../../hooks/useMail";
+import {observer} from "mobx-react-lite";
 
 export const contacts = [
     {
@@ -18,55 +20,10 @@ export const contacts = [
     },
 ];
 
-const menuItems = [
-    {value: "Chapter 1", label: "Chapter 1"},
-    {value: "Chapter 2", label: "Chapter 2"},
-    {value: "Chapter 3", label: "Chapter 3"},
-    {value: "Chapter 4", label: "Chapter 4"},
-    {value: "Chapter 5", label: "Chapter 5"},
-];
-
-interface IValues {
-    name: string
-    phone: string
-    mail: string
-    message: string
-    chapter: string
-}
-
-export const EstimateForm = () => {
-    const initialValues = {
-        name: "",
-        phone: "",
-        mail: "",
-        message: "",
-        chapter: "Chapter 1"
-    }
-    const validate = (values: IValues): FormikErrors<IValues> => { // функция синхронной валидации
-        const errors: FormikErrors<IValues> = {};
-        if (!values.name) {
-            errors.name = "Required"
-        }
-        if (!values.phone) {
-            errors.phone = "Required"
-        }
-        if (!values.mail) {
-            errors.mail = "Required"
-        }
-        return errors
-    };
-    const onSubmitHandler = async (
-        values: IValues, // значения из формы
-        formikHelpers: FormikHelpers<IValues> // методы FormikHelpers<Values>
-    ) => {
-        try {
-            console.log(values)
-        } catch (e: any) {
-            console.log(e.message)
-        } finally {
-            formikHelpers.setSubmitting(false);
-        }
-    }
+export const EstimateForm = observer(() => {
+    const {
+        initialValues, validate, onSubmit, loading
+    } = useMail();
 
     return (
         <div className={style.estimateForm}>
@@ -94,10 +51,10 @@ export const EstimateForm = () => {
 
                     <Formik initialValues={initialValues}
                             validate={validate}
-                            onSubmit={onSubmitHandler}
+                            onSubmit={onSubmit}
                     >
                         {
-                            (props: FormikProps<IValues>) => (
+                            (props: FormikProps<ISendMailValues>) => (
                                 <Form className={style.form}>
                                     <p className={style.formTitle}>Estimate your revenue</p>
                                     <div className={style.blocks}>
@@ -110,8 +67,6 @@ export const EstimateForm = () => {
                                         />
                                     </div>
 
-
-
                                     <TextareaField name="message"
                                                    className={style.textarea}
                                                    placeholder="Enter your message"
@@ -119,16 +74,16 @@ export const EstimateForm = () => {
                                     />
 
                                     <ButtonContained type="submit"
-                                                     label="Submit"
+                                                     label={loading ? "Submitting..." : "Submit"}
                                                      color={ColorEnum.white}
                                                      className={style.submitBtn}
+                                                     disabled={loading}
                                     />
                                 </Form>
                             )
                         }
                     </Formik>
 
-                    {/*<div className={style.window}/>*/}
                     <img src="/jpeg/B6_EstimateForm/background.jpg" alt=""  className={style.window}/>
 
                 </div>
@@ -137,4 +92,4 @@ export const EstimateForm = () => {
 
         </div>
     )
-}
+})

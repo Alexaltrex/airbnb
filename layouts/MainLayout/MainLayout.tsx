@@ -6,6 +6,7 @@ import {Footer} from "../../components/A2_Footer/Footer";
 import {BurgerMenu} from "../../components/A1_BurgerMenu/BurgerMenu";
 import {useRouter} from "next/router";
 import {PopupForm} from "../../components/A3_PopupForm/PopupForm";
+import {AlertCustom} from "../../components/X_common/AlertCustom/AlertCustom";
 
 interface IMainLayout {
     children: ReactNode
@@ -30,6 +31,7 @@ export const MainLayout: FC<IMainLayout> = ({
             </Head>
 
             <PopupForm/>
+            <AlertCustom/>
 
             <Header/>
             <BurgerMenu/>
