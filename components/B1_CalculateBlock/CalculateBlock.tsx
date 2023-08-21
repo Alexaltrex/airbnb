@@ -117,7 +117,14 @@ export const CalculateBlock = observer(() => {
     // console.log(moment().format("hh:mm"))
     // console.log(moment().tz("Asia/Dubai").format("hh:mm"))
     // console.log(moment.tz.names())
+    const [time, setTime] = useState("");
 
+    useEffect(() => {
+      const timer = setInterval(() => {
+          setTime(moment().tz("Asia/Dubai").format("HH:mm"))
+      }, 1000);
+      return () => clearInterval(timer);
+    }, [])
 
     return (
         <div className={style.calculateBlock}>
@@ -141,7 +148,7 @@ export const CalculateBlock = observer(() => {
                     <div className={style.weather}>
                         <div className={style.row}>
                             <p className={style.city}>Dubai</p>
-                            <p className={style.time}>{moment().tz("Asia/Dubai").format("hh:mm")}</p>
+                            <p className={style.time}>{time}</p>
                         </div>
                         <div className={style.divider}/>
                         <div className={style.row}>

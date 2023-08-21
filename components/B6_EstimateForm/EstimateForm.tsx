@@ -1,6 +1,6 @@
 import style from "./EstimateForm.module.scss"
 import {TextField} from "../X_common/TextField/TextField";
-import {Form, Formik, FormikErrors, FormikHelpers, FormikProps} from "formik";
+import {Form, Formik, FormikProps} from "formik";
 import * as React from "react";
 import {svgIcons} from "../../assets/svgIcons";
 import {ButtonContained, ColorEnum} from "../X_common/ButtonContained/ButtonContained";
@@ -8,6 +8,7 @@ import {TextareaField} from "../X_common/TextareaField/TextareaField";
 import {SelectField} from "../X_common/SelectField/SelectField";
 import {ISendMailValues, menuItems, useMail} from "../../hooks/useMail";
 import {observer} from "mobx-react-lite";
+import { countries } from 'country-flag-icons'
 
 export const contacts = [
     {
@@ -26,6 +27,9 @@ export const EstimateForm = observer(() => {
     const {
         initialValues, validate, onSubmit, loading
     } = useMail();
+
+    console.log(countries)
+
 
     return (
         <div className={style.estimateForm}>
