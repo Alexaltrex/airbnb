@@ -25,8 +25,8 @@ export const PopupForm = observer(() => {
         >
             <div className={style.popupForm}>
                 <div className={style.headerBlock}>
-                    <p>Space for a header</p>
-                    <p>Space for pop-up description, maximum length of two lines</p>
+                    <p>Unlock Your Property's Potential</p>
+                    <p>Discover Triva's expert services to maximize your rental potential. Let's elevate your property's success today!</p>
                 </div>
 
                 <Formik initialValues={initialValues}

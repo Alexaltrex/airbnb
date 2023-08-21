@@ -12,11 +12,13 @@ import {observer} from "mobx-react-lite";
 export const contacts = [
     {
         icon: svgIcons.phone,
-        label: "+971 58 543 6008"
+        label: "+971 58 543 6008",
+        href: "tel:+971585436008"
     },
     {
         icon: svgIcons.mail,
-        label: "contact@trivahomes.com"
+        label: "contact@trivahomes.com",
+        href: "mailto:info@trivahomes.com"
     },
 ];
 
@@ -33,13 +35,17 @@ export const EstimateForm = observer(() => {
                     <img src='/png/A0_Header/logo_white.png' alt="" className={style.logo}/>
                     <div className={style.contacts}>
                         {
-                            contacts.map(({icon, label}, key) => (
-                                <div className={style.contact} key={key}>
+                            contacts.map(({icon, label, href}, key) => (
+                                <a className={style.contact}
+                                   key={key}
+                                   href={href}
+                                   rel="noopener noreferrer nofollow"
+                                >
                                     <div className={style.icon}>
                                         {icon}
                                     </div>
                                     <p className={style.label}>{label}</p>
-                                </div>
+                                </a>
                             ))
                         }
                     </div>

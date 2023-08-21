@@ -9,7 +9,7 @@ import gsap from "gsap";
 
 export const WeWorkWithUs = () => {
     const appRef = useRef<HTMLDivElement>(null!);
-    const duration = 20;
+    const duration = 35;
 
     useLayoutEffect(() => {
         const ctx = gsap.context(() => {

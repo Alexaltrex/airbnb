@@ -2,7 +2,6 @@ import style from "./Reviewings.module.scss"
 import {H2} from "../X_common/H2/H2";
 import {Tag} from "../X_common/Tag/Tag";
 import {ButtonArrow} from "../X_common/ButtonArrow/ButtonArrow";
-
 import {Swiper, SwiperSlide} from "swiper/react";
 import "swiper/css";
 import SwiperClass from 'swiper/types/swiper-class';

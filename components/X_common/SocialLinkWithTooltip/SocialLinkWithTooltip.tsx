@@ -60,6 +60,7 @@ export const SocialLinkWithTooltip: FC<ISocialLinkWithTooltip> = ({
                     <a className={style.btn}
                        href={href}
                        target="_blank"
+                       rel="noopener noreferrer nofollow"
                     >
                         {icon}
                     </a>
@@ -77,6 +78,7 @@ export const SocialLinkWithTooltip: FC<ISocialLinkWithTooltip> = ({
                             <a className={style.link}
                                href={href}
                                target="_blank"
+                               rel="noopener noreferrer nofollow"
                             >
                                 {label}
                             </a>

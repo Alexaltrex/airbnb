@@ -13,6 +13,7 @@ import {useStore} from "../../store/useStore";
 import {CalculateModal} from "./CalculateModal/CalculateModal";
 import {useEffect, useState} from "react";
 import axios from "axios";
+import moment from 'moment-timezone';
 
 const tags = [
     "UAE",
@@ -91,7 +92,7 @@ export const CalculateBlock = observer(() => {
                 //console.log(coordinatesResponse.data);
                 if (coordinatesResponse.data) {
                     const {lat, lon} = coordinatesResponse.data[0];
-                    console.log(lat, lon);
+                    //console.log(lat, lon);
 
                     const weatherResponse = await axios.get<IWeatherResponse>(
                         `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${appid}`
@@ -113,6 +114,10 @@ export const CalculateBlock = observer(() => {
         getWeather().then();
     }, [])
 
+    // console.log(moment().format("hh:mm"))
+    // console.log(moment().tz("Asia/Dubai").format("hh:mm"))
+    // console.log(moment.tz.names())
+
 
     return (
         <div className={style.calculateBlock}>
@@ -120,7 +125,7 @@ export const CalculateBlock = observer(() => {
             <CalculateModal/>
 
             <div className={style.inner}>
-                <div className={style.mask}/>
+                {/*<div className={style.mask}/>*/}
 
                 <div className={style.header}>
                     <div className={style.tags}>
@@ -136,7 +141,7 @@ export const CalculateBlock = observer(() => {
                     <div className={style.weather}>
                         <div className={style.row}>
                             <p className={style.city}>Dubai</p>
-                            <p className={style.time}>GMT+04:00</p>
+                            <p className={style.time}>{moment().tz("Asia/Dubai").format("hh:mm")}</p>
                         </div>
                         <div className={style.divider}/>
                         <div className={style.row}>

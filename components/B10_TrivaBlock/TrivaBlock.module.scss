@@ -92,12 +92,12 @@
 
         & > video {
           display: block;
-          width: 184px;
-          height: 184px;
+          width: 280px;
+          height: 280px;
 
           @include desktop {
-            width: 290px;
-            height: 290px;
+            width: 400px;
+            height: 400px;
           }
         }
       }
