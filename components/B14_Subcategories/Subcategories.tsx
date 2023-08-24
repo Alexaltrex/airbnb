@@ -35,7 +35,7 @@ export const Subcategories: FC<ISubcategories> = ({
                     .timeline({
                         scrollTrigger: {
                             trigger: item, // ".arrowAnimated",
-                            markers: true,
+                            //markers: true,
                             start: "center center",
                             end: "center center",
                             toggleActions: "play none reverse none",

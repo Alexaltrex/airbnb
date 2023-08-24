@@ -46,7 +46,7 @@ export const TrivaBlock = () => {
                 .timeline({
                     scrollTrigger: {
                         trigger: ".arrowAnimated",
-                        markers: true,
+                        //markers: true,
                         start: "center center",
                         end: "center center",
                         toggleActions: "play none reverse none",
