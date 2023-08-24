@@ -86,11 +86,9 @@
               height: 22px;
               margin-right: 8px;
 
-              img {
-                @include absoluteCenter;
-                display: block;
-                width: 44px;
-                height: 44px;
+              svg {
+                width: 22px;
+                height: 22px;
               }
             }
           }

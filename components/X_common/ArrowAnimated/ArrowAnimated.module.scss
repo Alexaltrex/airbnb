@@ -1,0 +1,74 @@
+@import "../../../assets/scss/app";
+
+.arrowAnimated {
+  position: relative;
+  width: 50px;
+  height: 50px;
+
+  .imageWrapper {
+    @include centerColumn;
+    border: 1px solid #CDC1BA;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+
+    img {
+      display: block;
+      width: 24px;
+      height: auto;
+    }
+  }
+
+  .arrowWrapper {
+    position: absolute;
+    width: 39.502px;
+    height: 37.498px;
+    left: 62px;
+    bottom: 33px;
+
+    svg {
+      width: 39.502px;
+      height: 37.498px;
+    }
+
+    .mask {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      height: 100%;
+      width: 100%;
+      background: #DFD2C9;
+      transform-origin: bottom;
+    }
+  }
+
+  .labelWrapper {
+    position: absolute;
+    left: 97px;
+    bottom: 83px;
+    transform: translateX(-50%);
+
+    p {
+      white-space: nowrap;
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 140%;
+      color: #2A2631;
+
+      @include desktop {
+        font-size: 16px;
+      }
+    }
+
+    .mask {
+      position: absolute;
+      left: 0;
+      top: 0;
+      height: 100%;
+      width: 100%;
+      background: #DFD2C9;
+      transform-origin: right;
+    }
+  }
+
+}

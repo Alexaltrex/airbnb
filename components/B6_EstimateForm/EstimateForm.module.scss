@@ -63,11 +63,20 @@
           width: 60px;
           height: 60px;
           border: 1px solid #3E3A44;
+          box-sizing: border-box;
           border-radius: 100px;
+          transition: 0.3s;
 
           svg path {
             stroke: #F4F0EC;
           }
+
+          &:hover {
+            background: #6F6B75;
+            border: 1px solid #6F6B75;
+          }
+
+
         }
 
         .label {

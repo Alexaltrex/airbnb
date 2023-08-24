@@ -6,6 +6,9 @@ import {TrivaBlock} from "../components/B10_TrivaBlock/TrivaBlock";
 import {EstimateForm} from "../components/B6_EstimateForm/EstimateForm";
 
 const AboutUsPage = () => {
+
+
+
     return (
         <MainLayout headTitle='Air BNB | About us'>
             <TextBlockSmall texts={[

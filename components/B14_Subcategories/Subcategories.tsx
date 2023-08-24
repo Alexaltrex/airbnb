@@ -1,36 +1,12 @@
 import style from "./Subcategories.module.scss"
 import {H2} from "../X_common/H2/H2";
 import {Tag} from "../X_common/Tag/Tag";
-import {FC} from "react";
-import {svgIcons} from "../../assets/svgIcons";
+import {FC, useLayoutEffect, useRef} from "react";
+import {ArrowAnimated} from "../X_common/ArrowAnimated/ArrowAnimated";
+import gsap from "gsap/dist/gsap";
+import ScrollTrigger from "gsap/dist/ScrollTrigger";
 
-const items = [
-    {
-        title: "A place for a company description, here should be a text description in several lines text place here",
-        text: "Frank is a globetrotter – having traveled and lived all over the world. He speaks 15 languages fluently – English, Arabic, Swedish, French, Russian, Spanish, Italian, Turkish, Urdu, German, Hindi, Filipino, Swahili, Afrikaans and Polish. He understands your needs, and your guests’ needs. And most importantly – Frank is here to make you money.",
-        src: "/jpeg/B14_Subcategories/0.jpg",
-    },
-    {
-        title: "A place for a company description, here should be a text description in several lines text place here",
-        text: "Frank is a globetrotter – having traveled and lived all over the world. He speaks 15 languages fluently – English, Arabic, Swedish, French, Russian, Spanish, Italian, Turkish, Urdu, German, Hindi, Filipino, Swahili, Afrikaans and Polish. He understands your needs, and your guests’ needs. And most importantly – Frank is here to make you money.",
-        src: "/jpeg/B14_Subcategories/1.jpg",
-    },
-    {
-        title: "A place for a company description, here should be a text description in several lines text place here",
-        text: "Frank is a globetrotter – having traveled and lived all over the world. He speaks 15 languages fluently – English, Arabic, Swedish, French, Russian, Spanish, Italian, Turkish, Urdu, German, Hindi, Filipino, Swahili, Afrikaans and Polish. He understands your needs, and your guests’ needs. And most importantly – Frank is here to make you money.",
-        src: "/jpeg/B14_Subcategories/2.jpg",
-    },
-    {
-        title: "A place for a company description, here should be a text description in several lines text place here",
-        text: "Frank is a globetrotter – having traveled and lived all over the world. He speaks 15 languages fluently – English, Arabic, Swedish, French, Russian, Spanish, Italian, Turkish, Urdu, German, Hindi, Filipino, Swahili, Afrikaans and Polish. He understands your needs, and your guests’ needs. And most importantly – Frank is here to make you money.",
-        src: "/jpeg/B14_Subcategories/3.jpg",
-    },
-    {
-        title: "A place for a company description, here should be a text description in several lines text place here",
-        text: "Frank is a globetrotter – having traveled and lived all over the world. He speaks 15 languages fluently – English, Arabic, Swedish, French, Russian, Spanish, Italian, Turkish, Urdu, German, Hindi, Filipino, Swahili, Afrikaans and Polish. He understands your needs, and your guests’ needs. And most importantly – Frank is here to make you money.",
-        src: "/jpeg/B14_Subcategories/4.jpg",
-    },
-];
+gsap.registerPlugin(ScrollTrigger);
 
 interface ISubcategories {
     title: string
@@ -49,8 +25,44 @@ export const Subcategories: FC<ISubcategories> = ({
                                                       tags,
                                                       items
                                                   }) => {
+    const appRef = useRef<HTMLDivElement>(null!);
+    useLayoutEffect(() => {
+        const ctx = gsap.context(() => {
+
+            const items = gsap.utils.toArray<gsap.DOMTarget>([".arrowAnimated0", ".arrowAnimated1", ".arrowAnimated2"]);
+            items.forEach((item, index) => {
+                gsap
+                    .timeline({
+                        scrollTrigger: {
+                            trigger: item, // ".arrowAnimated",
+                            markers: true,
+                            start: "center center",
+                            end: "center center",
+                            toggleActions: "play none reverse none",
+                        }
+                    })
+                    .to(`.arrowAnimated${index} .arrow .mask`, {
+                        scaleY: 0,
+                        duration: 0.3,
+                        ease: "none",
+                    }, )
+                    .to(`.arrowAnimated${index} .label .mask`, {
+                        scaleX: 0,
+                        duration: 0.3,
+                        ease: "none",
+                    })
+            })
+
+
+
+        }, appRef);
+        return () => ctx.revert();
+    }, [])
+
     return (
-        <div className={style.subcategories}>
+        <div className={style.subcategories}
+             ref={appRef}
+        >
             <div className={style.inner}>
 
                 <div className={style.header}>
@@ -105,11 +117,14 @@ export const Subcategories: FC<ISubcategories> = ({
                                     <p className={style.title}>{title}</p>
 
                                     <div className={style.bottomText}>
-                                        <div className={style.iconWrapper}>
-                                            <img src={icon_image} alt=""/>
-                                            {svgIcons.arrowBow2}
-                                            <p>{icon_label}</p>
-                                        </div>
+
+
+                                        <ArrowAnimated image={icon_image}
+                                                       label={icon_label}
+                                                       className={style.arrowAnimated}
+                                                       target={`arrowAnimated${key}`}
+                                        />
+
                                         <div className={style.texts}>
                                             <p className={style.text}>{texts[0]}</p>
                                             <br/>

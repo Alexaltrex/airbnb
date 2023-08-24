@@ -17,7 +17,7 @@ export class Store {
         bedrooms: "",
         furnishing: "",
     } as IValues
-    preloader = false
+    preloader = true
     alert = {
         open: false,
         severity: "success",

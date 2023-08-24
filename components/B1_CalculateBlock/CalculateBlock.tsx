@@ -101,7 +101,8 @@ export const CalculateBlock = observer(() => {
                     if (weatherResponse.data) {
                         setDescription(weatherResponse.data.weather[0].description);
                         setTemp(weatherResponse.data.main.temp - 273.15);
-                        setIcon(`https://openweathermap.org/img/wn/${weatherResponse.data.weather[0].icon}@2x.png`)
+                        console.log(weatherResponse.data.weather[0].icon)
+                        setIcon(weatherResponse.data.weather[0].icon)
                     }
 
                 }
@@ -121,7 +122,7 @@ export const CalculateBlock = observer(() => {
 
     useEffect(() => {
       const timer = setInterval(() => {
-          setTime(moment().tz("Asia/Dubai").format("HH:mm"))
+          setTime(moment().tz("Asia/Dubai").format("hh:mm A"))
       }, 1000);
       return () => clearInterval(timer);
     }, [])
@@ -154,7 +155,8 @@ export const CalculateBlock = observer(() => {
                         <div className={style.row}>
                             <div className={style.left}>
                                 <div className={style.icon}>
-                                    <img src={icon} alt=""/>
+                                    {/*@ts-ignore*/}
+                                    {icon && svgIcons[icon]}
                                 </div>
 
                                 <p className={style.city}>{Math.floor(temp)} °C</p>

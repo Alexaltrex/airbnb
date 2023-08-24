@@ -1,8 +1,12 @@
 import style from "./TrivaBlock.module.scss"
-import {svgIcons} from "../../assets/svgIcons";
 import clsx from "clsx";
-import {MouseEvent, useRef, useState} from "react";
+import {MouseEvent, useLayoutEffect, useRef, useState} from "react";
 import * as React from "react";
+import {ArrowAnimated} from "../X_common/ArrowAnimated/ArrowAnimated";
+import gsap from "gsap/dist/gsap";
+import ScrollTrigger from "gsap/dist/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const text0 = "Triva, a prominent home management company, originated in France and expanded to UAE, delivering outstanding property services.";
 const text1 = "At Triva, our journey began amidst the scenic charm of South France, where we swiftly gained recognition for top-notch hospitality and rental success. Today, with years of experience under our belt, we've extended our portfolio to the vibrant UAE, catering to diverse properties and clients. Our passionate team of professionals, proficient in multiple languages, ensures unparalleled guest experiences while maximizing your rental income. Let us take your property's potential to new heights.";
@@ -34,8 +38,40 @@ export const TrivaBlock = () => {
 
     const ref = useRef<HTMLDivElement>(null!)
 
+    const appRef = useRef<HTMLDivElement>(null!);
+    useLayoutEffect(() => {
+        const ctx = gsap.context(() => {
+
+            gsap
+                .timeline({
+                    scrollTrigger: {
+                        trigger: ".arrowAnimated",
+                        markers: true,
+                        start: "center center",
+                        end: "center center",
+                        toggleActions: "play none reverse none",
+                    }
+                })
+                .to(".arrowAnimated .arrow .mask", {
+                    scaleY: 0,
+                    duration: 0.3,
+                    ease: "none",
+                }, )
+                .to(".arrowAnimated .label .mask", {
+                    scaleX: 0,
+                    duration: 0.3,
+                    ease: "none",
+                })
+
+        }, appRef);
+        return () => ctx.revert();
+    }, [])
+
+
     return (
-        <div className={style.trivaBlock}>
+        <div className={style.trivaBlock}
+             ref={appRef}
+        >
             <div className={style.inner}>
 
                 <div className={style.topBlock}
@@ -47,7 +83,7 @@ export const TrivaBlock = () => {
                                autoPlay={true}
                                muted={true}
                                playsInline={true}
-                               loop={true}
+                               loop={false}
                         />
                     </div>
 
@@ -78,15 +114,10 @@ export const TrivaBlock = () => {
 
                     <div className={style.bottom}>
 
-                        <div className={style.arrowBlock}>
-                            <div className={style.iconWrapper}>
-                                <img src="/png/icons/earth.png" alt=""/>
-                            </div>
-                            <div className={style.arrowWrapper}>
-                                <p>Global Reach</p>
-                                {svgIcons.arrowBow2}
-                            </div>
-                        </div>
+                        <ArrowAnimated image="/png/icons/earth.png"
+                                       label="Global Reach"
+                                       className={style.arrowAnimated}
+                        />
 
                         <p className={style.bottomText}>
                             {text1}

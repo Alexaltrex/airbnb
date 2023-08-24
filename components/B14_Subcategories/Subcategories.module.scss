@@ -127,7 +127,7 @@
 
           .bottomText {
             position: relative;
-            margin-top: 20px;
+            margin-top: 54px; //20px;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -136,6 +136,19 @@
               align-items: flex-start;
               margin-top: 0;
               width: 360px;
+            }
+
+            .arrowAnimated {
+              margin: 0 auto;
+              transform: translateX(-50px);
+
+              @include desktop {
+                margin: 0;
+                position: absolute;
+                top: 0;
+                right: 0;
+                transform: translate(100%, -100%);
+              }
             }
 
             .iconWrapper {
@@ -166,8 +179,6 @@
                 left: 100px;
                 transform: translateX(-50%);
               }
-
-
 
               @include desktop {
                 position: absolute;

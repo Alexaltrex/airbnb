@@ -28,7 +28,7 @@ export const EstimateForm = observer(() => {
         initialValues, validate, onSubmit, loading
     } = useMail();
 
-    console.log(countries)
+    //console.log(countries)
 
 
     return (

@@ -45,6 +45,7 @@ export const service = [
             title: "We are one of the leaders in the industry",
             text: "We are one of the leaders in the industry",
             image: "/png/services/fact/0.png",
+            video: "/mp4/fact_0.mp4",
         },
         subcategories: {
             title: "Explore Our Full Management Services",
@@ -142,6 +143,7 @@ export const service = [
             title: "Impeccable Property Maintenance Standards",
             text: "Experience our exceptional property maintenance standards that leave your properties in top-notch condition, ensuring guest satisfaction.",
             image: "/png/services/fact/1.png",
+            video: "/mp4/fact_1.mp4",
         },
         subcategories: {
             title: "Explore Our Cleaning and Maintenance Services",
@@ -239,6 +241,7 @@ export const service = [
             title: "Captivating Interior Designs",
             text: "Discover how our exquisite interior designs elevate properties, creating memorable experiences for guests.",
             image: "/png/services/fact/2.png",
+            video: "/mp4/fact_2.mp4",
         },
         subcategories: {
             title: "Explore Our Interior Design Services",
