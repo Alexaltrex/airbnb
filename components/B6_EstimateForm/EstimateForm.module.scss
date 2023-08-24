@@ -58,6 +58,15 @@
           }
         }
 
+        &:hover {
+          @include desktop {
+            .icon {
+              background: #6F6B75;
+              border: 1px solid #6F6B75;
+            }
+          }
+        }
+
         .icon {
           @include centerColumn;
           width: 60px;
@@ -70,17 +79,9 @@
           svg path {
             stroke: #F4F0EC;
           }
-
-          &:hover {
-            background: #6F6B75;
-            border: 1px solid #6F6B75;
-          }
-
-
         }
 
         .label {
-
           margin-left: 12px;
           font-weight: 500;
           font-size: 24px;
