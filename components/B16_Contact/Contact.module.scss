@@ -44,8 +44,19 @@
         }
 
         .socialContact {
+          cursor: pointer;
           display: flex;
           align-items: center;
+          text-decoration: none;
+
+          &:hover {
+            @include desktop {
+              .icon {
+                background: #6F6B75;
+                border: 1px solid #6F6B75;
+              }
+            }
+          }
 
           &:not(:first-child) {
             margin-top: 8px;
@@ -61,6 +72,7 @@
             height: 60px;
             border: 1px solid #3E3A44;
             border-radius: 100px;
+            transition: 0.3s;
 
             svg path {
               stroke: #F4F0EC;

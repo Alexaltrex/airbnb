@@ -2,7 +2,10 @@
 
 .estimateForm {
   background: #2A2631;
-  border-radius: 20px 20px 0 0;
+
+  &_topRadius {
+    border-radius: 20px 20px 0 0;
+  }
 
   .header {
     @include container;

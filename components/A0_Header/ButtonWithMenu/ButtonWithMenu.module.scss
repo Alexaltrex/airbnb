@@ -12,7 +12,7 @@
 
     .label {
       width: 80px;
-      font-weight: 600;
+      font-weight: 400;
       font-size: 16px;
       line-height: 140%;
       color: #2A2631;
@@ -20,6 +20,10 @@
 
       &_white {
         color: #F4F0EC;
+      }
+
+      &_open {
+        font-weight: 600;
       }
 
     }

@@ -26,7 +26,8 @@ export const PopupForm = observer(() => {
             <div className={style.popupForm}>
                 <div className={style.headerBlock}>
                     <p>Unlock Your Property's Potential</p>
-                    <p>Discover Triva's expert services to maximize your rental potential. Let's elevate your property's success today!</p>
+                    <p>Discover Triva's expert services to maximize your rental potential. Let's elevate your property's
+                        success today!</p>
                 </div>
 
                 <Formik initialValues={initialValues}
@@ -36,20 +37,21 @@ export const PopupForm = observer(() => {
                     {
                         (props: FormikProps<ISendMailValues>) => (
                             <Form className={style.formBlock}>
-                                <div className={style.fieldWrapper}>
-                                    <TextField name="name" label="Name"/>
-                                    <TextField name="phone" label="Phone" className={style.field}/>
-                                    <TextField name="mail" label="Mail" className={style.field}/>
-                                    <SelectField name="chapter"
-                                                 menuItems={menuItems}
-                                                //label="Chapter"
-                                                 className={style.field}
-                                    />
-                                    <TextareaField name="message"
-                                                   className={style.textarea}
-                                                   placeholder="Enter your message"
-                                    />
-                                </div>
+
+                                <TextField name="name" label="Name" dark={false}/>
+                                <TextField name="phone" label="Phone" className={style.field} dark={false}/>
+                                <TextField name="mail" label="Mail" className={style.field} dark={false}/>
+                                <SelectField name="chapter"
+                                             menuItems={menuItems}
+                                    //label="Chapter"
+                                             className={style.field}
+                                             dark={false}
+                                />
+                                <TextareaField name="message"
+                                               className={style.textarea}
+                                               placeholder="Enter your message"
+                                               dark={false}
+                                />
 
                                 <ButtonContained type="submit"
                                                  label={loading ? "Submitting..." : "Submit"}

@@ -3,7 +3,7 @@
 .textField {
   position: relative;
   background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(11px);
+  //backdrop-filter: blur(11px);
   border-radius: 107px;
   height: 60px;
   box-sizing: border-box;
@@ -14,6 +14,11 @@
 
   &_focus, &:hover {
     background: rgba(255, 255, 255, 0.2);
+  }
+
+  &_white {
+    background: transparent;
+    border: 1px solid rgba(42, 38, 49, 0.20);
   }
 
   &_error, &_error:hover {
@@ -34,6 +39,10 @@
     line-height: 140%;
     color: #F4F0EC;
 
+    &_white {
+      color: #2A2631;
+    }
+
     &:-webkit-autofill {
       background-color: transparent!important;
     }
@@ -53,6 +62,10 @@
       top: 9px;
       font-size: 16px;
       color: rgba(244, 240, 236, 0.4);
+    }
+
+    &_white {
+      color: rgba(42, 38, 49, 0.40);
     }
   }
 

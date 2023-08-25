@@ -9,6 +9,8 @@ import {SelectField} from "../X_common/SelectField/SelectField";
 import {ISendMailValues, menuItems, useMail} from "../../hooks/useMail";
 import {observer} from "mobx-react-lite";
 import { countries } from 'country-flag-icons'
+import {FC} from "react";
+import clsx from "clsx";
 
 export const contacts = [
     {
@@ -23,7 +25,11 @@ export const contacts = [
     },
 ];
 
-export const EstimateForm = observer(() => {
+interface IEstimateForm {
+    topRadius?: boolean
+}
+
+export const EstimateForm: FC<IEstimateForm> = observer(({ topRadius = true }) => {
     const {
         initialValues, validate, onSubmit, loading
     } = useMail();
@@ -32,7 +38,10 @@ export const EstimateForm = observer(() => {
 
 
     return (
-        <div className={style.estimateForm}>
+        <div className={clsx({
+            [style.estimateForm]: true,
+            [style.estimateForm_topRadius]: topRadius,
+        })}>
 
             <div className={style.header}>
                 <div className={style.inner}>

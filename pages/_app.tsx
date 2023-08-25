@@ -4,10 +4,11 @@ import {store, Store} from "../store/store";
 import {createContext, useEffect} from "react";
 import "aos/dist/aos.css";
 import AOS from "aos";
+import * as React from "react";
 
 export const StoreContext = createContext<Store>({} as Store);
 
-export default function App({Component, pageProps}: AppProps) {
+const App = ({Component, pageProps}: AppProps) => {
     useEffect(() => {
         AOS.init({
             easing: "ease-out-cubic",
@@ -16,8 +17,11 @@ export default function App({Component, pageProps}: AppProps) {
     }, []);
 
     return (
-        <StoreContext.Provider value={store}>
-            <Component {...pageProps} />
-        </StoreContext.Provider>
+        <>
+            <StoreContext.Provider value={store}>
+                <Component {...pageProps} />
+            </StoreContext.Provider>
+        </>
     )
 }
+export default App

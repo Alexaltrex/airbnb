@@ -4,45 +4,7 @@ import {Tag} from "../X_common/Tag/Tag";
 import {AccordionItem} from "../X_common/AccordionItem/AccordionItem";
 import {FC, useState} from "react";
 import {ButtonContained, ColorEnum} from "../X_common/ButtonContained/ButtonContained";
-
-const tags = [
-    "Property",
-    "Dubai",
-    "Standart",
-    "Premium",
-    "Airbnb",
-];
-
-const faqItems = [
-    {
-        question: "Question",
-        answer: "A small description, which can be composed in two or three stoic, which describes the essence",
-    },
-    {
-        question: "Question",
-        answer: "A small description, which can be composed in two or three stoic, which describes the essence",
-    },
-    {
-        question: "Question",
-        answer: "A small description, which can be composed in two or three stoic, which describes the essence",
-    },
-    {
-        question: "Question",
-        answer: "A small description, which can be composed in two or three stoic, which describes the essence",
-    },
-    {
-        question: "Question",
-        answer: "A small description, which can be composed in two or three stoic, which describes the essence",
-    },
-    {
-        question: "Question",
-        answer: "A small description, which can be composed in two or three stoic, which describes the essence",
-    },
-    {
-        question: "Question",
-        answer: "A small description, which can be composed in two or three stoic, which describes the essence",
-    },
-]
+import {useRouter} from "next/navigation";
 
 interface IFaqBlock {
     title: string
@@ -72,6 +34,11 @@ export const FaqBlock: FC<IFaqBlock> = ({
         } else {
             setOpenedIndex(key)
         }
+    }
+
+    const router = useRouter();
+    const onContact = () => {
+        router.push("/contact")
     }
 
 
@@ -151,6 +118,7 @@ export const FaqBlock: FC<IFaqBlock> = ({
                             <ButtonContained label="Contact us"
                                              className={style.btn}
                                              color={ColorEnum.black}
+                                             onClick={onContact}
                             />
                         </div>
                     </div>

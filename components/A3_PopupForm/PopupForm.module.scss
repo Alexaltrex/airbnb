@@ -38,22 +38,15 @@
   }
 
   .formBlock {
+    padding: 28px 32px 32px;
 
-    .fieldWrapper {
-      margin: 3px 3px;
-      background: #2A2631;
-      border-radius: 17px;
-      padding: 12px;
+    .field {
+      margin-top: 12px;
+    }
 
-
-      .field {
-        margin-top: 12px;
-      }
-
-      .textarea {
-        margin-top: 12px;
-        height: 180px;
-      }
+    .textarea {
+      margin-top: 12px;
+      height: 180px;
     }
 
     .submitBtn {

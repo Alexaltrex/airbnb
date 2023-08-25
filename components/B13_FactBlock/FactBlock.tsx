@@ -48,6 +48,7 @@ export const FactBlock: FC<IFactBlock> = ({title, text, image, video}) => {
                            autoPlay={true}
                            muted={true}
                            loop={true}
+                           playsInline={true}
                     />
 
                     <div className={clsx({

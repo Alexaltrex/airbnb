@@ -20,13 +20,17 @@ export const Contact = observer(() => {
                 <div className={style.leftPart}>
                     <div className={style.socialContacts}>
                         {
-                            contacts.map(({icon, label}, key) => (
-                                <div className={style.socialContact} key={key}>
+                            contacts.map(({icon, label, href}, key) => (
+                                <a className={style.socialContact}
+                                   key={key}
+                                   href={href}
+                                   rel="noopener noreferrer nofollow"
+                                >
                                     <div className={style.icon}>
                                         {icon}
                                     </div>
                                     <p className={style.label}>{label}</p>
-                                </div>
+                                </a>
                             ))
                         }
                     </div>

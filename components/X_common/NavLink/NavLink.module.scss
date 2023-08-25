@@ -2,14 +2,19 @@
 
 .navLink {
   text-decoration: none;
-  font-weight: 600;
+  font-weight: 400;
   font-size: 16px;
   line-height: 140%;
   color: #2A2631;
+  transition: 0.3s;
 
-  &_active {
+  &:hover {
     font-weight: 600;
   }
+
+  //&_active {
+  //  font-weight: 600;
+  //}
 
   &_white {
     color: #F4F0EC;

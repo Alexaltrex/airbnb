@@ -3,7 +3,7 @@
 .textareaField {
   position: relative;
   background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(11px);
+  //backdrop-filter: blur(11px);
   border-radius: 20px;
   box-sizing: border-box;
   padding: 16px 32px;
@@ -15,6 +15,11 @@
 
   &_focus, &:hover {
     background: rgba(255, 255, 255, 0.2);
+  }
+
+  &_white {
+    background: transparent;
+    border: 1px solid rgba(42, 38, 49, 0.20);
   }
 
   &_error, &_error:hover {
@@ -42,6 +47,14 @@
       font-size: 14px;
       line-height: 140%;
       color: rgba(244, 240, 236, 0.6);
+    }
+
+    &_white {
+      color: #2A2631;
+
+      &::placeholder {
+        color: #A4A0A2;
+      }
     }
   }
 

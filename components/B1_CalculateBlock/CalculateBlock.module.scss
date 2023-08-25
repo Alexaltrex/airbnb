@@ -17,7 +17,6 @@
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-
     box-sizing: border-box;
     padding: 20px;
 
@@ -42,6 +41,7 @@
       @include desktop {
         display: flex;
         justify-content: space-between;
+        align-self: flex-start;
       }
 
       .tags {
@@ -50,6 +50,7 @@
         justify-content: center;
 
         @include desktop {
+          align-self: flex-start;
           justify-content: normal;
           width: 330px;
         }
@@ -69,6 +70,7 @@
         @include desktop {
           margin-top: 0;
           width: 198px;
+          box-sizing: border-box;
         }
 
         .row {

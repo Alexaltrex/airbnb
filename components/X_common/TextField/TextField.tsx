@@ -7,12 +7,14 @@ interface ITextField {
     name: string
     label: string
     className?: string
+    dark?: boolean
 }
 
 export const TextField: FC<ITextField> = ({
                                               name,
                                               label,
                                               className,
+                                              dark = true,
                                               ...props
                                           }) => {
     const [inputProps, metaProps] = useField(name);
@@ -27,11 +29,15 @@ export const TextField: FC<ITextField> = ({
     return (
         <div className={clsx({
             [style.textField]: true,
-            [style.textField_focus]: focus ,
+            [style.textField_focus]: focus,
             [style.textField_error]: metaProps.touched && Boolean(metaProps.error),
+            [style.textField_white]: !dark,
         }, Boolean(className) && className)}>
             <input type="text"
-                   className={style.input}
+                   className={clsx({
+                       [style.input]: true,
+                       [style.input_white]: !dark,
+                   })}
                    name={inputProps.name}
                    value={inputProps.value}
                    onChange={inputProps.onChange}
@@ -44,6 +50,7 @@ export const TextField: FC<ITextField> = ({
             <p className={clsx({
                 [style.label]: true,
                 [style.label_focus]: focus || inputProps.value,
+                [style.label_white]: !dark
             })}>
                 {label}
             </p>

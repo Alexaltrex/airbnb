@@ -53,6 +53,7 @@ export const ButtonWithMenu: FC<IButtonWithMenu> = ({
                 <p className={clsx({
                     [style.label]: true,
                     [style.label_white]: white,
+                    [style.label_open]: show,
                 })}>
                     Services
                 </p>

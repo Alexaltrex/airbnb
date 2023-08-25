@@ -28,7 +28,7 @@ const ServiceItem = () => {
                                   faq={items[slug].faq}
                                   card={service[slug].faq.card}
                         />
-                        <EstimateForm/>
+                        <EstimateForm topRadius={false}/>
                     </>
                 )
             }

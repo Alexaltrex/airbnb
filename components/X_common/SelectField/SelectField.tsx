@@ -14,12 +14,14 @@ type FieldSelectType = {
     name: string
     menuItems: Array<IMenuItem>
     className?: string
+    dark?: boolean
 } & SelectProps;
 
 export const SelectField: FC<FieldSelectType> = ({
                                                      name,
                                                      menuItems,
                                                      className,
+                                                     dark = true,
                                                      ...props
                                                  }) => {
     const [field, meta, helper] = useField(name);
@@ -31,17 +33,18 @@ export const SelectField: FC<FieldSelectType> = ({
                          className={clsx(Boolean(className) && className)}
                          sx={{
                              "& .MuiInputBase-root": {
-                                 color: "#F4F0EC",
+                                 color: dark ? "#F4F0EC" : "#2A2631",
                                  fontFamily: 'Urbanist',
                                  fontWeight: 400,
                                  fontSize: '16px',
                                  lineHeight: '140%',
                                  height: "60px",
                                  borderRadius: "30px",
-                                 border: "none",
+                                 border: dark ? "none" : "1px solid rgba(42, 38, 49, 0.20)",
                                  boxSizing: "border-box",
-                                 background: 'rgba(255, 255, 255, 0.1)',
+                                 background: dark ? 'rgba(255, 255, 255, 0.1)' : "transparent",
                                  transition: "0.3s",
+
                                  //backdropFilter: 'blur(11px)',
                                  "&:hover": {
                                      background: 'rgba(255, 255, 255, 0.35)'
@@ -57,7 +60,7 @@ export const SelectField: FC<FieldSelectType> = ({
                                  paddingLeft: "32px",
                              },
                              "& .MuiSvgIcon-root": {
-                                 fill: "#F4F0EC",
+                                 fill: dark ? "#F4F0EC" : "#304250",
                                  right: "30px"
                              },
                          }}
@@ -71,7 +74,16 @@ export const SelectField: FC<FieldSelectType> = ({
                         onBlur={field.onBlur}
                         onChange={field.onChange}
                         error={meta.touched && Boolean(meta.error)}
-                        renderValue={selected => <p className={style.selected}>{selected}</p>}
+                        renderValue={
+                            selected => (
+                                <p className={clsx({
+                                    [style.selected]: true,
+                                    [style.selected_white]: !dark,
+                                })}>
+                                    {selected}
+                                </p>
+                            )
+                        }
                         {...props}
                         MenuProps={{
                             sx: {
@@ -115,5 +127,4 @@ export const SelectField: FC<FieldSelectType> = ({
             </FormControl>
         </div>
     )
-
 }
