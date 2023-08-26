@@ -62,10 +62,10 @@ export const MainLayout: FC<IMainLayout> = observer(({
                 </title>
             </Head>
 
-            {
-                preloader &&
-                <Preloader/>
-            }
+            {/*{*/}
+            {/*    preloader &&*/}
+            {/*    <Preloader/>*/}
+            {/*}*/}
 
             <PopupForm/>
             <AlertCustom/>

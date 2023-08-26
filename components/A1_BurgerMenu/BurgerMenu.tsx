@@ -34,14 +34,24 @@ export const MenuLink: FC<IMenuLink> = ({
 
 
 export const BurgerMenu = observer(() => {
-    const {burgerMenu, setBurgerMenu} = useStore();
-    const [open, setOpen] = useState(false);
+    const {
+        burgerMenu, setBurgerMenu,
+        burgerDropDown, setBurgerDropDown,
+    } = useStore();
+
     const router = useRouter();
-    const onClose = () => setBurgerMenu(false);
+
+    const onClose = () => {
+        setBurgerMenu(false);
+        setBurgerDropDown(false);
+    };
+
     const onSubmenuClick = () => {
         router.push("/service");
         onClose();
     }
+
+    const switchBurgerDropDown = () => setBurgerDropDown(!burgerDropDown);
 
     return (
         <div className={clsx({
@@ -53,16 +63,16 @@ export const BurgerMenu = observer(() => {
                 <MenuLink href="/aboutUs" label="About us" onClick={onClose}/>
                 <div className={clsx({
                     [style.switcher]: true,
-                    [style.switcher_open]: open,
+                    [style.switcher_open]: burgerDropDown,
                 })}
                 >
                     <div className={style.switch}
-                         onClick={() => setOpen(!open)}
+                         onClick={switchBurgerDropDown}
                     >
                         <p>Services</p>
                         {svgIcons.arrowUp}
                     </div>
-                    <Collapse in={open}>
+                    <Collapse in={burgerDropDown}>
                         <div className={style.subMenu}>
                             {
                                 [

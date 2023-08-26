@@ -10,6 +10,7 @@ interface IAlert {
 
 export class Store {
     burgerMenu = false
+    burgerDropDown = false
     popupForm = false
     calculateModal = false
     rental = {
@@ -32,6 +33,7 @@ export class Store {
             rental: observable,
             preloader: observable,
             alert: observable,
+            burgerDropDown: observable,
 
             setBurgerMenu: action.bound,
             setPopupForm: action.bound,
@@ -39,6 +41,7 @@ export class Store {
             setRental: action.bound,
             setPreloader: action.bound,
             setAlert: action.bound,
+            setBurgerDropDown: action.bound,
         })
     }
 
@@ -65,6 +68,10 @@ export class Store {
 
     setAlert(alert: IAlert) {
         this.alert = alert
+    }
+
+    setBurgerDropDown(burgerDropDown: boolean) {
+        this.burgerDropDown = burgerDropDown;
     }
 
 

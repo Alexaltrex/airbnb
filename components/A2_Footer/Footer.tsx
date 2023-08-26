@@ -19,7 +19,7 @@ export const Footer: FC<IFooter> = ({white = false}) => {
                 <div className={style.links}>
                     <NavLink href="/aboutUs" label="About us" white={!white}/>
                     <div className={style.link}>
-                        <ButtonWithMenu white={!white} bottom={false}/>
+                        <ButtonWithMenu white={!white} bottom={false} center={true}/>
                     </div>
                     <NavLink href="/pricing" label="Pricing" className={style.link} white={!white}/>
                     <NavLink href="/contact" label="Contact" className={style.link} white={!white}/>

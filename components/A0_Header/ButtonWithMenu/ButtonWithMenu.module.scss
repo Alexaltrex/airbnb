@@ -63,10 +63,23 @@
     border-radius: 15px;
     opacity: 0;
 
-    &_top {
+    //&_top {
+    //  bottom: auto;
+    //  top: 0;
+    //  transform: translateY(-100%);
+    //}
+
+    &_top_left {
       bottom: auto;
       top: 0;
       transform: translateY(-100%);
+    }
+
+    &_top_center {
+      bottom: auto;
+      top: 0;
+      left: 50%;
+      transform: translate(-50%, -100%);
     }
 
     .menuItem {

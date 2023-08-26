@@ -5,6 +5,7 @@ import {createContext, useEffect} from "react";
 import "aos/dist/aos.css";
 import AOS from "aos";
 import * as React from "react";
+import {Preloader} from "../components/X_common/Preloader/Preloader";
 
 export const StoreContext = createContext<Store>({} as Store);
 
@@ -19,7 +20,13 @@ const App = ({Component, pageProps}: AppProps) => {
     return (
         <>
             <StoreContext.Provider value={store}>
-                <Component {...pageProps} />
+                <div style={{
+                    position: "relative"
+                }}>
+                    <Preloader/>
+                    <Component {...pageProps} />
+                </div>
+
             </StoreContext.Provider>
         </>
     )

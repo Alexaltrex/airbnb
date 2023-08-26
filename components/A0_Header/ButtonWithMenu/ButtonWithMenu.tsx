@@ -15,12 +15,14 @@ interface IButtonWithMenu {
     white?: boolean
     className?: string
     bottom?: boolean
+    center?: boolean
 }
 
 export const ButtonWithMenu: FC<IButtonWithMenu> = ({
                                                         white = false,
                                                         className,
-                                                        bottom = true
+                                                        bottom = true,
+                                                        center = false,
                                                     }) => {
     const ref = useRef<HTMLDivElement>(null!);
     const [show, setShow] = useState(false)
@@ -68,7 +70,8 @@ export const ButtonWithMenu: FC<IButtonWithMenu> = ({
 
             <div className={clsx({
                 [style.menu]: true,
-                [style.menu_top]: !bottom,
+                [style.menu_top_left]: !bottom && !center,
+                [style.menu_top_center]: !bottom && center,
             })}
                  ref={ref}
             >
