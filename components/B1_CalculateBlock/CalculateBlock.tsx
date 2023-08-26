@@ -147,11 +147,14 @@ export const CalculateBlock = observer(() => {
                         }
                     </div>
                     <div className={style.weather}>
+
                         <div className={style.row}>
                             <p className={style.city}>Dubai</p>
                             <p className={style.time}>{time}</p>
                         </div>
+
                         <div className={style.divider}/>
+
                         <div className={style.row}>
                             <div className={style.left}>
                                 <div className={style.icon}>

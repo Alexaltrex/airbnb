@@ -3,6 +3,7 @@ import {FC} from "react";
 import clsx from "clsx";
 import {NavLink} from "../X_common/NavLink/NavLink";
 import {ButtonWithMenu} from "../A0_Header/ButtonWithMenu/ButtonWithMenu";
+import {useMediaQuery} from "@mui/material";
 
 //========= FOOTER =========//
 interface IFooter {
@@ -10,6 +11,8 @@ interface IFooter {
 }
 
 export const Footer: FC<IFooter> = ({white = false}) => {
+    const matchDesktop = useMediaQuery('(min-width:1440px)')
+
     return (
         <footer className={clsx({
             [style.footer]: true,
@@ -19,7 +22,7 @@ export const Footer: FC<IFooter> = ({white = false}) => {
                 <div className={style.links}>
                     <NavLink href="/aboutUs" label="About us" white={!white}/>
                     <div className={style.link}>
-                        <ButtonWithMenu white={!white} bottom={false} center={true}/>
+                        <ButtonWithMenu white={!white} bottom={false} center={!matchDesktop}/>
                     </div>
                     <NavLink href="/pricing" label="Pricing" className={style.link} white={!white}/>
                     <NavLink href="/contact" label="Contact" className={style.link} white={!white}/>

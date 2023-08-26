@@ -69,8 +69,13 @@
 
         @include desktop {
           margin-top: 0;
-          width: 198px;
+          //width: 198px;
           box-sizing: border-box;
+
+          .row .time {
+            margin-left: 32px;
+          }
+
         }
 
         .row {

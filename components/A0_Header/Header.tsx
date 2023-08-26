@@ -11,13 +11,21 @@ import {useStore} from "../../store/useStore";
 
 //========= HEADER =========//
 export const Header = observer(() => {
-    const {setPopupForm} = useStore();
+    const {
+        setPopupForm, setBurgerMenu, setBurgerDropDown,
+    } = useStore();
+    const onLogoClick = () => {
+        setBurgerMenu(false);
+        setBurgerDropDown(false);
+    }
+
 
     return (
         <header className={style.header}>
             <div className={style.inner}>
                 <Link href='/'
                       className={style.logo}
+                      onClick={onLogoClick}
                 >
                     <img src='/png/A0_Header/logo.png'
                          alt=""

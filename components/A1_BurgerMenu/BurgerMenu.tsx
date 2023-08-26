@@ -10,6 +10,7 @@ import {Collapse} from "@mui/material";
 import {SocialLinkWithTooltip} from "../X_common/SocialLinkWithTooltip/SocialLinkWithTooltip";
 import {ButtonContained, ColorEnum} from "../X_common/ButtonContained/ButtonContained";
 
+//========= MENU LINK =========//
 interface IMenuLink {
     href: string
     label: string
@@ -32,9 +33,10 @@ export const MenuLink: FC<IMenuLink> = ({
     )
 }
 
-
+//========= BURGER MENU =========//
 export const BurgerMenu = observer(() => {
     const {
+        setPopupForm,
         burgerMenu, setBurgerMenu,
         burgerDropDown, setBurgerDropDown,
     } = useStore();
@@ -46,9 +48,13 @@ export const BurgerMenu = observer(() => {
         setBurgerDropDown(false);
     };
 
-    const onSubmenuClick = () => {
-        router.push("/service");
+    const onSubmenuClick = (key: number) => {
+        router.push(`/service/${key}`);
         onClose();
+    }
+
+    const onGetStarted = () => {
+        setPopupForm(true)
     }
 
     const switchBurgerDropDown = () => setBurgerDropDown(!burgerDropDown);
@@ -81,7 +87,7 @@ export const BurgerMenu = observer(() => {
                                     "Interior design"
                                 ].map((el, key) => (
                                     <p key={key}
-                                       onClick={onSubmenuClick}
+                                       onClick={() => onSubmenuClick(key)}
                                     >
                                         {el}
                                     </p>
@@ -114,6 +120,7 @@ export const BurgerMenu = observer(() => {
                 <ButtonContained label="Get started"
                                  color={ColorEnum.grey}
                                  className={style.startBtn}
+                                 onClick={onGetStarted}
                 />
             </div>
 
