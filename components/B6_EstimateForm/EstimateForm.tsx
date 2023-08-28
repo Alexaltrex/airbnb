@@ -80,7 +80,7 @@ export const EstimateForm: FC<IEstimateForm> = observer(({ topRadius = true }) =
                                         <TextField name="mail" label="E-mail"/>
                                         <SelectField name="chapter"
                                                      menuItems={menuItems}
-                                                     //label="Chapter"
+                                                     label="Chapter"
                                         />
                                     </div>
 

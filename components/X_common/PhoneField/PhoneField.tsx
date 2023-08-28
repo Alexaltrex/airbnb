@@ -24,7 +24,7 @@ export const PhoneField: FC<PhoneFieldType> = ({
     // flag
     const [inputFlag, metaFlag, helper] = useField("isoCode2");
 
-    // console.log(countries)
+    //console.log(countries)
     // console.log(codes)
 
     const [searchValue, setSearchValue] = useState("")

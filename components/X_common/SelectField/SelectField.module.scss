@@ -1,3 +1,19 @@
+.formControl {
+  position: relative;
+
+  .error {
+    position: absolute;
+    bottom: 0px;
+    left: 32px;
+    transform: translateY(100%);
+    font-weight: 400;
+    font-size: 11px;
+    line-height: 140%;
+    color: #D84747;
+  }
+}
+
+
 .menuItem {
   background: #E0DCD9;
   border-radius: 15px;

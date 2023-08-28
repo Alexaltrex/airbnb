@@ -1,9 +1,10 @@
 import Select, {SelectProps} from "@mui/material/Select";
 import {FC} from "react";
-import {FormControl, InputLabel, MenuItem} from "@mui/material";
+import {FormControl, MenuItem} from "@mui/material";
 import {useField} from "formik";
 import clsx from "clsx";
 import style from "./SelectField.module.scss";
+import InputLabel from "@mui/material/InputLabel";
 
 export interface IMenuItem {
     value: string
@@ -30,7 +31,7 @@ export const SelectField: FC<FieldSelectType> = ({
             <FormControl fullWidth={true}
                          size='small'
                          error={meta.touched && Boolean(meta.error)}
-                         className={clsx(Boolean(className) && className)}
+                         className={clsx(style.formControl,  Boolean(className) && className)}
                          sx={{
                              "& .MuiInputBase-root": {
                                  color: dark ? "#F4F0EC" : "#2A2631",
@@ -40,16 +41,20 @@ export const SelectField: FC<FieldSelectType> = ({
                                  lineHeight: '140%',
                                  height: "60px",
                                  borderRadius: "30px",
-                                 border: dark ? "none" : "1px solid rgba(42, 38, 49, 0.20)",
+                                 border: (meta.touched && Boolean(meta.error))
+                                     ? "1px solid #D84747"
+                                     : dark ? "none" : "1px solid rgba(42, 38, 49, 0.20)",
                                  boxSizing: "border-box",
-                                 background: dark ? 'rgba(255, 255, 255, 0.1)' : "transparent",
+                                 background: (meta.touched && Boolean(meta.error))
+                                     ? "rgba(216, 71, 71, 0.10)"
+                                     : dark ? 'rgba(255, 255, 255, 0.1)' : "transparent",
                                  transition: "0.3s",
                                  //backdropFilter: 'blur(11px)',
                                  "&:hover": {
-                                     background: 'rgba(255, 255, 255, 0.35)'
+                                     background: (meta.touched && Boolean(meta.error)) ? "rgba(216, 71, 71, 0.10)" : 'rgba(255, 255, 255, 0.35)'
                                  },
                                  "&.Mui-focused": {
-                                     background: 'rgba(255, 255, 255, 0.35)',
+                                     background: (meta.touched && Boolean(meta.error)) ? "rgba(216, 71, 71, 0.10)" : 'rgba(255, 255, 255, 0.35)',
                                  },
                              },
                              "& .MuiOutlinedInput-notchedOutline": {
@@ -64,8 +69,10 @@ export const SelectField: FC<FieldSelectType> = ({
                              },
                          }}
             >
+                {/*<InputLabel id="demo-simple-select-helper-label">{props.label}</InputLabel>*/}
                 <Select name={field.name}
                         label={props.label}
+                        placeholder="placeholder"
                         value={field.value}
                         onBlur={field.onBlur}
                         onChange={field.onChange}
@@ -95,11 +102,13 @@ export const SelectField: FC<FieldSelectType> = ({
 
                 >
                     {
-                        menuItems.map(el => (
+                        menuItems.map((el, key) => (
                                 <MenuItem key={el.value}
                                           value={el.value}
                                           sx={{
+                                              display: key === 0 ? "none": "flex",
                                               padding: "2.5px 32px",
+                                              backgroundColor: "#FFF",
                                               "&:hover": {
                                                   backgroundColor: "#FFF",
                                               },
@@ -110,6 +119,7 @@ export const SelectField: FC<FieldSelectType> = ({
                                                   },
                                               }
                                           }}
+                                          //disabled={key === 0}
                                 >
                                     <div className={style.menuItem}>
                                         <p>{el.label}</p>
@@ -124,6 +134,15 @@ export const SelectField: FC<FieldSelectType> = ({
                         )
                     }
                 </Select>
+
+                {
+                    meta.touched && Boolean(meta.error) && (
+                        <p className={style.error}>
+                            {meta.error}
+                        </p>
+                    )
+                }
+
             </FormControl>
         </div>
     )

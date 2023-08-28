@@ -13,6 +13,7 @@ export interface ISendMailValues {
 }
 
 export const menuItems = [
+    {value: "Choose subject", label: "Choose subject"},
     {value: "Chapter 1", label: "Chapter 1"},
     {value: "Chapter 2", label: "Chapter 2"},
     {value: "Chapter 3", label: "Chapter 3"},
@@ -30,8 +31,8 @@ export const useMail = () => {
         phone: "",
         mail: "",
         message: "",
-        chapter: "Chapter 1",
-        isoCode2: "GB",
+        chapter: "Choose subject",
+        isoCode2: "AE",
     }
 
     const validate = (values: ISendMailValues): FormikErrors<ISendMailValues> => { // функция синхронной валидации
@@ -44,6 +45,9 @@ export const useMail = () => {
         }
         if (!values.mail) {
             errors.mail = "Required"
+        }
+        if (values.chapter === "Choose subject") {
+            errors.chapter = "Choose subject"
         }
         return errors
     };

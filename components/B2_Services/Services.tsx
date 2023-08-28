@@ -9,19 +9,27 @@ import {FC, useEffect, useLayoutEffect, useRef, useState} from "react";
 
 import gsap from "gsap/dist/gsap";
 import ScrollTrigger from "gsap/dist/ScrollTrigger";
+import {useRouter} from "next/router";
 
 //gsap.registerPlugin(ScrollTrigger);
 if (typeof window !== "undefined") {
     gsap.registerPlugin(ScrollTrigger);
 }
 
+interface IServiceCardComponent extends IServiceCard {
+    index: number
+}
 
-const ServiceCard: FC<IServiceCard> = ({
-                                           title,
-                                           description,
-                                           src,
-                                           faq
-                                       }) => {
+
+//========= SERVICE CARD =========//
+const ServiceCard: FC<IServiceCardComponent> = ({
+                                                    title,
+                                                    description,
+                                                    src,
+                                                    faq,
+                                                    index,
+
+                                                }) => {
     const [openedIndex, setOpenedIndex] = useState(-1);
 
     const onClickHandler = (key: number) => {
@@ -30,6 +38,12 @@ const ServiceCard: FC<IServiceCard> = ({
         } else {
             setOpenedIndex(key)
         }
+    }
+
+    const router = useRouter();
+
+    const onReadMore = async () => {
+        await router.push(`/service/${index}`);
     }
 
     return (
@@ -54,6 +68,7 @@ const ServiceCard: FC<IServiceCard> = ({
                     <ButtonContained label="Read more"
                                      color={ColorEnum.white}
                                      className={style.readMoreBtn}
+                                     onClick={onReadMore}
                     />
                 </div>
             </div>
@@ -162,7 +177,7 @@ export const Services = () => {
 
     return (
         <div className={style.services}
-             //ref={appRef}
+            //ref={appRef}
         >
             <div className={style.inner}
 
@@ -178,7 +193,7 @@ export const Services = () => {
                              }}
                              className={`block${key}`}
                         >
-                            <ServiceCard key={key} {...card}/>
+                            <ServiceCard key={key} {...card} index={key}/>
                         </div>
 
                     ))

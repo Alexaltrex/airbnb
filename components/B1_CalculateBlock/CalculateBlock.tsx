@@ -1,9 +1,6 @@
 import style from "./CalculateBlock.module.scss";
 import {Tag} from "../X_common/Tag/Tag";
 import {Form, Formik, FormikHelpers, FormikProps} from "formik";
-import {TextField} from "../X_common/TextField/TextField";
-import {SelectField} from "../X_common/SelectField/SelectField";
-import {TextareaField} from "../X_common/TextareaField/TextareaField";
 import {ButtonContained, ColorEnum} from "../X_common/ButtonContained/ButtonContained";
 import * as React from "react";
 import {SelectFieldWithLabel} from "../X_common/SelectFieldWithLabel/SelectFieldWithLabel";
@@ -89,10 +86,8 @@ export const CalculateBlock = observer(() => {
                 const coordinatesResponse = await axios.get<{ lat: number, lon: number }[]>(
                     `https://api.openweathermap.org/geo/1.0/direct?q=Dubai,AE&limit=5&appid=${appid}`
                 );
-                //console.log(coordinatesResponse.data);
                 if (coordinatesResponse.data) {
                     const {lat, lon} = coordinatesResponse.data[0];
-                    //console.log(lat, lon);
 
                     const weatherResponse = await axios.get<IWeatherResponse>(
                         `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${appid}`
@@ -101,23 +96,16 @@ export const CalculateBlock = observer(() => {
                     if (weatherResponse.data) {
                         setDescription(weatherResponse.data.weather[0].description);
                         setTemp(weatherResponse.data.main.temp - 273.15);
-                        console.log(weatherResponse.data.weather[0].icon)
                         setIcon(weatherResponse.data.weather[0].icon)
                     }
-
                 }
             } catch (e: any) {
                 console.log(e.message);
             }
         }
-
-
         getWeather().then();
     }, [])
 
-    // console.log(moment().format("hh:mm"))
-    // console.log(moment().tz("Asia/Dubai").format("hh:mm"))
-    // console.log(moment.tz.names())
     const [time, setTime] = useState("");
 
     useEffect(() => {
