@@ -4,6 +4,7 @@ import {svgIcons} from "../../../assets/svgIcons";
 import clsx from "clsx";
 import {useRouter} from "next/router";
 import {gsap} from "gsap";
+import {useMediaQuery} from "@mui/material";
 
 const menuItems = [
     {label: "Full Management", icon: svgIcons.clockRefresh, url: "/service/0"},
@@ -24,14 +25,28 @@ export const ButtonWithMenu: FC<IButtonWithMenu> = ({
                                                         bottom = true,
                                                         center = false,
                                                     }) => {
+    const matchesDesktop = useMediaQuery('(min-width:1440px)');
     const ref = useRef<HTMLDivElement>(null!);
     const [show, setShow] = useState(false)
+
     const onMouseEnterHandler = () => {
-        setShow(true)
+        if (matchesDesktop) {
+            setShow(true)
+        }
     }
+
     const onMouseLeave = () => {
-        setShow(false)
+        if (matchesDesktop) {
+            setShow(false)
+        }
     }
+
+    const onClick = () => {
+        if (!matchesDesktop) {
+            setShow(!show);
+        }
+    }
+
     const router = useRouter();
 
     useEffect(() => {
@@ -56,7 +71,9 @@ export const ButtonWithMenu: FC<IButtonWithMenu> = ({
                     [style.label]: true,
                     [style.label_white]: white,
                     [style.label_open]: show,
-                })}>
+                })}
+                   onClick={onClick}
+                >
                     Services
                 </p>
                 <div className={clsx({

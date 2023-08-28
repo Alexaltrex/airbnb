@@ -9,6 +9,7 @@ import {ButtonContained, ColorEnum} from "../X_common/ButtonContained/ButtonCont
 import * as React from "react";
 import {SelectField} from "../X_common/SelectField/SelectField";
 import {ISendMailValues, menuItems, useMail} from "../../hooks/useMail";
+import {PhoneField} from "../X_common/PhoneField/PhoneField";
 
 export const PopupForm = observer(() => {
     const {popupForm, setPopupForm} = useStore();
@@ -39,7 +40,7 @@ export const PopupForm = observer(() => {
                             <Form className={style.formBlock}>
 
                                 <TextField name="name" label="Name" dark={false}/>
-                                <TextField name="phone" label="Phone" className={style.field} dark={false}/>
+                                <PhoneField className={style.field} dark={false}/>
                                 <TextField name="mail" label="Mail" className={style.field} dark={false}/>
                                 <SelectField name="chapter"
                                              menuItems={menuItems}

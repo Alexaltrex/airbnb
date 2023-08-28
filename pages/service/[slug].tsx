@@ -19,7 +19,7 @@ const ServiceItem = () => {
             {
                 router.query.slug && (
                     <>
-                        <TextBlock {...service[slug].textBlock}/>
+                        <TextBlock slug={slug}/>
                         <Advantages {...service[slug].advantages}/>
                         <FactBlock {...service[slug].fact}/>
                         <Subcategories {...service[slug].subcategories}/>

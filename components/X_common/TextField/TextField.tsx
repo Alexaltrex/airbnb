@@ -1,4 +1,4 @@
-import {FC, useState} from "react";
+import {FC, useRef, useState} from "react";
 import style from "./TextField.module.scss"
 import {useField} from "formik";
 import clsx from "clsx";
@@ -25,6 +25,7 @@ export const TextField: FC<ITextField> = ({
         setFocus(false);
         inputProps.onBlur(e);
     }
+    const ref = useRef<HTMLInputElement>(null!);
 
     return (
         <div className={clsx({
@@ -32,8 +33,14 @@ export const TextField: FC<ITextField> = ({
             [style.textField_focus]: focus,
             [style.textField_error]: metaProps.touched && Boolean(metaProps.error),
             [style.textField_white]: !dark,
-        }, Boolean(className) && className)}>
+        }, Boolean(className) && className)}
+             onClick={() => {
+                 onFocusHandler();
+                 ref.current.focus();
+             }}
+        >
             <input type="text"
+                   ref={ref}
                    className={clsx({
                        [style.input]: true,
                        [style.input_white]: !dark,

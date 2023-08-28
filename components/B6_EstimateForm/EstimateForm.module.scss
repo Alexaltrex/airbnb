@@ -31,7 +31,7 @@
       .logo {
         display: block;
         width: 111px;
-        height: 37px;
+        height: 34px;
       }
 
       .contacts {
@@ -119,9 +119,8 @@
 
     .inner {
       @include inner;
-      background: rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(20px);
       border-radius: 20px;
+      overflow: hidden;
 
       @include desktop {
         display: flex;
@@ -130,11 +129,15 @@
       .form {
         box-sizing: border-box;
         padding: 16px;
+        background: rgba(105, 100, 110, 0.9);
+        //box-sizing: border-box;
+        //backdrop-filter: blur(20px);
 
         @include desktop {
           border-radius: 20px 0 0 20px;
           padding: 32px;
           width: 700px;
+          height: 526px;
         }
 
         .formTitle {
@@ -189,12 +192,16 @@
       .window {
         @include onlyDesktop;
         width: 450px;
-        height: 506px;
+        height: 526px;
+        border: 10px solid rgba(105, 100, 110, 0.9);
+        //border-left: 10px solid rgba(105, 100, 110, 0.9);
+        box-sizing: border-box;
         object-fit: cover;
         object-position: right;
-        border-radius: 20px;
-        margin-top: 15px;
-        margin-right: 15px;
+        border-radius: 0 20px 20px 0;
+        //margin-left: -20px;
+        //backdrop-filter: blur(10px);
+        //filter: blur(3px);
       }
     }
   }

@@ -8,6 +8,7 @@ import {ButtonContained, ColorEnum} from "../X_common/ButtonContained/ButtonCont
 import {SelectField} from "../X_common/SelectField/SelectField";
 import {observer} from "mobx-react-lite";
 import {ISendMailValues, menuItems, useMail} from "../../hooks/useMail";
+import {PhoneField} from "../X_common/PhoneField/PhoneField";
 
 export const Contact = observer(() => {
     const {
@@ -48,8 +49,8 @@ export const Contact = observer(() => {
                                 <Form className={style.form}>
                                     <div className={style.blocks}>
                                         <TextField name="name" label="Name"/>
-                                        <TextField name="phone" label="Phone"/>
-                                        <TextField name="mail" label="Mail"/>
+                                        <PhoneField/>
+                                        <TextField name="mail" label="E-mail"/>
                                         <SelectField name="chapter"
                                                      menuItems={menuItems}
                                             //label="Chapter"

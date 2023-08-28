@@ -8,9 +8,10 @@ import {TextareaField} from "../X_common/TextareaField/TextareaField";
 import {SelectField} from "../X_common/SelectField/SelectField";
 import {ISendMailValues, menuItems, useMail} from "../../hooks/useMail";
 import {observer} from "mobx-react-lite";
-import { countries } from 'country-flag-icons'
+
 import {FC} from "react";
 import clsx from "clsx";
+import {PhoneField} from "../X_common/PhoneField/PhoneField";
 
 export const contacts = [
     {
@@ -33,9 +34,6 @@ export const EstimateForm: FC<IEstimateForm> = observer(({ topRadius = true }) =
     const {
         initialValues, validate, onSubmit, loading
     } = useMail();
-
-    //console.log(countries)
-
 
     return (
         <div className={clsx({
@@ -78,8 +76,8 @@ export const EstimateForm: FC<IEstimateForm> = observer(({ topRadius = true }) =
                                     <p className={style.formTitle}>Estimate your revenue</p>
                                     <div className={style.blocks}>
                                         <TextField name="name" label="Name"/>
-                                        <TextField name="phone" label="Phone"/>
-                                        <TextField name="mail" label="Mail"/>
+                                        <PhoneField/>
+                                        <TextField name="mail" label="E-mail"/>
                                         <SelectField name="chapter"
                                                      menuItems={menuItems}
                                                      //label="Chapter"
@@ -102,8 +100,8 @@ export const EstimateForm: FC<IEstimateForm> = observer(({ topRadius = true }) =
                             )
                         }
                     </Formik>
-
-                    <img src="/jpeg/B6_EstimateForm/background.jpg" alt=""  className={style.window}/>
+                    <div className={style.window}/>
+                    {/*<img src="/jpeg/B6_EstimateForm/background.jpg" alt=""  className={style.window}/>*/}
 
                 </div>
             </div>

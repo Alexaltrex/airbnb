@@ -10,10 +10,6 @@
   justify-content: space-between;
   transition: 0.3s;
 
-  &:hover {
-    background: #b1acac;
-  }
-
   p {
     font-weight: 400;
     font-size: 16px;
@@ -24,23 +20,36 @@
   .check {
     width: 22px;
     height: 22px;
+    box-sizing: border-box;
     border: 1px solid rgba(42, 38, 49, 0.15);
     border-radius: 50%;
+    transition: 0.3s;
 
     &_selected {
-      background: #2A2631;
+      border: 5px solid #2A2631;
+    }
+
+  }
+
+  &:hover {
+    .check {
+      border: 1px solid #2A2631;
+    }
+
+    .check_selected {
+      border: 5px solid #2A2631;
     }
   }
 }
 
 .selected {
-  font-weight: 400!important;
-  font-size: 16px!important;
-  line-height: 140%!important;
-  align-items: center!important;
-  color: #F4F0EC!important;
+  font-weight: 400 !important;
+  font-size: 16px !important;
+  line-height: 140% !important;
+  align-items: center !important;
+  color: #F4F0EC !important;
 
   &_white {
-    color: #2A2631!important;
+    color: #2A2631 !important;
   }
 }

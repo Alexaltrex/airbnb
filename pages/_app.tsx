@@ -23,7 +23,7 @@ const App = ({Component, pageProps}: AppProps) => {
                 <div style={{
                     position: "relative"
                 }}>
-                    <Preloader/>
+                    {/*<Preloader/>*/}
                     <Component {...pageProps} />
                 </div>
 

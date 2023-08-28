@@ -44,7 +44,6 @@ export const SelectField: FC<FieldSelectType> = ({
                                  boxSizing: "border-box",
                                  background: dark ? 'rgba(255, 255, 255, 0.1)' : "transparent",
                                  transition: "0.3s",
-
                                  //backdropFilter: 'blur(11px)',
                                  "&:hover": {
                                      background: 'rgba(255, 255, 255, 0.35)'
@@ -57,7 +56,7 @@ export const SelectField: FC<FieldSelectType> = ({
                                  border: "none",
                              },
                              "& .MuiSelect-select": {
-                                 paddingLeft: "32px",
+                                 padding: "19px 32px",
                              },
                              "& .MuiSvgIcon-root": {
                                  fill: dark ? "#F4F0EC" : "#304250",
@@ -65,9 +64,6 @@ export const SelectField: FC<FieldSelectType> = ({
                              },
                          }}
             >
-                {/*<InputLabel id={name}>*/}
-                {/*    {props.label}*/}
-                {/*</InputLabel>*/}
                 <Select name={field.name}
                         label={props.label}
                         value={field.value}
@@ -89,6 +85,10 @@ export const SelectField: FC<FieldSelectType> = ({
                             sx: {
                                 "& .MuiPaper-root": {
                                     borderRadius: "20px",
+                                },
+                                "& .MuiList-root": {
+                                    paddingTop: "5px",
+                                    paddingBottom: "5px",
                                 }
                             }
                         }}

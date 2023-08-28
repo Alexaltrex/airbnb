@@ -1,6 +1,7 @@
 import {useStore} from "../store/useStore";
 import {FormikErrors, FormikHelpers} from "formik";
 import {useState} from "react";
+import codes from 'country-calling-code';
 
 export interface ISendMailValues {
     name: string
@@ -8,6 +9,7 @@ export interface ISendMailValues {
     mail: string
     message: string
     chapter: string
+    isoCode2: string
 }
 
 export const menuItems = [
@@ -28,7 +30,8 @@ export const useMail = () => {
         phone: "",
         mail: "",
         message: "",
-        chapter: "Chapter 1"
+        chapter: "Chapter 1",
+        isoCode2: "GB",
     }
 
     const validate = (values: ISendMailValues): FormikErrors<ISendMailValues> => { // функция синхронной валидации
@@ -51,6 +54,7 @@ export const useMail = () => {
     ) => {
         try {
             console.log(values);
+            const {isoCode2, phone, ...rest} = values;
             setLoading(true);
             formikHelpers.setSubmitting(true);
             const response = await fetch('/api/send-contact-form', {
@@ -58,7 +62,7 @@ export const useMail = () => {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify(values),
+                body: JSON.stringify({phone: (codes.find(el => el.isoCode2 === isoCode2)?.countryCodes[0] || "666") + " " + phone, ...rest}),
             })
             const result = await response.json();
             console.log(result)

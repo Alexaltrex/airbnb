@@ -11,14 +11,16 @@
   .inner {
     @include inner;
 
-    .text {
+    & > p {
       font-weight: 500;
       font-size: 32px;
       line-height: 120%;
       color: #2A2631;
+      text-align: center;
 
       @include desktop {
         font-size: 58px;
+        text-align: left;
       }
 
       img {

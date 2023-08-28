@@ -31,6 +31,59 @@
         flex-direction: row;
       }
 
+      .switchWrapper {
+        margin-top: 24px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .switch {
+          @include button;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          p {
+            font-weight: 400;
+            font-size: 18px;
+            line-height: 140%;
+            text-align: center;
+            color: #F4F0EC;
+          }
+
+          svg {
+            transform: rotate(180deg);
+            transition: 0.3s;
+
+            path {
+              fill: #F4F0EC;
+            }
+          }
+
+          &_open {
+            svg {
+              transform: rotate(0deg);
+            }
+          }
+        }
+
+        .subMenu {
+          margin-top: 24px;
+
+          p {
+            font-weight: 400;
+            font-size: 18px;
+            line-height: 140%;
+            text-align: center;
+            color: #F4F0EC;
+
+            &:not(:first-child) {
+              margin-top: 24px;
+            }
+          }
+        }
+      }
+
       .link {
         margin-top: 24px;
 
@@ -38,7 +91,9 @@
           margin-top: 0;
           margin-left: 24px;
         }
+
       }
+
     }
 
     .bottom {

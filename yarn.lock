@@ -550,6 +550,11 @@ cosmiconfig@^7.0.0:
     path-type "^4.0.0"
     yaml "^1.10.0"
 
+country-calling-code@^0.0.3:
+  version "0.0.3"
+  resolved "https://registry.yarnpkg.com/country-calling-code/-/country-calling-code-0.0.3.tgz#d4401da11b7cfcda35ba8f05a325cab55a3b7b66"
+  integrity sha512-DNLyidwJPrEZyDkILYFbgPRlg/tFkpP+uk6JWG+du41l7qoH5guePxSA2YlIjl6wUfp7vWdjCUJeMRuAQPKpRg==
+
 country-flag-icons@^1.5.7:
   version "1.5.7"
   resolved "https://registry.yarnpkg.com/country-flag-icons/-/country-flag-icons-1.5.7.tgz#f1f2ddf14f3cbf01cba6746374aeba94db35d4b4"
