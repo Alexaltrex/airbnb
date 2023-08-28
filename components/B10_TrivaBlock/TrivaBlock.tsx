@@ -84,7 +84,7 @@ export const TrivaBlock = () => {
                                muted={true}
                                playsInline={true}
                                loop={false}
-                               controls={true}
+                               //controls={true}
                         />
                     </div>
 
