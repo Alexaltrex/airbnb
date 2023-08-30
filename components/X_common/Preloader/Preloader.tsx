@@ -2,14 +2,20 @@ import * as React from "react";
 import style from "./Preloader.module.scss";
 import gsap from "gsap";
 import {useLayoutEffect, useRef} from "react";
+import {setPreloaderToLocalStorage} from "../../../localStorage/localStorage";
 
 export const Preloader = () => {
     const ref = useRef<HTMLDivElement>(null!);
 
     useLayoutEffect(() => {
         gsap.timeline()
-            .to(ref.current, { opacity: 0, duration: 1, delay: 4})
-            .set(ref.current, { display: "none"})
+            .to(ref.current, {
+                opacity: 0,
+                duration: 1,
+                delay: 4,
+                onComplete: () => setPreloaderToLocalStorage("done"),
+            })
+            .set(ref.current, { display: "none"}, )
     }, [])
 
     return (
