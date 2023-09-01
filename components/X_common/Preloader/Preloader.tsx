@@ -15,16 +15,17 @@ export const Preloader = () => {
                 delay: 4,
                 onComplete: () => setPreloaderToLocalStorage("done"),
             })
-            .set(ref.current, { display: "none"}, )
+            .set(ref.current, {display: "none"},)
     }, [])
 
     return (
         <div className={style.preloader} ref={ref}>
-                <video src="/webm/preloader.webm"
-                       autoPlay={true}
-                       muted={true}
-                       playsInline={true}
-                />
+            <video src="/webm/preloader.webm"
+                   autoPlay={true}
+                   muted={true}
+                   playsInline={true}
+            />
+            <img src="/gif/logo.gif" alt=""/>
 
         </div>
     )

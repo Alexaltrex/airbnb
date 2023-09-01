@@ -100,17 +100,17 @@ export const Reviewings = () => {
                                         <img src={avatar} alt="" className={style.avatar}/>
                                         <div className={style.texts}>
                                             <p className={style.name}>{name}</p>
-                                            <p className={style.country}>{country}</p>
+                                            {country && <p className={style.country}>{country}</p>}
                                         </div>
                                     </div>
 
                                     {
-                                        reviews.map(({review, image}, key) => (
+                                        reviews[0].review > 0 && reviews.map(({review, image}, key) => (
                                             <div key={key}
-                                                className={clsx(
-                                                style.reviewItem,
-                                                style[`reviewItem_${key}`]
-                                            )}
+                                                 className={clsx(
+                                                     style.reviewItem,
+                                                     style[`reviewItem_${key}`]
+                                                 )}
                                                  style={{
                                                      transform: `translate(${deltaX}px, ${deltaY}px)`
                                                  }}
@@ -123,7 +123,7 @@ export const Reviewings = () => {
                                                         [1, 2, 3, 4, 5].map(n => (
                                                             <div className={style.starWrapper} key={n}>
                                                                 {
-                                                                    n < review
+                                                                    n <= review
                                                                         ? svgIcons.star_full
                                                                         : n > review && n - review < 1 ? svgIcons.star_half
                                                                         : svgIcons.star_empty

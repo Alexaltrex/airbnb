@@ -91,7 +91,18 @@
         }
 
         & > video {
-          display: block;
+          @include onlyDesktop();
+          width: 240px;
+          height: 240px;
+
+          @include desktop {
+            width: 320px;
+            height: 320px;
+          }
+        }
+
+        & > img {
+          @include onlyMobile();
           width: 240px;
           height: 240px;
 

@@ -14,12 +14,17 @@ export interface ISendMailValues {
 
 export const menuItems = [
     {value: "Choose subject", label: "Choose subject"},
-    {value: "Chapter 1", label: "Chapter 1"},
-    {value: "Chapter 2", label: "Chapter 2"},
-    {value: "Chapter 3", label: "Chapter 3"},
-    {value: "Chapter 4", label: "Chapter 4"},
-    {value: "Chapter 5", label: "Chapter 5"},
-]
+    {value: "General Inquiry", label: "General Inquiry"},
+    {value: "Booking Assistance", label: "Booking Assistance"},
+    {value: "Property Management", label: "Property Management"},
+    {value: "Pricing Details", label: "Pricing Details"},
+    {value: "Partnership Inquiry", label: "Partnership Inquiry"},
+    {value: "Technical Support", label: "Technical Support"},
+    {value: "Feedback", label: "Feedback"},
+    {value: "Interior Design", label: "Interior Design"},
+    {value: "Cleaning Services", label: "Cleaning Services"},
+    {value: "Other Queries", label: "Other Queries"},
+];
 
 export const useMail = () => {
     const { setAlert } = useStore();

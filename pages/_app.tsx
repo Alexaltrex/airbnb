@@ -18,8 +18,6 @@ const App = ({Component, pageProps}: AppProps) => {
         });
     }, []);
 
-
-
     const [preloader, setPreloader] = useState(true);
     useEffect(() => {
         console.log("after effect");

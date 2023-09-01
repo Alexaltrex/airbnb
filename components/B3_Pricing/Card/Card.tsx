@@ -8,6 +8,7 @@ import {svgIcons} from "../../../assets/svgIcons";
 import {ClickAwayListener, styled, Tooltip, tooltipClasses, TooltipProps} from "@mui/material";
 import Zoom from '@mui/material/Zoom';
 import {useOutsideClick} from "../../../hooks/useOutsideClick";
+import useMediaQuery from "@mui/material/useMediaQuery";
 
 const LightTooltip = styled(({className, ...props}: TooltipProps) => (
     <Tooltip {...props} classes={{popper: className}}/>
@@ -36,11 +37,14 @@ export const Card: FC<ICard> = ({
     };
 
     const handleTooltipOpen = () => {
-        setTimeout(() => setOpen(true), 2000);
+        //setTimeout(() => setOpen(true), 2000);
+        setOpen(true)
     };
 
     const cardRef = useRef<HTMLDivElement>(null);
     useOutsideClick(cardRef, handleTooltipClose);
+
+    const matchDesktop = useMediaQuery('(min-width:1440px)')
 
     return (
         <ClickAwayListener onClickAway={handleTooltipClose}>
@@ -71,7 +75,8 @@ export const Card: FC<ICard> = ({
                                   fontWeight: 500,
                                   fontSize: "16px",
                                   borderRadius: "15px",
-                                  fontFamily: 'Urbanist'
+                                  fontFamily: 'Urbanist',
+                                  marginBottom: matchDesktop ? "32px!important" : "-20px!important",
                               },
                               "& .MuiTooltip-arrow": {
                                   color: "#F4F0EC"

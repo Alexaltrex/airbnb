@@ -86,6 +86,7 @@ export const TrivaBlock = () => {
                                loop={false}
                                //controls={true}
                         />
+                        <img src="/gif/logo.gif" alt=""/>
                     </div>
 
                     {
