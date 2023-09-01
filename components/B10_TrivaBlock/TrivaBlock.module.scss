@@ -82,10 +82,11 @@
       .box {
         @include centerColumn;
         height: 318px;
-        background: #2A2631;
+        background: #252230;
         border-radius: 20px;
 
         @include desktop {
+          background: #2A2631;
           width: 560px;
           height: 567px;
         }

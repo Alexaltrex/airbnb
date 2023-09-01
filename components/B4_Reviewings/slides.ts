@@ -3,7 +3,7 @@
 
 export const slides = [
     {
-        date: "02/07/2023",
+        date: "10/07/2023",
         text: "The residence exceeded our expectations. Aesthetically pleasing with impeccable service.",
         name: "Olivia H.",
         country: "",

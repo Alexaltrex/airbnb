@@ -20,12 +20,12 @@ export const Preloader = () => {
 
     return (
         <div className={style.preloader} ref={ref}>
-            <video src="/webm/preloader.webm"
+            <video src="/mp4/preloader.mp4"
                    autoPlay={true}
                    muted={true}
                    playsInline={true}
             />
-            <img src="/gif/logo.gif" alt=""/>
+            <img src="/gif/preloader.gif" alt=""/>
 
         </div>
     )

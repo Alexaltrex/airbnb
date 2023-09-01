@@ -79,7 +79,7 @@ export const TrivaBlock = () => {
                      onMouseMove={onMouseMoveHandler}
                 >
                     <div className={style.box}>
-                        <video src="/webm/preloader.webm"
+                        <video src="/webm/logo.webm"
                                autoPlay={true}
                                muted={true}
                                playsInline={true}

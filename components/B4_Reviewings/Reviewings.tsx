@@ -97,7 +97,7 @@ export const Reviewings = () => {
                                     <p className={style.text}>{text}</p>
 
                                     <div className={style.authorBlock}>
-                                        <img src={avatar} alt="" className={style.avatar}/>
+                                        {/*<img src={avatar} alt="" className={style.avatar}/>*/}
                                         <div className={style.texts}>
                                             <p className={style.name}>{name}</p>
                                             {country && <p className={style.country}>{country}</p>}
