@@ -77,6 +77,7 @@ export const Card: FC<ICard> = ({
                                   borderRadius: "15px",
                                   fontFamily: 'Urbanist',
                                   marginBottom: matchDesktop ? "32px!important" : "-20px!important",
+                                  marginTop: matchDesktop ? "32px!important" : "-20px!important",
                               },
                               "& .MuiTooltip-arrow": {
                                   color: "#F4F0EC"
