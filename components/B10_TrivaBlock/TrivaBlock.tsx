@@ -67,10 +67,10 @@ export const TrivaBlock = () => {
         return () => ctx.revert();
     }, [])
 
-    const [src, setSrc] = useState("");
-    useEffect(() => {
-        setSrc("/gif/logo.gif");
-    }, [])
+    // const [src, setSrc] = useState("");
+    // useEffect(() => {
+    //     setSrc("/gif/logo.gif");
+    // }, [])
 
 
     return (
@@ -93,9 +93,9 @@ export const TrivaBlock = () => {
 
                         </video>
                         {
-                            src &&
-                            <img src={src}
-                                 alt=""
+                            true &&
+                            <img src={`/gif/logo.gif?${new Date().getTime()}`}
+                                 alt=''
                             />
                         }
                     </div>
