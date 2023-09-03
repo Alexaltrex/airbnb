@@ -1,6 +1,6 @@
 import style from "./TrivaBlock.module.scss"
 import clsx from "clsx";
-import {MouseEvent, useLayoutEffect, useRef, useState} from "react";
+import {MouseEvent, useEffect, useLayoutEffect, useRef, useState} from "react";
 import * as React from "react";
 import {ArrowAnimated} from "../X_common/ArrowAnimated/ArrowAnimated";
 import gsap from "gsap/dist/gsap";
@@ -56,7 +56,7 @@ export const TrivaBlock = () => {
                     scaleY: 0,
                     duration: 0.3,
                     ease: "none",
-                }, )
+                },)
                 .to(".arrowAnimated .label .mask", {
                     scaleX: 0,
                     duration: 0.3,
@@ -65,6 +65,11 @@ export const TrivaBlock = () => {
 
         }, appRef);
         return () => ctx.revert();
+    }, [])
+
+    const [src, setSrc] = useState("");
+    useEffect(() => {
+        setSrc("/gif/logo.gif");
     }, [])
 
 
@@ -84,9 +89,15 @@ export const TrivaBlock = () => {
                                muted={true}
                                playsInline={true}
                                loop={false}
-                               //controls={true}
-                        />
-                        <img src="/gif/logo.gif" alt=""/>
+                        >
+
+                        </video>
+                        {
+                            src &&
+                            <img src={src}
+                                 alt=""
+                            />
+                        }
                     </div>
 
                     {
