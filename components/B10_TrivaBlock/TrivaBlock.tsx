@@ -84,7 +84,7 @@ export const TrivaBlock = () => {
                      onMouseMove={onMouseMoveHandler}
                 >
                     <div className={style.box}>
-                        <video src="/webm/logo.webm"
+                        <video src="/mp4/logo.mp4"
                                autoPlay={true}
                                muted={true}
                                playsInline={true}
@@ -92,12 +92,9 @@ export const TrivaBlock = () => {
                         >
 
                         </video>
-                        {
-                            true &&
-                            <img src={`/gif/logo.gif?${new Date().getTime()}`}
-                                 alt=''
-                            />
-                        }
+                        <img src={`/gif/logo.gif?${new Date().getTime()}`}
+                             alt=''
+                        />
                     </div>
 
                     {

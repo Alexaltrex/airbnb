@@ -8,11 +8,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: #D7CFCA;
-
-  @include desktop {
-    background: #DFD2C9;
-  }
+  background: #DFD2C9;
 
   & > video {
     @include onlyDesktop();
