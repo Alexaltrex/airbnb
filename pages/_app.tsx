@@ -20,7 +20,7 @@ const App = ({Component, pageProps}: AppProps) => {
 
     const [preloader, setPreloader] = useState(true);
     useEffect(() => {
-        console.log("after effect");
+        //console.log("after effect");
         if (typeof window !== 'undefined') {
             const preloaderFromLocalStorage = getPreloaderFromLocalStorage();
             console.log(Boolean(preloaderFromLocalStorage));

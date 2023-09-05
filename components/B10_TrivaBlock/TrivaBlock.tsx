@@ -5,6 +5,7 @@ import * as React from "react";
 import {ArrowAnimated} from "../X_common/ArrowAnimated/ArrowAnimated";
 import gsap from "gsap/dist/gsap";
 import ScrollTrigger from "gsap/dist/ScrollTrigger";
+import {useMediaQuery} from "@mui/material";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -28,12 +29,17 @@ export const TrivaBlock = () => {
     const koef = 0.03;
     const [deltaX, setDeltaX] = useState(0);
     const [deltaY, setDeltaY] = useState(0);
+
+    const matchDesktop = useMediaQuery('(min-width:1440px)');
+
     const onMouseMoveHandler = (e: MouseEvent) => {
-        const rect = ref.current.getBoundingClientRect();
-        const centerX = rect.left + 0.5 * rect.width;
-        const centerY = rect.top + 0.5 * rect.height;
-        setDeltaX(koef * (e.clientX - centerX));
-        setDeltaY(koef * (e.clientY - centerY));
+        if (matchDesktop) {
+            const rect = ref.current.getBoundingClientRect();
+            const centerX = rect.left + 0.5 * rect.width;
+            const centerY = rect.top + 0.5 * rect.height;
+            setDeltaX(koef * (e.clientX - centerX));
+            setDeltaY(koef * (e.clientY - centerY));
+        }
     };
 
     const ref = useRef<HTMLDivElement>(null!)
