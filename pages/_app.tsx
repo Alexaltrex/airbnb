@@ -35,13 +35,7 @@ const App = ({Component, pageProps}: AppProps) => {
                 <div style={{
                     position: "relative"
                 }}>
-                    {
-                        //preloader
-                        true && (
-                            <Preloader/>
-                        )
-
-                    }
+                    { preloader && <Preloader/> }
                     <Component {...pageProps} />
                 </div>
 
