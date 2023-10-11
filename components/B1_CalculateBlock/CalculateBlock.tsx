@@ -11,6 +11,8 @@ import {CalculateModal} from "./CalculateModal/CalculateModal";
 import {useEffect, useState} from "react";
 import axios from "axios";
 import moment from 'moment-timezone';
+import {menuItemsArea, menuItemsBedrooms, menuItemsFurnishing} from "./const";
+import {ICalculateValues} from "../../store/store";
 
 const tags = [
     "UAE",
@@ -18,33 +20,6 @@ const tags = [
     "Standart",
     "Premium",
     "Airbnb",
-];
-
-export interface IValues {
-    area: string
-    bedrooms: string
-    furnishing: string
-}
-
-export const menuItemsArea = [
-    {value: "Business Bay", label: "Business Bay"},
-    {value: "Business Bay2", label: "Business Bay2"},
-    {value: "Business Bay3", label: "Business Bay3"},
-    {value: "Business Bay4", label: "Business Bay4"},
-];
-
-export const menuItemsBedrooms = [
-    {value: "Studio", label: "Studio"},
-    {value: "Studio2", label: "Studio2"},
-    {value: "Studio3", label: "Studio3"},
-    {value: "Studio4", label: "Studio4"},
-];
-
-export const menuItemsFurnishing = [
-    {value: "Premium", label: "Premium"},
-    {value: "Premium2", label: "Premium2"},
-    {value: "Premium3", label: "Premium3"},
-    {value: "Premium4", label: "Premium4"},
 ];
 
 interface IWeatherResponse {
@@ -61,13 +36,13 @@ export const CalculateBlock = observer(() => {
     const {setRental, setCalculateModal} = useStore()
 
     const initialValues = {
-        area: "Business Bay",
-        bedrooms: "Studio",
-        furnishing: "Premium",
+        area: 0,
+        bedrooms: 0,
+        furnishing: 0,
     }
     const onSubmitHandler = (
-        values: IValues, // значения из формы
-        formikHelpers: FormikHelpers<IValues> // методы FormikHelpers<Values>
+        values: ICalculateValues, // значения из формы
+        formikHelpers: FormikHelpers<ICalculateValues> // методы FormikHelpers<Values>
     ) => {
         setRental(values);
         setCalculateModal(true);
@@ -165,7 +140,7 @@ export const CalculateBlock = observer(() => {
                             onSubmit={onSubmitHandler}
                     >
                         {
-                            (props: FormikProps<IValues>) => (
+                            (props: FormikProps<ICalculateValues>) => (
                                 <Form className={style.form}>
 
                                     <div className={style.selectField}>

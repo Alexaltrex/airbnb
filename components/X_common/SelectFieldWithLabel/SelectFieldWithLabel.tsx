@@ -6,13 +6,13 @@ import clsx from "clsx";
 import style from "./SelectFieldWithLabel.module.scss";
 
 export interface IMenuItem {
-    value: string
+    value: number
     label: string
 }
 
 type FieldSelectType = {
     name: string
-    menuItems: Array<IMenuItem>
+    menuItems: IMenuItem[]
     className?: string
     backgroundGray?: boolean
 } & SelectProps;
@@ -90,7 +90,7 @@ export const SelectFieldWithLabel: FC<FieldSelectType> = ({
                                 [style.selected]: true,
                                 [style.selected_backgroundGray]: backgroundGray,
                             })}>
-                                {selected}
+                                {menuItems[selected as number].label}
                             </p>
                         )}
                         {...props}

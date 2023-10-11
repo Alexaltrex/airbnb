@@ -1,5 +1,4 @@
 import {action, makeObservable, observable} from "mobx";
-import {IValues} from "../components/B1_CalculateBlock/CalculateBlock";
 import {AlertColor} from "@mui/material";
 
 interface IAlert {
@@ -8,16 +7,22 @@ interface IAlert {
     text: string
 }
 
+export interface ICalculateValues {
+    area: number
+    bedrooms: number
+    furnishing: number
+}
+
 export class Store {
     burgerMenu = false
     burgerDropDown = false
     popupForm = false
     calculateModal = false
     rental = {
-        area: "",
-        bedrooms: "",
-        furnishing: "",
-    } as IValues
+        area: 0,
+        bedrooms: 0,
+        furnishing: 0,
+    } as ICalculateValues
     preloader = true
     alert = {
         open: false,
@@ -58,7 +63,7 @@ export class Store {
         this.calculateModal = calculateModal
     }
 
-    setRental(rental: IValues) {
+    setRental(rental: ICalculateValues) {
         this.rental = rental
     }
 

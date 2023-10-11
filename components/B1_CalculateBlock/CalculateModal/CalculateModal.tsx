@@ -3,32 +3,22 @@ import {observer} from "mobx-react-lite";
 import Modal from "@mui/material/Modal";
 import {useStore} from "../../../store/useStore";
 import style from "./CalculateModal.module.scss";
-import {IValues, menuItemsArea, menuItemsBedrooms, menuItemsFurnishing} from "../CalculateBlock";
-import {Form, Formik, FormikHelpers, FormikProps, useFormik} from "formik";
+import {Form, Formik, FormikHelpers, FormikProps} from "formik";
 import {SelectFieldWithLabel} from "../../X_common/SelectFieldWithLabel/SelectFieldWithLabel";
 import {ButtonContained, ColorEnum} from "../../X_common/ButtonContained/ButtonContained";
+import {areas, bedrooms, menuItemsArea, menuItemsBedrooms, menuItemsFurnishing, rentalPrices} from "../const";
+import {ICalculateValues} from "../../../store/store";
 
 export const CalculateModal = observer(() => {
     const { calculateModal, setCalculateModal, rental, setRental } = useStore()
 
-    const initialValues: IValues = {
-        area: "Business Bay",
-        bedrooms: "Studio",
-        furnishing: "Premium",
-    }
-
     const onSubmit = (
-        values: IValues, // значения из формы
-        formikHelpers: FormikHelpers<IValues> // методы FormikHelpers<Values>
+        values: ICalculateValues, // значения из формы
+        formikHelpers: FormikHelpers<ICalculateValues>
     ) => {
         formikHelpers.setSubmitting(false);
+        setRental(values)
     }
-
-    const formik = useFormik({
-        initialValues: rental,
-        onSubmit
-    });
-
 
     return (
         <Modal open={calculateModal}
@@ -36,11 +26,11 @@ export const CalculateModal = observer(() => {
                className={style.calculateModal}
         >
 
-            <Formik initialValues={initialValues}
+            <Formik initialValues={rental}
                     onSubmit={onSubmit}
             >
                 {
-                    (props: FormikProps<IValues>) => (
+                    (props: FormikProps<ICalculateValues>) => (
                         <Form className={style.card}>
                             <p className={style.cardTitle}>
                                 Vacation Rental Calculator
@@ -74,13 +64,19 @@ export const CalculateModal = observer(() => {
 
                             <div className={style.resultBlock}>
                                 <p className={style.text}>
-                                    A <span>{formik.values.bedrooms}</span> property in <span>{formik.values.area}</span> can earn on average
+                                    A <span>{bedrooms[rental.bedrooms]}</span> property in <span>{areas[rental.area]}</span> can earn on average
                                 </p>
 
                                 <div className={style.priceBlock}>
-                                    <p>27</p>
-                                    <p>Dhs</p>
-                                    <p>/Daily</p>
+                                    {
+                                        rentalPrices[rental.furnishing][rental.area][rental.bedrooms]
+                                            ? <>
+                                                <p>{rentalPrices[rental.furnishing][rental.area][rental.bedrooms]}</p>
+                                                <p>Dhs</p>
+                                                <p>/Daily</p>
+                                            </>
+                                            : <p></p>
+                                    }
                                 </div>
 
                                 <p className={style.info}>
