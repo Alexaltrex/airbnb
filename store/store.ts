@@ -8,9 +8,9 @@ interface IAlert {
 }
 
 export interface ICalculateValues {
-    area: number
-    bedrooms: number
-    furnishing: number
+    area: string
+    bedrooms: string
+    furnishing: string
 }
 
 export class Store {
@@ -19,9 +19,9 @@ export class Store {
     popupForm = false
     calculateModal = false
     rental = {
-        area: 0,
-        bedrooms: 0,
-        furnishing: 0,
+        area: "",
+        bedrooms: "",
+        furnishing: "",
     } as ICalculateValues
     preloader = true
     alert = {

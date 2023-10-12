@@ -6,7 +6,7 @@ import clsx from "clsx";
 import style from "./SelectFieldWithLabel.module.scss";
 
 export interface IMenuItem {
-    value: number
+    value: string
     label: string
 }
 
@@ -14,14 +14,12 @@ type FieldSelectType = {
     name: string
     menuItems: IMenuItem[]
     className?: string
-    backgroundGray?: boolean
 } & SelectProps;
 
 export const SelectFieldWithLabel: FC<FieldSelectType> = ({
                                                               name,
                                                               menuItems,
                                                               className,
-                                                              backgroundGray = false,
                                                               ...props
                                                           }) => {
     const [field, meta, helper] = useField(name);
@@ -29,28 +27,28 @@ export const SelectFieldWithLabel: FC<FieldSelectType> = ({
             <FormControl fullWidth={true}
                          size='small'
                          error={meta.touched && Boolean(meta.error)}
-                         className={clsx(Boolean(className) && className)}
+                         className={clsx(style.formControl,  Boolean(className) && className)}
                          sx={{
                              "& .MuiInputBase-root": {
-                                 color: backgroundGray ? '#000' : "#F4F0EC",
+                                 color: '#000',
                                  fontFamily: 'Urbanist',
                                  fontWeight: 400,
                                  fontSize: '16px',
                                  lineHeight: '140%',
                                  height: "60px",
                                  borderRadius: "30px",
-                                 border: "none",
+                                 border: (meta.touched && Boolean(meta.error)) ? "1px solid #D84747" : "none",
                                  boxSizing: "border-box",
-                                 background: backgroundGray ? 'rgba(42, 38, 49, 0.05)' : 'rgba(255, 255, 255, 0.1)',
+                                 background: 'rgba(42, 38, 49, 0.05)',
                                  transition: "0.3s",
                                  backdropFilter: 'blur(11px)',
                                  display: "flex",
                                  "alignItems": "flex-end",
                                  "&:hover": {
-                                     background: backgroundGray ? 'rgba(42, 38, 49, 0.35)' : 'rgba(255, 255, 255, 0.35)'
+                                     background: 'rgba(42, 38, 49, 0.35)',
                                  },
                                  "&.Mui-focused": {
-                                     background: backgroundGray ? 'rgba(42, 38, 49, 0.35)' : 'rgba(255, 255, 255, 0.35)',
+                                     background: 'rgba(42, 38, 49, 0.35)',
                                  },
                              },
                              "& .MuiOutlinedInput-notchedOutline": {
@@ -61,7 +59,7 @@ export const SelectFieldWithLabel: FC<FieldSelectType> = ({
                                  paddingBottom: "9px"
                              },
                              "& .MuiSvgIcon-root": {
-                                 fill: backgroundGray ? "#000" : "#F4F0EC",
+                                 fill: "#000",
                                  right: "30px"
                              },
                          }}
@@ -73,7 +71,7 @@ export const SelectFieldWithLabel: FC<FieldSelectType> = ({
                                 fontWeight: 400,
                                 fontSize: '14px',
                                 lineHeight: '140%',
-                                color: backgroundGray ? "rgba(0,0,0,0.5)" : "#B5B1B8!important",
+                                color: "rgba(0,0,0,0.5)",
                                 left: "16px"
                             }}
                 >
@@ -88,9 +86,9 @@ export const SelectFieldWithLabel: FC<FieldSelectType> = ({
                         renderValue={selected => (
                             <p className={clsx({
                                 [style.selected]: true,
-                                [style.selected_backgroundGray]: backgroundGray,
+                                [style.selected_backgroundGray]: true,
                             })}>
-                                {menuItems[selected as number].label}
+                                {selected}
                             </p>
                         )}
                         {...props}
@@ -104,10 +102,11 @@ export const SelectFieldWithLabel: FC<FieldSelectType> = ({
 
                 >
                     {
-                        menuItems.map(el => (
+                        menuItems.map((el, key) => (
                                 <MenuItem key={el.value}
                                           value={el.value}
                                           sx={{
+                                              display: key === 0 ? "none": "flex",
                                               padding: "2.5px 32px",
                                               "&:hover": {
                                                   backgroundColor: "#FFF",
@@ -133,6 +132,15 @@ export const SelectFieldWithLabel: FC<FieldSelectType> = ({
                         )
                     }
                 </Select>
+
+                {
+                    meta.touched && Boolean(meta.error) && (
+                        <p className={style.error}>
+                            {meta.error}
+                        </p>
+                    )
+                }
+
             </FormControl>
     )
 

@@ -4,7 +4,6 @@ import {FormControl, MenuItem} from "@mui/material";
 import {useField} from "formik";
 import clsx from "clsx";
 import style from "./SelectField.module.scss";
-import InputLabel from "@mui/material/InputLabel";
 
 export interface IMenuItem {
     value: string
@@ -13,7 +12,7 @@ export interface IMenuItem {
 
 type FieldSelectType = {
     name: string
-    menuItems: Array<IMenuItem>
+    menuItems: IMenuItem[]
     className?: string
     dark?: boolean
 } & SelectProps;

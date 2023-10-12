@@ -1,9 +1,8 @@
 import style from "./CalculateBlock.module.scss";
 import {Tag} from "../X_common/Tag/Tag";
-import {Form, Formik, FormikHelpers, FormikProps} from "formik";
+import {Form, Formik, FormikErrors, FormikHelpers, FormikProps} from "formik";
 import {ButtonContained, ColorEnum} from "../X_common/ButtonContained/ButtonContained";
 import * as React from "react";
-import {SelectFieldWithLabel} from "../X_common/SelectFieldWithLabel/SelectFieldWithLabel";
 import {svgIcons} from "../../assets/svgIcons";
 import {observer} from "mobx-react-lite";
 import {useStore} from "../../store/useStore";
@@ -11,8 +10,16 @@ import {CalculateModal} from "./CalculateModal/CalculateModal";
 import {useEffect, useState} from "react";
 import axios from "axios";
 import moment from 'moment-timezone';
-import {menuItemsArea, menuItemsBedrooms, menuItemsFurnishing} from "./const";
+import {
+    areasDefault, bedrooms,
+    furnishings,
+    menuItemsArea,
+    menuItemsBedrooms,
+    menuItemsFurnishing,
+    rentalPrices
+} from "./const";
 import {ICalculateValues} from "../../store/store";
+import {SelectField} from "../X_common/SelectField/SelectField";
 
 const tags = [
     "UAE",
@@ -35,15 +42,31 @@ interface IWeatherResponse {
 export const CalculateBlock = observer(() => {
     const {setRental, setCalculateModal} = useStore()
 
-    const initialValues = {
-        area: 0,
-        bedrooms: 0,
-        furnishing: 0,
+    const initialValues: ICalculateValues = {
+        area: "Choose area",
+        bedrooms: "Choose bedrooms",
+        furnishing: "Choose furnishing",
     }
+
+    const validate = (values: ICalculateValues): FormikErrors<ICalculateValues> => {
+        const errors: FormikErrors<ICalculateValues> = {};
+        if (values.area === "Choose area") {
+            errors.area = "Choose area"
+        }
+        if (values.bedrooms === "Choose bedrooms") {
+            errors.bedrooms = "Choose bedrooms"
+        }
+        if (values.furnishing === "Choose furnishing") {
+            errors.furnishing = "Choose furnishing"
+        }
+        return errors
+    };
+
     const onSubmitHandler = (
         values: ICalculateValues, // значения из формы
         formikHelpers: FormikHelpers<ICalculateValues> // методы FormikHelpers<Values>
     ) => {
+        console.log(values)
         setRental(values);
         setCalculateModal(true);
         formikHelpers.setSubmitting(false);
@@ -52,7 +75,6 @@ export const CalculateBlock = observer(() => {
     const [description, setDescription] = useState("");
     const [temp, setTemp] = useState(25);
     const [icon, setIcon] = useState("");
-
 
     useEffect(() => {
         const getWeather = async () => {
@@ -84,10 +106,10 @@ export const CalculateBlock = observer(() => {
     const [time, setTime] = useState("");
 
     useEffect(() => {
-      const timer = setInterval(() => {
-          setTime(moment().tz("Asia/Dubai").format("hh:mm A"))
-      }, 1000);
-      return () => clearInterval(timer);
+        const timer = setInterval(() => {
+            setTime(moment().tz("Asia/Dubai").format("hh:mm A"))
+        }, 1000);
+        return () => clearInterval(timer);
     }, [])
 
     return (
@@ -96,7 +118,6 @@ export const CalculateBlock = observer(() => {
             <CalculateModal/>
 
             <div className={style.inner}>
-                {/*<div className={style.mask}/>*/}
 
                 <div className={style.header}>
                     <div className={style.tags}>
@@ -137,44 +158,75 @@ export const CalculateBlock = observer(() => {
                     <p className={style.formTitle}>Estimate your revenue</p>
 
                     <Formik initialValues={initialValues}
+                            validate={validate}
                             onSubmit={onSubmitHandler}
                     >
                         {
-                            (props: FormikProps<ICalculateValues>) => (
-                                <Form className={style.form}>
+                            (props: FormikProps<ICalculateValues>) => {
+                                const areaIndex = areasDefault.findIndex(el => el === props.values.area);
+                                const furnishingIndex = furnishings.findIndex(el => el === props.values.furnishing);
+                                const bedroomsIndex = bedrooms.findIndex(el => el === props.values.bedrooms);
 
-                                    <div className={style.selectField}>
-                                        <SelectFieldWithLabel name="area"
-                                                              menuItems={menuItemsArea}
-                                                              label="Area"
+                                // console.log("areaIndex: ", areaIndex);
+                                // console.log("furnishingIndex: ", furnishingIndex);
+                                // console.log("bedroomsIndex: ", bedroomsIndex);
+                                // if (areaIndex > 0 && bedroomsIndex > 0) {
+                                //     console.log("price: ", rentalPrices[0][areaIndex - 1][bedroomsIndex - 1]);
+                                // }
+
+                                if (
+                                    areaIndex > 0
+                                    && bedroomsIndex > 0
+                                    && rentalPrices[0][areaIndex - 1][bedroomsIndex - 1] === 0
+
+                                ) {
+                                    props.setFieldValue("bedrooms", "Choose bedrooms");
+                                }
+                                //console.log("   ")
+
+                                return (
+                                    <Form className={style.form}>
+
+                                        <div className={style.selectField}>
+                                            <SelectField name="area"
+                                                         menuItems={menuItemsArea}
+                                                         label="Area"
+                                            />
+                                        </div>
+
+                                        <div className={style.selectField}>
+                                            <SelectField name="bedrooms"
+                                                         menuItems={
+                                                             menuItemsBedrooms.filter((el, index) => {
+                                                                 if (areaIndex > 0) {
+                                                                     if (index === 0) return true
+                                                                     return rentalPrices[0][areaIndex - 1][index - 1] !== 0
+                                                                 } else {
+                                                                     return true
+                                                                 }
+                                                             })
+                                                         }
+                                                         label="Bedrooms"
+
+                                            />
+                                        </div>
+
+                                        <div className={style.selectField}>
+                                            <SelectField name="furnishing"
+                                                         menuItems={menuItemsFurnishing}
+                                                         label="Furnishing"
+                                            />
+                                        </div>
+
+
+                                        <ButtonContained type="submit"
+                                                         label="Calculate"
+                                                         color={ColorEnum.white}
+                                                         className={style.submitBtn}
                                         />
-                                    </div>
-
-                                    <div className={style.selectField}>
-                                        <SelectFieldWithLabel name="bedrooms"
-                                                              menuItems={menuItemsBedrooms}
-                                                              label="Bedrooms"
-
-                                        />
-
-                                    </div>
-
-                                    <div className={style.selectField}>
-                                        <SelectFieldWithLabel name="furnishing"
-                                                              menuItems={menuItemsFurnishing}
-                                                              label="Furnishing"
-
-                                        />
-                                    </div>
-
-
-                                    <ButtonContained type="submit"
-                                                     label="Calculate"
-                                                     color={ColorEnum.white}
-                                                     className={style.submitBtn}
-                                    />
-                                </Form>
-                            )
+                                    </Form>
+                                )
+                            }
                         }
                     </Formik>
                 </div>
