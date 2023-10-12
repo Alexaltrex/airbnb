@@ -55,7 +55,7 @@ export const menuItemsArea = areas
 export const bedrooms = [
     "Choose bedrooms",
     "One Bedroom",
-    "Two Bedroom",
+    "Two Bedrooms",
     "Three Bedrooms",
     "Four Bedrooms",
     "Five Bedrooms",
